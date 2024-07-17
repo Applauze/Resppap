@@ -1,0 +1,138 @@
+.mylabel {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12.5px;
+  font-weight: bold;
+}
+.myvalue {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+}
+
+.myvalueName {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.Tables,
+.Tables tr,
+.Tables th,
+.Tables td {
+  border: 1px solid brown;
+}
+
+.RotatedHeading {
+  writing-mode: sideways-lr;
+  font-weight: bold;
+  width: 6% !important;
+  padding-left: 1.5% !important;
+}
+
+.theTableCol * {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.TheSubjects {
+  font-size: 16px;
+}
+
+.TheAttributes {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13.5px;
+  line-height: 15px;
+  border: 1px solid brown;
+  vertical-align: middle;
+}
+
+.BoldTableHeading {
+  font-weight: bold !important;
+  color: white !important;
+  background-color: brown !important;
+  border: 1px solid white !important;
+}
+
+.scores_td,
+.scores_td2 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  line-height: 13px;
+  border: 1px solid brown;
+  text-align: center;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.scores_td2 {
+  text-align: left;
+  font-size: 16px;
+}
+
+.InfoTableRight,
+.InfoTableLeft {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 13px;
+  vertical-align: middle;
+  font-size: 13px;
+  text-align: center !important;
+}
+.InfoTableLeft {
+  font-size: 15px;
+}
+
+.PlusButton {
+  height: 25px !important;
+  width: 25px !important;
+  border-radius: 50% !important;
+  margin-right: 10px !important;
+  text-align: center !important;
+  padding: 0 !important;
+  padding-right: 1px !important;
+  padding-bottom: 1px !important;
+  vertical-align: middle !important;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #003152 !important;
+  border: none;
+}
+
+.CommentsGroupHolder {
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.ClassTeacherName {
+  font-size: 10px;
+  font-family: "Times New Roman", Times, serif;
+  margin-top: 3px;
+}
+.SubmitButton {
+  background-color: #003152 !important;
+  font-family: "Times New Roman", Times, serif;
+  width: 100%;
+}
+
+.ListHeading {
+  background-color: brown;
+  color: white;
+  text-align: center;
+  font-size: 17px;
+  font-family: "Times New Roman", Times, serif;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 0;
+  font-weight: bold;
+  border: 1px inset whitesmoke;
+}
+
+.MainCardContainer {
+  border: inset 2px brown;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+.PanelContainer {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  margin-right: -1px !important;
+}

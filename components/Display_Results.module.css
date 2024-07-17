@@ -1,0 +1,330 @@
+.mylabel {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12.5px;
+  font-weight: bold;
+}
+.myvalue {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+}
+
+.myvalueName {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.Tables,
+.Tables tr,
+.Tables th,
+.Tables td {
+  border: 1px solid brown;
+}
+.Tables {
+  width: 100% !important;
+  margin: 0px;
+  padding: 0px;
+}
+
+.RotatedHeading {
+  writing-mode: sideways-lr;
+  font-weight: bold;
+  width: 6% !important;
+  padding-left: 2.9% !important;
+}
+
+.RotatedHeading2 {
+  font-weight: bold;
+  width: 6% !important;
+  white-space: wrap;
+  font-size: 14px !important;
+}
+
+.TheSubjects {
+  width: 15% !important;
+  font-style: italic;
+  color: rgb(177, 6, 131) !important;
+  white-space: nowrap !important;
+}
+
+.theTableCol * {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.TheAttributes {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13.5px;
+  line-height: 15px;
+  border: 1px solid brown;
+  vertical-align: middle;
+}
+
+.BoldTableHeading {
+  font-weight: bold !important;
+  color: black !important;
+  font-size: 14px;
+  background-image: linear-gradient(to bottom, #ffffff 5%, #66ebe8 100%);
+  border: 1px solid white !important;
+}
+
+.rowHead {
+  line-height: 12px !important;
+}
+
+.scores_td,
+.scores_td2 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  border: 1px solid brown;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  line-height: 12px !important;
+}
+
+.scores_td2 {
+  text-align: left;
+  font-size: 16px;
+}
+
+.InfoTableRight,
+.InfoTableLeft {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 13px;
+  vertical-align: middle;
+  font-size: 13px;
+  text-align: center !important;
+}
+.InfoTableLeft {
+  font-size: 13px;
+}
+
+.PlusButton {
+  height: 25px !important;
+  width: 25px !important;
+  border-radius: 50% !important;
+  margin-right: 10px !important;
+  text-align: center !important;
+  padding: 0 !important;
+  padding-right: 1px !important;
+  padding-bottom: 1px !important;
+  vertical-align: middle !important;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #003152 !important;
+  border: none;
+}
+
+.CommentsGroupHolder {
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.ClassTeacherName {
+  font-size: 10px;
+  font-family: "Times New Roman", Times, serif;
+  margin-top: 1px;
+}
+.SubmitButton {
+  background-color: #003152 !important;
+  font-family: "Times New Roman", Times, serif;
+  width: 100%;
+}
+
+.ListHeading {
+  background-color: brown;
+  color: white;
+  text-align: center;
+  font-size: 13px;
+  font-family: "Times New Roman", Times, serif;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: 0;
+  font-weight: bold;
+  border: 1px inset whitesmoke;
+}
+
+.MainCardContainer {
+  border: inset 5px brown;
+  width: 100% !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.PanelContainer {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  margin-right: -1px !important;
+}
+
+.CommentParagraph {
+  border: solid 1px brown;
+  border-radius: 5px;
+  padding-top: 10px;
+}
+
+.CommentParagraph * {
+  text-align: center;
+  font-size: 15px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.Comment,
+.Commenter,
+.CommenterStatus {
+  display: block;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.Comment {
+  font-weight: bold;
+  font-style: italics;
+  font-size: 13px;
+}
+
+.Commenter,
+.CommenterStatus {
+  text-align: right !important;
+  font-size: 11px;
+  margin-right: 30px !important;
+  line-height: 12px;
+}
+
+.CommenterDivider {
+  display: block;
+  margin: 2px;
+  padding: 2px;
+}
+.Applause {
+  text-align: center !important;
+  font-size: 13px;
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.CardLayout {
+  border: 1px solid brown;
+}
+.CardHeader {
+  border: 2px solid brown;
+  padding-top: 5px;
+  width: 100%;
+  max-height: 130px;
+  margin-top: 0px !important;
+  background-image: radial-gradient(circle, #ffffff 5%, #66ebe8 100%);
+}
+
+.RepCardCol {
+  background-image: url("./Images/repcard.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.Emmanuel,
+.Model {
+  padding: -15px;
+  margin: -15px;
+}
+
+.Pmb,
+.Tel {
+  padding: -10px;
+  margin: -10px;
+  font-family: "Times new Roman" !important;
+}
+.Report {
+  padding: -10px;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.Emmanuel {
+  font-size: 20px;
+  font-family: "Bauhaus 93";
+  color: brown;
+  text-align: center;
+  margin-top: 0px !important;
+}
+
+.Model {
+  font-size: 35px;
+  font-family: "Bauhaus 93";
+  color: brown;
+  text-align: center;
+}
+
+.Pmb,
+.Tel,
+.Report {
+  font-size: 18px;
+  font-family: "Calibri (Body)";
+  color: brown;
+  text-align: center;
+}
+
+@media print {
+  .Margin4Print {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+
+  .Hide4Print {
+    display: none !important;
+  }
+
+  .myvalue {
+    font-size: 13px !important;
+  }
+
+  .PrintCol {
+    width: 100% !important;
+  }
+
+  .TheAttributes,
+  .AttributeRow {
+    line-height: 10px;
+    font-size: 10px;
+  }
+  .MainCardContainer {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .MainCardContainer * {
+    color: black;
+  }
+
+  .Pmb,
+  .Tel {
+    font-size: 13px;
+    line-height: 25px;
+  }
+
+  .BoldTableHeading {
+    line-height: 17px !important;
+  }
+  .TheSubjects,
+  .scores_td,
+  .scores_td2 {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    font-size: 12px;
+    font-family: "Times New Roman";
+  }
+
+  .rowHead {
+    font-size: 10px;
+  }
+
+  .Comment {
+    line-height: 10px;
+  }
+
+  .CommenterStatus {
+    font-size: 9px;
+  }
+}

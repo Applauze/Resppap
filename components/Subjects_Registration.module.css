@@ -1,0 +1,11 @@
+.subjectCheckBox {
+  color: brown;
+}
+
+.DisplayedName {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13px;
+  text-align: center;
+  font-weight: bold;
+  color: brown;
+}

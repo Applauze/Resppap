@@ -1,0 +1,10 @@
+@media print {
+  .Margin4Print {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+
+  .Hide4Print {
+    display: none !important;
+  }
+}

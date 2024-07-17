@@ -1,0 +1,122 @@
+.Container {
+  position: relative;
+}
+
+.TheMainLink {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: #5a0909;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-family: "Calibri (Body)";
+  font-weight: "bold";
+}
+
+.StillHovering {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: #5a0909;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  content: "";
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #800d0d;
+  font-family: "Calibri (Body)";
+  font-weight: "bold";
+}
+
+.TheMainLink::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #800d0d;
+  transition: width 0.5s ease-in-out;
+}
+
+.TheMainLink:hover::before {
+  width: 100%;
+}
+
+.TheMainLink::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #570101;
+  transition: width 0.5s ease-in-out;
+}
+
+.TheMainLink:hover::after {
+  /* width: 100%; */
+  transition-delay: 0.5s;
+}
+
+.TheDropDownPanel {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5 !important;
+  opacity: 1;
+  display: block;
+  animation: PanelMovement 1s;
+}
+.TheDropDownPanelHidden {
+  display: none;
+  opacity: 0;
+  transition: all 3s ease-in-out;
+}
+
+@keyframes PanelMovement {
+  from {
+    margin-top: 20px;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 0px;
+    opacity: 1;
+  }
+}
+
+.ArrowOn {
+  animation: PanelMovement 1s;
+}
+
+.ArrowOn::before {
+  margin-top: 10px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #000040;
+  display: block !important;
+  animation: PanelMovement 1s;
+}
+
+.Gap {
+  height: 15px;
+  width: 100%;
+}
+
+.ArrowOff {
+  display: none;
+}
+
+.TheDropDownPanel:hover::before {
+  border-bottom: #666;
+}

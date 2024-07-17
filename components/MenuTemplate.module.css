@@ -1,0 +1,32 @@
+.TemplateDimension {
+  /* width: 450px !important; */
+  height: 150px !important;
+  border-top: 3px solid brown !important;
+  border-right: 3px solid brown !important;
+  border-bottom: 3px solid brown !important;
+  border-left: 10px solid brown !important;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.TitleColumn {
+  background: linear-gradient(to right, #c5c32c, #add8e6);
+}
+
+.TitleColumnHover {
+  background: linear-gradient(to right, #e88d8d, #add8e6);
+}
+
+.theLinks,
+.theLinks * {
+  text-decoration: none;
+}
+.theLinks *:hover {
+  text-decoration: none;
+}
+
+.TitleText {
+  color: #121212;
+  font-family: "Times New Roman", Times, serif;
+  text-shadow: 2px 6px 8px rgba(67, 17, 17, 0.5);
+}

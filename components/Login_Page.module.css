@@ -1,0 +1,37 @@
+.formCol {
+  background-image: url("./Images/logSquare.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.MainRow {
+  height: 500px;
+}
+
+.Softname {
+  font-size: 34px;
+  margin-top: 10px;
+  font-family: "Lucida Handwriting";
+  color: rgb(70, 208, 226);
+  text-shadow: 0 5px 0 #0c3247, 0 2px 0 #3f3e3e, 0 3px 0 #a8a1a1;
+  font-weight: bold;
+}
+
+.AllBgColor {
+  background-color: #800000;
+  font-family: Times New Roman;
+  opacity: 0.9;
+  display: block;
+  height: 100%;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.logSquare {
+  background-image: url("./Images/MainImg2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
