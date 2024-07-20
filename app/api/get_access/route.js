@@ -6,7 +6,7 @@ export async function POST(request, response) {
   const connect = await connectDatabase();
   const { TeacherID, Gateway } = body.dataFromCaller;
 
-    var GTW = Gateway;
+  var GTW = Gateway;
   var CryptoJS = require("crypto-js");
   const Cookies = new cookies();
   let LogStatus = false;
@@ -15,7 +15,7 @@ export async function POST(request, response) {
   select_sql = `SELECT gateway, title, surname, firstname, middlename, category FROM teachers_details WHERE teacher_id = '${TeacherID}'`;
 
   const result = await selectTable(connect, select_sql);
-
+  console.log(result);
   let gateway = result[0].gateway;
   let Category = result[0].category;
   let middlename =

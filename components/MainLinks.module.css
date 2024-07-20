@@ -10,6 +10,7 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-family: "Calibri (Body)";
   font-weight: "bold";
 }
@@ -60,6 +61,7 @@
 
 .TheMainLink:hover::after {
   /* width: 100%; */
+  width: 0;
   transition-delay: 0.5s;
 }
 
@@ -109,7 +111,8 @@
 }
 
 .Gap {
-  height: 15px;
+  margin-top: 0px;
+  height: 13px;
   width: 100%;
 }
 

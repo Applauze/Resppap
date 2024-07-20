@@ -17,13 +17,25 @@ const MenuTemplate = (props) => {
     setisHover(false);
   };
 
+  const ExFunc = (e, tt) => {
+    if (tt === "Log Out") {
+      e.preventDefault();
+      console.log("I am Exiting");
+      props.Ex();
+    }
+  };
+
   const DCss = Menu.IsReal
     ? { visibility: "visible" }
     : { visibility: "hidden" };
 
   return (
     <BorderedCard MyStyle={{ ...DCss, padding: "0px", height: "150px" }}>
-      <Link href={Menu.link} className={classes.theLinks}>
+      <Link
+        href={Menu.link}
+        className={classes.theLinks}
+        onClick={(e) => ExFunc(e, Menu.Title)}
+      >
         <Row
           className={classes.TemplateDimension}
           onMouseOver={changeBg}

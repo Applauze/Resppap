@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import axioscall from "./API_Call/axioscall";
 import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import OK_Modal from "./ModalsAndAlerts/OK_Modal";
 import { faKey, faUserAlt } from "@fortawesome/fontawesome-free-solid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -41,7 +40,6 @@ const Login_Page = (props) => {
     boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.2) ",
   };
   const GetTeacherID = (str) => {
-   
     setTeacherID(CapitalizeFirstLetter(str));
   };
 
@@ -54,7 +52,7 @@ const Login_Page = (props) => {
     setMessage(`The system is authenticating you...`);
     setshowProcessing(true);
     let WayGate = CryptoJS.AES.encrypt(Gateway, "143tonybridget").toString();
-    console.log(TeacherID);
+
     let LoginDetails = { TeacherID: TeacherID, Gateway: WayGate };
     let Ac = await axioscall("get_access", LoginDetails);
     console.log(Ac);
@@ -114,14 +112,11 @@ const Login_Page = (props) => {
   }, []);
 
   return (
-    <Container fluid className="p-0 m-0">
+    <div>
       <ReactNotifications />
       <Row>
         <Col md={12} lg={12} sm={12}>
-          <Row
-            style={{ height: "80px" }}
-            className="justify-content-around align-items-center"
-          >
+          <Row className="justify-content-around align-items-center border border-danger">
             <Col className="text-center">
               <p className={classes.Softname}>
                 Result Processing & Production Portal
@@ -129,15 +124,17 @@ const Login_Page = (props) => {
             </Col>
           </Row>
           <Row className={classes.MainRow}>
-            <Col md={7} lg={7} sm={7} className="h-100">
+            <Col md={7} lg={7} sm={7} className={`${classes.MainImg} h-100`}>
               <Image src={MainImage} alt="Main Image" />
             </Col>
             <Col md={5} sm={12} xs={12} className={classes.formCol}>
-              <Row className="justify-content-around align-items-center h-100">
+              <Row
+                className={` justify-content-around align-items-center h-100 ${classes.FormMainRow}`}
+              >
                 <Col md={8} sm={10} xs={10}>
                   <Card
                     style={{ backgroundColor: "rgba(255, 255, 255, 0.5) " }}
-                    className="px-4"
+                    className="px-4 "
                   >
                     <Card.Body>
                       <h2
@@ -187,7 +184,7 @@ const Login_Page = (props) => {
                                   className="form-control"
                                   placeholder="Your Username?"
                                   name="Username"
-                                  value = {TeacherID}
+                                  value={TeacherID}
                                   aria-label="Username"
                                   onChange={(e) => GetTeacherID(e.target.value)}
                                   required={true}
@@ -265,7 +262,7 @@ const Login_Page = (props) => {
         variant="success"
         size="sm"
       />
-    </Container>
+    </div>
   );
 };
 

@@ -2,7 +2,24 @@
   background-image: url("./Images/headerbackground.jpg") !important;
   background-repeat: no-repeat;
   background-size: cover;
+  display: block;
+  margin: 0px;
+  padding: 0px;
   height: 160px;
+}
+
+.EacoedRow {
+  height: 75%;
+}
+
+.MenuBarRow {
+  display: none !important;
+}
+
+.LinksRow {
+  height: 20%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .Logo {
@@ -36,10 +53,10 @@
 .waviy span {
   position: relative;
   display: inline-block;
-  color: #660505;
+  color: #ecdddd;
   font-family: "Berlin Sans FB Demi";
   text-transform: uppercase;
-  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb;
+  text-shadow: 0 1px 0 #1f1111, 0 2px 0 #070606, 0 3px 0 #0c0b0b;
   animation: flip 5s infinite;
   animation-delay: calc(0.2s * var(--i));
   font-size: 25px;
@@ -54,21 +71,114 @@
 
 .powered {
   font-family: "Lucida Handwriting";
+  text-align: right;
 }
 
 @media screen and (max-width: 768px) {
   .TheMainRow {
+    padding: 0px;
+    display: block;
+    height: auto !important;
+  }
+
+  .LogoCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .schoolname {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .forward {
+    text-align: center;
+  }
+
+  .EacoedRow {
+    height: auto !important;
+    /* display: none !important; */
+  }
+  .MenuBarRow {
     height: auto;
+    display: flex !important;
+  }
+
+  .LinksRow {
+    display: none !important;
   }
 
   .Logo {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     margin-top: 15px;
   }
-  .schoolname {
-    font-size: 30px;
+
+  .poweredRow {
+    background-color: #7c0505;
   }
+  .powered {
+    text-align: center;
+  }
+
+  .waviy span {
+    text-align: center;
+  }
+
+  .MobileMenuList {
+    font-size: 18px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .subLinks {
+    font-size: 18px !important;
+    font-family: Calibri;
+    padding: 0px !important;
+    color: #480101;
+  }
+
+  .submobileP {
+    margin-left: 15px !important;
+    font-family: "Times New Roman";
+    margin-top: -2px !important;
+    margin-bottom: -2px !important;
+    padding-top: -5px !important;
+    padding-bottom: -5px !important;
+  }
+
+  .submobilelinks {
+    font-family: "Times New Roman";
+    font-size: 16px;
+    padding: 0px !important;
+    display: block;
+    color: #7a0505;
+  }
+
+  @keyframes PanelMovement {
+    from {
+      margin-left: -198px;
+    }
+
+    to {
+      margin-left: 0px;
+    }
+  }
+
+  .MobileMenuPanelOn {
+    display: inline-block;
+    width: 200px !important;
+    padding: 0px !important;
+    animation: PanelMovement 1s;
+  }
+  .MobileMenuPanelOff {
+    display: none;
+  }
+
+  /* .ArrowOn {
+  animation: PanelMovement 1s;
+} */
 }
 
 @media print {

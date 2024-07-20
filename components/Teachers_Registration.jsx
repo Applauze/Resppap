@@ -144,23 +144,22 @@ const Teachers_Registration = (props) => {
                 <ul>
                   <li>
                     The surname, firstname are compulsory. The middle name may
-                    be left blank if the candidate has none.
+                    be left blank if the teacher has none.
                   </li>
                   <li>
-                    The surname, firstname are compulsory. The middle name may
-                    be left blank if the candidate has none.
+                    Note that password are case sensitive and must be atleast six characters long. i.e PASSWORD is not te same as Password nor password.
                   </li>
                   <li>
-                    The surname, firstname are compulsory. The middle name may
-                    be left blank if the candidate has none.
+                   Ensure that the information enetered in Password Field and Retype Password field are the same.
                   </li>
                   <li>
-                    The surname, firstname are compulsory. The middle name may
-                    be left blank if the candidate has none.
+                    Your TeacherID and Password are very essential. Please keep it safe and confidential as you will need it for subsequent login.
                   </li>
                   <li>
-                    The surname, firstname are compulsory. The middle name may
-                    be left blank if the candidate has none.
+                    The Admin is to choose the Category of teachers you belong to.
+                  </li>
+                  <li>
+                    Direct any question or information that is not clear to the Admin before saving this form.
                   </li>
                 </ul>
               </Col>
