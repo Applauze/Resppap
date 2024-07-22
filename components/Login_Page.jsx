@@ -40,6 +40,7 @@ const Login_Page = (props) => {
     boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.2) ",
   };
   const GetTeacherID = (str) => {
+    console.log(str);
     setTeacherID(CapitalizeFirstLetter(str));
   };
 
@@ -49,8 +50,10 @@ const Login_Page = (props) => {
 
   const LoginUser = async (e) => {
     e.preventDefault();
+
     setMessage(`The system is authenticating you...`);
     setshowProcessing(true);
+
     let WayGate = CryptoJS.AES.encrypt(Gateway, "143tonybridget").toString();
 
     let LoginDetails = { TeacherID: TeacherID, Gateway: WayGate };
@@ -149,7 +152,7 @@ const Login_Page = (props) => {
                         Please login with your Username and Password
                       </h6>
                       <hr />
-                      <Form onSubmit={LoginUser}>
+                      <Form onSubmit={LoginUser} autoComplete="false">
                         <Row>
                           <Col md={12} sm={12} xs={12}>
                             <div
@@ -187,7 +190,9 @@ const Login_Page = (props) => {
                                   value={TeacherID}
                                   aria-label="Username"
                                   onChange={(e) => GetTeacherID(e.target.value)}
+                                  onBlur={(e) => GetTeacherID(e.target.value)}
                                   required={true}
+                                  autoComplete="off"
                                   style={{ borderRadius: "0px" }}
                                 />
                               </div>
@@ -214,7 +219,9 @@ const Login_Page = (props) => {
                                   name="gateway"
                                   placeholder="Password"
                                   aria-label="Password"
+                                  autoComplete="off"
                                   onChange={(e) => setGateway(e.target.value)}
+                                  onBlur={(e) => setGateway(e.target.value)}
                                   aria-describedby="basic-addon"
                                   required={true}
                                   style={{ borderRadius: "0px" }}

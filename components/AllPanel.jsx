@@ -9,7 +9,11 @@ const AllPanel = (props) => {
     <Row className={classes.theRow}>
       <ListGroup className="p-0">
         {TheSubLinks.map((lnk, index) => (
-          <ListGroupItem variant="primary" className={classes.ListItem}>
+          <ListGroupItem
+            variant="primary"
+            className={classes.ListItem}
+            key={index}
+          >
             <Link href={lnk.path} className={classes.subLinks}>
               <p className={classes.sublinkname}>{lnk.title}</p>
               <p className={classes.Description}>{lnk.desc}</p>

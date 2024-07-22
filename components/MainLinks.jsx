@@ -16,6 +16,7 @@ const MainLinks = (props) => {
         className={
           isHover ? `${classes.StillHovering}` : `${classes.TheMainLink}`
         }
+        onClick={(e) => props.Action(e, props.LinkName)}
       >
         {props.LinkName}
       </a>

@@ -120,6 +120,7 @@ const MenuDisplayPage = () => {
                 xs={12}
                 sm={12}
                 className={classes.EachMenuCol}
+                key={index}
               >
                 <MenuTemplate Menu={menu} Ex={ExitFunction} />
               </Col>

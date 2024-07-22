@@ -1,11 +1,14 @@
 .Container {
   position: relative;
+  cursor: pointer !important;
 }
 
+.Container:hover {
+  color: #1ced09 !important;
+}
 .TheMainLink {
   position: relative;
   display: block;
-  text-decoration: none;
   color: #5a0909;
   text-align: center;
   display: flex;
@@ -13,13 +16,18 @@
   align-items: center;
   font-family: "Calibri (Body)";
   font-weight: "bold";
+  text-decoration: none !important;
+}
+
+.TheMainLink:hover {
+  color: #1ced09 !important;
 }
 
 .StillHovering {
   position: relative;
   display: block;
-  text-decoration: none;
-  color: #5a0909;
+  text-decoration: none !important;
+  color: #1ced09 !important;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -31,6 +39,7 @@
   background-color: #800d0d;
   font-family: "Calibri (Body)";
   font-weight: "bold";
+  cursor: pointer !important;
 }
 
 .TheMainLink::before {
@@ -46,6 +55,9 @@
 
 .TheMainLink:hover::before {
   width: 100%;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  color: #1ced09 !important;
 }
 
 .TheMainLink::after {
@@ -63,6 +75,9 @@
   /* width: 100%; */
   width: 0;
   transition-delay: 0.5s;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  color: #1ced09 !important;
 }
 
 .TheDropDownPanel {
@@ -73,6 +88,7 @@
   opacity: 1;
   display: block;
   animation: PanelMovement 1s;
+  width: 150px !important;
 }
 .TheDropDownPanelHidden {
   display: none;
@@ -82,7 +98,7 @@
 
 @keyframes PanelMovement {
   from {
-    margin-top: 20px;
+    margin-top: px;
     opacity: 0;
   }
 
@@ -97,7 +113,7 @@
 }
 
 .ArrowOn::before {
-  margin-top: 10px;
+  margin-top: 5px;
   content: "";
   position: absolute;
   bottom: 0;
@@ -114,6 +130,7 @@
   margin-top: 0px;
   height: 13px;
   width: 100%;
+  color: #1ced09 !important;
 }
 
 .ArrowOff {

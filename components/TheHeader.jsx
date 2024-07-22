@@ -29,22 +29,26 @@ const TheHeader = () => {
     window.location.href = "/";
   };
 
-  const ExitFunction = async () => {
-    if (await LogoutFunction()) {
-      setModal_Title("Success");
-      setModal_Message(
-        "You have successfully logged out of the system. Do have a wonderful day, Bye"
-      );
-      setButton_Title("Ok, Bye");
-      setShow_Modal(true);
-    } else {
-      DisplayNotification(
-        "Error",
-        `Error in logging out. Please contact the Admin `,
-        "danger",
-        "top-center",
-        7000
-      );
+  const ExitFunction = async (e, lmk) => {
+    e.preventDefault();
+    lmk = lmk.toLowerCase();
+    if (lmk === "log out") {
+      if (await LogoutFunction()) {
+        setModal_Title("Success");
+        setModal_Message(
+          "You have successfully logged out of the system. Do have a wonderful day, Bye"
+        );
+        setButton_Title("Ok, Bye");
+        setShow_Modal(true);
+      } else {
+        DisplayNotification(
+          "Error",
+          `Error in logging out. Please contact the Admin `,
+          "danger",
+          "top-center",
+          7000
+        );
+      }
     }
   };
 
@@ -199,10 +203,36 @@ const TheHeader = () => {
                 <MainLinks LinkName="AWARDS" />
               </li>
               <li className="d-inline-block mx-4 px-2 ">
+                <MainLinks
+                  LinkName="ADMIN"
+                  ThePanel={
+                    <AllPanel
+                      TheLink={[
+                        {
+                          title: "Subject Teacher Allocation",
+                          desc: "Authorize a teacher to the subject he/she teaches for easy access to scores computation",
+                          path: "/subjectteacherallocation",
+                        },
+                        {
+                          title: "Class Teacher Allocation",
+                          desc: "Authorize teacher to perform class teacher's work for a particular class",
+                          path: "/classteacherallocation",
+                        },
+                        {
+                          title: "Change Student's Class",
+                          desc: "Change a student class and move all his records from a his previous class to his/her new class",
+                          path: "/changestudentclass",
+                        },
+                      ]}
+                    />
+                  }
+                />
+              </li>
+              <li className="d-inline-block mx-4 px-2 ">
                 <MainLinks LinkName="ABOUT" />
               </li>
               <li className="d-inline-block mx-4 px-2 ">
-                <MainLinks LinkName="LOG OUT" />
+                <MainLinks LinkName="LOG OUT" Action={ExitFunction} />
               </li>
             </ul>
           </Col>
@@ -366,6 +396,37 @@ const TheHeader = () => {
                     <Link href="#" className={classes.subLinks}>
                       About
                     </Link>
+                  </ListGroup.Item>
+                  <ListGroup.Item
+                    className={`${classes.MobileMenuList} w-100 m-0 d-block`}
+                  >
+                    <div className={classes.subLinks}>
+                      Admin
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/subjectteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          Subject Teacher Allocation
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/classteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          Class Teacher Allocation
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/classteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          Change Student Class
+                        </Link>
+                      </p>
+                    </div>
                   </ListGroup.Item>
                   <ListGroup.Item
                     className={`${classes.MobileMenuList} w-100 m-0`}

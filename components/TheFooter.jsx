@@ -32,7 +32,7 @@ const TheFooter = () => {
             <Row>
               {FooterDetails.map((ft, index) => (
                 <Col md={3} sm={12} xs={12} key={index}>
-                  <h6 className="fw-bold" style={{ color: "brown" }}>
+                  <h6 className={classes.FootHeader} style={{ color: "brown" }}>
                     {ft.header}
                   </h6>
                   <hr className="my-1 " />
