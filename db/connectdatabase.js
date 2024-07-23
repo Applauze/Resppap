@@ -1,5 +1,5 @@
 const mysql = require("mysql2");
-const databaseName = "new_respapp";
+const databaseName = process.env.database;
 const connection = mysql.createConnection({
   host: process.env.host,
   user: process.env.user,
@@ -7,6 +7,8 @@ const connection = mysql.createConnection({
   database: process.env.database,
   port: process.env.port,
 });
+
+console.log(`CREATE DATABASE IF NOT EXISTS ${databaseName}`);
 
 connection.query(`CREATE DATABASE IF NOT EXISTS ${databaseName}`, (error) => {
   if (error) {

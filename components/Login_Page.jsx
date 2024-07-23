@@ -40,7 +40,6 @@ const Login_Page = (props) => {
     boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.2) ",
   };
   const GetTeacherID = (str) => {
-    console.log(str);
     setTeacherID(CapitalizeFirstLetter(str));
   };
 
