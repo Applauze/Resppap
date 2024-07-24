@@ -244,12 +244,12 @@ const TheHeader = () => {
           </Col>
         </Row>
 
-        <Row className={`h-100 p-0 m-0 gx-0  ${classes.MenuBarRow}`}>
+        <Row className={`h-100 p-0 m-0   ${classes.MenuBarRow}`}>
           <Col
-            lg={11}
-            md={11}
-            sm={11}
-            xs={11}
+            lg={12}
+            md={12}
+            sm={12}
+            xs={12}
             className="d-flex align-self-end  justify-content-end align-items-center"
           >
             <Button
