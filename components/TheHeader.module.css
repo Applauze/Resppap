@@ -103,6 +103,7 @@
   .MenuBarRow {
     height: auto;
     display: flex !important;
+    padding: 0px !important;
   }
 
   .LinksRow {
@@ -157,11 +158,14 @@
   }
 
   @keyframes PanelMovement {
-    from {
+    0% {
       margin-left: -298px;
     }
+    50% {
+      margin-left: 100px;
+    }
 
-    to {
+    100% {
       margin-left: 0px;
     }
   }

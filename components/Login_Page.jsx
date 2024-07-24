@@ -133,10 +133,9 @@ const Login_Page = (props) => {
               <Row
                 className={` justify-content-around align-items-center h-100 ${classes.FormMainRow}`}
               >
-                <Col md={8} sm={10} xs={10}>
+                <Col md={9} sm={10} xs={10}>
                   <Card
                     style={{ backgroundColor: "rgba(255, 255, 255, 0.5) " }}
-                    className="px-4 "
                   >
                     <Card.Body>
                       <h2
@@ -155,13 +154,11 @@ const Login_Page = (props) => {
                         <Row>
                           <Col md={12} sm={12} xs={12}>
                             <div
-                              className=" mt-2 p-4"
+                              className=" mx-md-5 my-3 m-sm-2 p-4"
                               style={{
                                 boxShadow:
                                   "10px 10px 5px rgba(68, 68, 68, 0.6)",
-                                border: "1px groove #800000",
-                                marginLeft: "0px",
-                                marginRight: "0px",
+                                border: "2px groove #800000",
                               }}
                             >
                               <div
@@ -230,20 +227,20 @@ const Login_Page = (props) => {
                           </Col>
                           <Col
                             md={12}
-                            sm={2}
-                            xs={2}
+                            sm={12}
+                            xs={12}
                             className="align-items-right"
                           >
-                            <Row>
+                            <Row className="d-flex justify-content-end  p-0">
                               <Col
-                                md={2}
-                                sm={2}
-                                xs={2}
-                                className="offset-8 offset-md-8 offset-sm-8 offset-xs-8"
+                                md={4}
+                                sm={4}
+                                xs={4}
+                                className="m-0 pr-1  text-end"
                               >
                                 <Button
                                   type="submit"
-                                  className="btn btn-danger mt-3 mr-4"
+                                  className="btn btn-danger mt-3"
                                   variant="danger"
                                   style={{ backgroundColor: "brown" }}
                                 >
