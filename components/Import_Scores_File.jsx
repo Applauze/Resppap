@@ -321,21 +321,13 @@ const Import_Scores_File = (props) => {
         setdisplayStudents(true);
         setdataready(true);
       } else {
-        DisplayNotification(
-          "Error",
-          `There was a problem in retrieving the students. Please ensure that the students have been registered for ${pickedSubject} in ${session} Session`,
-          "danger",
-          "top-center",
-          7000
+        props.Notify(
+          `There was a problem in retrieving the students. Please ensure that the students have been registered for ${pickedSubject} in ${session} Session`
         );
       }
     } else {
-      DisplayNotification(
-        "Error",
-        `You are not an authorized teacher for the selected class. Please contact the Administrator`,
-        "danger",
-        "top-center",
-        7000
+      props.Notify(
+        `You are not an authorized teacher for the selected class. Please contact the Administrator`
       );
     }
     setshowProcessing(false);
@@ -674,7 +666,15 @@ const Import_Scores_File = (props) => {
                   </Form.Group>
                 </Col>
               )}
-              <Col lg={3} md={3} sm={11} xs={11} className="mt-2 text-right">
+            </Row>
+            <Row className="d-flex justify-content-sm-around justify-content-md-end">
+              <Col
+                lg={3}
+                md={3}
+                sm={11}
+                xs={11}
+                className="mt-2 text-right text-end mt-2 pt-2"
+              >
                 <Button
                   variance="info"
                   type="submit"

@@ -14,7 +14,7 @@ import FormInputDate from "./Inputs/FormInputDate";
 import Image from "next/image";
 import ImageResizer from "react-image-file-resizer";
 import Cookies from "universal-cookie";
-import Login_Page from "./Login_Page";
+import { DisplayNotification } from "./Notification";
 
 const StudentRegistration = () => {
   const cookies = new Cookies();
@@ -126,6 +126,7 @@ const StudentRegistration = () => {
   };
 
   const changePicture = async (event) => {
+    console.log("Exceeded");
     let namP = event.target.name;
     let valP = event.target.files[0];
     var FileSize = valP.size / 1024;
@@ -133,8 +134,15 @@ const StudentRegistration = () => {
     //   var FileSize = valP.size / 1048576; // in MBin MB
     //   var FileSize = valP.size / 1073741824; // in KBin KB
     if (FileSize > 400) {
+      valP = null;
       // alert("Picture size exceeds 200kb");
-      PCtx.displayAlert("ERROR", "Picture size exceeds 400KB", "danger");
+      DisplayNotification(
+        "Error",
+        "Picture size exceeds 400KB",
+        "danger",
+        "top-center",
+        5000
+      );
     } else {
       let str = event.target.value;
 
@@ -148,12 +156,14 @@ const StudentRegistration = () => {
         setPictureDirectory(URL.createObjectURL(base64ToBlob(valP)));
         setpictureSelected(base64ToBlob(valP));
       } else {
-        // console.log("Only picture in jpg or jpeg format is accepted");
-        PCtx.displayAlert(
-          "ERROR",
+        DisplayNotification(
+          "Error",
           "Only picture in jpg or jpeg format is accepted",
-          "danger"
+          "danger",
+          "top-center",
+          5000
         );
+        // console.log("Only picture in jpg or jpeg format is accepted");
       }
     }
   };
@@ -183,24 +193,22 @@ const StudentRegistration = () => {
                 </h6>
                 <ul>
                   <li>
-                    The surname, firstname are compulsory. The middle name may
-                    be left blank if the candidate has none.
+                    The surname and firstname are compulsory. The middle name
+                    may be left blank if the student has none.
                   </li>
                   <li>
-                    The surname, firstname are compulsory. The middle name may
-                    be left blank if the candidate has none.
+                    Student Passport should be in jpeg format and should not
+                    exceed 400kb in size
                   </li>
                   <li>
-                    The surname, firstname are compulsory. The middle name may
-                    be left blank if the candidate has none.
+                    Ensure that the information entered in all fields are
+                    correct before submision as their may not be room for
+                    editing after submission
                   </li>
+
                   <li>
-                    The surname, firstname are compulsory. The middle name may
-                    be left blank if the candidate has none.
-                  </li>
-                  <li>
-                    The surname, firstname are compulsory. The middle name may
-                    be left blank if the candidate has none.
+                    Direct any question or information that is not clear to the
+                    Admin before saving this form.
                   </li>
                 </ul>
               </Col>
@@ -222,6 +230,7 @@ const StudentRegistration = () => {
                             height={100}
                             width={100}
                             src={PictureDirectory}
+                            alt="Student Image"
                           />
                         </Col>
                         <Col>

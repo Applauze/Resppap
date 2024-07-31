@@ -6,6 +6,7 @@ import homepicture from "./Images/homepicture.png";
 import Image from "next/image";
 import BorderedCard from "./Cards/BorderedCard";
 import Link from "next/link";
+import { roboto_serif } from "@/app/util/fonts";
 const MenuTemplate = (props) => {
   const [isHover, setisHover] = useState(false);
   const [Menu, setMenu] = useState(props.Menu);
@@ -62,7 +63,9 @@ const MenuTemplate = (props) => {
                     : `d-flex h-100 justify-content-center align-items-center ${classes.TitleColumn}`
                 }
               >
-                <h4 className={`h4 text-center ${classes.TitleText}`}>
+                <h4
+                  className={`h4 text-center ${classes.TitleText} ${roboto_serif}`}
+                >
                   {Menu.Title.toUpperCase()}
                 </h4>
               </Col>

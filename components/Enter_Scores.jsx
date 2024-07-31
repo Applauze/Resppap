@@ -331,21 +331,13 @@ const Enter_Scores = (props) => {
         setConcernedStudents(AllNamesAndNumbers);
         setdisplayStudents(true);
       } else {
-        DisplayNotification(
-          "Error",
-          `There was a problem in retrieving the students. Please ensure that the students have been registered for ${pickedSubject} in ${session} Session`,
-          "danger",
-          "top-center",
-          7000
+        props.Notify(
+          `There was a problem in retrieving the students. Please ensure that the students have been registered for ${pickedSubject} in ${session} Session`
         );
       }
     } else {
-      DisplayNotification(
-        "Error",
-        `You are not an authorized teacher for the selected class. Please contact the Administrator`,
-        "danger",
-        "top-center",
-        7000
+      props.Notify(
+        `You are not an authorized teacher for the selected class. Please contact the Administrator`
       );
     }
     setshowProcessing(false);
@@ -447,13 +439,13 @@ const Enter_Scores = (props) => {
                 />
               </Col>
             </Row>
-            <Row className="justify-content-end">
+            <Row className="d-flex justify-content-sm-around justify-content-md-end">
               <Col
-                lg={2}
-                md={2}
+                lg={3}
+                md={3}
                 sm={11}
                 xs={11}
-                className="mt-2 offset-9 text-right"
+                className="mt-2 text-right text-end my-2 py-2"
               >
                 <Button
                   variance="info"

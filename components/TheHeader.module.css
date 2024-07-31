@@ -54,7 +54,6 @@
   position: relative;
   display: inline-block;
   color: #ecdddd;
-  font-family: "Berlin Sans FB Demi";
   text-transform: uppercase;
   text-shadow: 0 1px 0 #1f1111, 0 2px 0 #070606, 0 3px 0 #0c0b0b;
   animation: flip 5s infinite;
@@ -157,6 +156,13 @@
     color: #7a0505;
   }
 
+  .MobileMenuPanelOn {
+    display: inline-block;
+    width: 300px !important;
+    padding: 0px !important;
+    animation: PanelMovement 1s;
+  }
+
   @keyframes PanelMovement {
     0% {
       margin-left: -298px;
@@ -170,12 +176,6 @@
     }
   }
 
-  .MobileMenuPanelOn {
-    display: inline-block;
-    width: 300px !important;
-    padding: 0px !important;
-    animation: PanelMovement 1s;
-  }
   .MobileMenuPanelOff {
     display: none;
   }

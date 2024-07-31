@@ -1,10 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Rubik } from "next/font/google";
 import Header from "@/components/TheHeader";
 import Footer from "@/components/TheFooter";
 
 const inter = Inter({ subsets: ["latin"] });
+const rubik = Rubik({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-rubik",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata = {
   title: {

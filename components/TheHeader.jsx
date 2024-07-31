@@ -13,6 +13,7 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import BorderedCardNoHover from "./Cards/BorderedCardNoHover";
 import OK_Modal from "./ModalsAndAlerts/OK_Modal";
 import LogoutFunction from "./API_Call/exit";
+import { shadows_Into_Light, rubik, pt_Sans } from "@/app/util/fonts";
 
 const TheHeader = () => {
   const [MenuClicked, setMenuClicked] = useState(false);
@@ -105,16 +106,16 @@ const TheHeader = () => {
                 lg={6}
                 sm={6}
                 xs={6}
-                className={` d-inline-block justify-content-start  ${classes.waviy}`}
+                className={` d-inline-block justify-content-start  ${classes.waviy} `}
               >
-                <span>A</span>
-                <span>P</span>
-                <span>P</span>
-                <span>L</span>
-                <span>A</span>
-                <span>U</span>
-                <span>S</span>
-                <span>E</span>
+                <span className={shadows_Into_Light}>A</span>
+                <span className={shadows_Into_Light}>P</span>
+                <span className={shadows_Into_Light}>P</span>
+                <span className={shadows_Into_Light}>L</span>
+                <span className={shadows_Into_Light}>A</span>
+                <span className={shadows_Into_Light}>U</span>
+                <span className={shadows_Into_Light}>S</span>
+                <span className={shadows_Into_Light}>E</span>
               </Col>
             </Row>
           </Col>
@@ -305,14 +306,14 @@ const TheHeader = () => {
                   <ListGroup.Item
                     className={`${classes.MobileMenuList} w-100 m-0`}
                   >
-                    <Link href="/" className={classes.subLinks}>
+                    <Link href="/" className={`${rubik} ${classes.subLinks}`}>
                       Home
                     </Link>
                   </ListGroup.Item>
                   <ListGroup.Item
                     className={`${classes.MobileMenuList} w-100 m-0 d-block`}
                   >
-                    <div className={classes.subLinks}>
+                    <div className={`${rubik} ${classes.subLinks}`}>
                       Registration
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
@@ -343,7 +344,7 @@ const TheHeader = () => {
                   <ListGroup.Item
                     className={`${classes.MobileMenuList} w-100 m-0 d-block`}
                   >
-                    <div className={classes.subLinks}>
+                    <div className={`${rubik} ${classes.subLinks}`}>
                       Computation
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
@@ -366,7 +367,7 @@ const TheHeader = () => {
                   <ListGroup.Item
                     className={`${classes.MobileMenuList} w-100 m-0 d-block`}
                   >
-                    <div className={classes.subLinks}>
+                    <div className={`${rubik} ${classes.subLinks}`}>
                       View
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
@@ -389,21 +390,21 @@ const TheHeader = () => {
                   <ListGroup.Item
                     className={`${classes.MobileMenuList} w-100 m-0`}
                   >
-                    <Link href="#" className={classes.subLinks}>
+                    <Link href="#" className={`${rubik} ${classes.subLinks}`}>
                       Award
                     </Link>
                   </ListGroup.Item>
                   <ListGroup.Item
                     className={`${classes.MobileMenuList} w-100 m-0`}
                   >
-                    <Link href="#" className={classes.subLinks}>
+                    <Link href="#" className={`${rubik} ${classes.subLinks}`}>
                       About
                     </Link>
                   </ListGroup.Item>
                   <ListGroup.Item
                     className={`${classes.MobileMenuList} w-100 m-0 d-block`}
                   >
-                    <div className={classes.subLinks}>
+                    <div className={`${rubik} ${classes.subLinks}`}>
                       Admin
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
@@ -436,7 +437,7 @@ const TheHeader = () => {
                   >
                     <Link
                       href="#"
-                      className={classes.subLinks}
+                      className={`${rubik} ${classes.subLinks}`}
                       onClick={(e) => ExitFunction(e, "Log Out")}
                     >
                       Log Out

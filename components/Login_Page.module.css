@@ -12,10 +12,8 @@
 .Softname {
   font-size: 34px;
   margin-top: 10px;
-  font-family: "Lucida Handwriting";
   color: rgb(70, 208, 226);
-  text-shadow: 0 5px 0 #0c3247, 0 2px 0 #3f3e3e, 0 3px 0 #a8a1a1;
-  font-weight: bold;
+  text-shadow: 0 2px 0 #0c3247, 0 2px 0 #3f3e3e, 0 3px 0 #a8a1a1;
 }
 
 .AllBgColor {

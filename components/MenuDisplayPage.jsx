@@ -4,6 +4,14 @@ import { useRouter } from "next/navigation";
 import { Container, Row, Col } from "react-bootstrap";
 import MenuTemplate from "./MenuTemplate";
 import homepicture from "./Images/homepicture.png";
+import score from "./Images/score.png";
+import teacherreg from "./Images/teacherreg.png";
+import teacher from "./Images/teacher.png";
+import registration from "./Images/registration.png";
+import broadsheet from "./Images/broadsheet.png";
+import subjects from "./Images/subjects.png";
+import result from "./Images/result.png";
+import logout from "./Images/logout.png";
 import Cookies from "universal-cookie";
 import classes from "./MenuDisplayPage.module.css";
 import { DisplayNotification } from "./Notification";
@@ -22,47 +30,47 @@ const MenuDisplayPage = () => {
   const [MenuItems, setMenuItems] = useState([
     {
       Title: "New Student Registration",
-      Icon: homepicture,
+      Icon: registration,
       link: "/studentregistration",
       IsReal: true,
     },
     {
       Title: "New Staff Registration",
-      Icon: homepicture,
+      Icon: teacherreg,
       link: "/teachersregistration",
       IsReal: true,
     },
     {
       Title: "Subjects Registration",
-      Icon: homepicture,
+      Icon: subjects,
       link: "/subjectsregistration",
       IsReal: true,
     },
     {
       Title: "Scores Computation",
-      Icon: homepicture,
+      Icon: score,
       link: "/computescores",
       IsReal: true,
     },
     {
       Title: "Class Teacher's Work",
-      Icon: homepicture,
+      Icon: teacher,
       link: "/computereports",
       IsReal: true,
     },
     {
       Title: "View Report Sheet",
-      Icon: homepicture,
+      Icon: result,
       link: "/displayresults",
       IsReal: true,
     },
     {
       Title: "View Broad Sheet",
-      Icon: homepicture,
+      Icon: broadsheet,
       link: "/displaybroadsheet",
       IsReal: true,
     },
-    { Title: "Log Out", Icon: homepicture, link: "#", IsReal: true },
+    { Title: "Log Out", Icon: logout, link: "#", IsReal: true },
   ]);
 
   useEffect(() => {

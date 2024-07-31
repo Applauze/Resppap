@@ -24,6 +24,8 @@ import MainImage from "./Images/MainImage.jpg";
 import MenuDisplayPage from "./MenuDisplayPage";
 import Processing_Modal from "./ModalsAndAlerts/Processing_Modal";
 import Image from "next/image";
+import { roboto_serif } from "@/app/util/fonts";
+
 const Login_Page = (props) => {
   const [TeacherID, setTeacherID] = useState("");
   const [Gateway, setGateway] = useState("");
@@ -120,7 +122,7 @@ const Login_Page = (props) => {
         <Col md={12} lg={12} sm={12}>
           <Row className="justify-content-around align-items-center border border-danger">
             <Col className="text-center">
-              <p className={classes.Softname}>
+              <p className={` ${classes.Softname} ${roboto_serif}`}>
                 Result Processing & Production Portal
               </p>
             </Col>

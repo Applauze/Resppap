@@ -98,7 +98,7 @@
 
 @keyframes PanelMovement {
   from {
-    margin-top: px;
+    margin-top: 50px;
     opacity: 0;
   }
 
