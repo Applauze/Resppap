@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PermissionContext from "@/Store/permission-context";
 import { AutoComplete } from "rsuite";
 import "rsuite/dist/rsuite.css";
 import axioscall from "./API_Call/axioscall";
@@ -14,7 +14,6 @@ import Processing_Modal from "./ModalsAndAlerts/Processing_Modal";
 import { Container, Row, Col, Form, Button, Badge } from "react-bootstrap";
 import Image from "next/image";
 import Cookies from "universal-cookie";
-import Login_Page from "./Login_Page";
 
 const Subjects_Registration = (props) => {
   const cookies = new Cookies();
@@ -46,7 +45,10 @@ const Subjects_Registration = (props) => {
   const [PickedSubjectsNumber, setPickedSubjectsNumber] = useState(0);
   const [PickedSubjects, setPickedSubjects] = useState([]);
   const TheColor = "brown";
-
+  const PCtx = useContext(PermissionContext);
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
   useEffect(() => {
     const activateTheButton = () => {
       if (session != "Select" && claz != "Select") {

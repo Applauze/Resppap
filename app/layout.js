@@ -3,14 +3,9 @@ import "./globals.css";
 import { Inter, Rubik } from "next/font/google";
 import Header from "@/components/TheHeader";
 import Footer from "@/components/TheFooter";
+import { PermissionContextProvider } from "@/Store/permission-context";
 
 const inter = Inter({ subsets: ["latin"] });
-const rubik = Rubik({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-rubik",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-});
 
 export const metadata = {
   title: {
@@ -24,9 +19,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+        <PermissionContextProvider>
+          <Header />
+          {children}
+          <Footer />
+        </PermissionContextProvider>
       </body>
     </html>
   );

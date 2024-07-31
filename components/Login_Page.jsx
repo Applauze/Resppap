@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PermissionContext from "@/Store/permission-context";
 import { useRouter } from "next/navigation";
 import axioscall from "./API_Call/axioscall";
 import { ReactNotifications } from "react-notifications-component";
@@ -37,6 +38,10 @@ const Login_Page = (props) => {
   const [Message, setMessage] = useState("");
   const cookies = new Cookies();
   const TheColor = "#400000";
+  const PCtx = useContext(PermissionContext);
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
   const buttonBackground = {
     backgroundColor: "#003152",
     boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.2) ",

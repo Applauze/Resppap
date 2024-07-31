@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PermissionContext from "@/Store/permission-context";
 import { useRouter } from "next/navigation";
 import { Container, Row, Col } from "react-bootstrap";
 import MenuTemplate from "./MenuTemplate";
@@ -27,6 +28,10 @@ const MenuDisplayPage = () => {
   const [Show_Modal, setShow_Modal] = useState(false);
   const [Modal_Title, setModal_Title] = useState("");
   const [Button_Title, setButton_Title] = useState("");
+  const PCtx = useContext(PermissionContext);
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
   const [MenuItems, setMenuItems] = useState([
     {
       Title: "New Student Registration",

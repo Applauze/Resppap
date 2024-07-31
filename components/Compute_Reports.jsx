@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Session from "./SessionTermClass/Session";
 import Class from "./SessionTermClass/Class";
 import Term from "./SessionTermClass/Term";
@@ -7,6 +7,7 @@ import ButtonBackground from "./Inputs/ButtonBackground";
 import Processing_Modal from "./ModalsAndAlerts/Processing_Modal";
 import classes from "./Compute_Reports.module.css";
 import Image from "next/image";
+import PermissionContext from "@/Store/permission-context";
 import {
   Container,
   Row,
@@ -22,8 +23,6 @@ import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import BorderedCardNoHover from "./Cards/BorderedCardNoHover";
 import Cookies from "universal-cookie";
-import Login_Page from "./Login_Page";
-import { Fraunces } from "next/font/google";
 
 const Compute_Reports = () => {
   const cookies = new Cookies();
@@ -54,10 +53,14 @@ const Compute_Reports = () => {
   const [DisplayMainCard, setDisplayMainCard] = useState(false);
   const [st_id, setst_id] = useState("");
   const [Fullname, setFullname] = useState("");
+  const PCtx = useContext(PermissionContext);
   const buttonBackground = {
     backgroundColor: "#003152",
     boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.2) ",
   };
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
 
   useEffect(() => {
     const activateTheButton = () => {

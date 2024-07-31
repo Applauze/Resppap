@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import PermissionContext from "@/Store/permission-context";
 import Session from "./SessionTermClass/Session";
 import Class from "./SessionTermClass/Class";
 import Term from "./SessionTermClass/Term";
@@ -59,6 +60,11 @@ const Display_Results = () => {
   const buttonCss = {
     width: "100%",
   };
+
+  const PCtx = useContext(PermissionContext);
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
 
   useEffect(() => {
     const activateTheButton = () => {

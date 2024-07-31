@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PermissionContext from "@/Store/permission-context";
 import axioscall from "./API_Call/axioscall";
 import Session from "./SessionTermClass/Session";
 import Class from "./SessionTermClass/Class";
@@ -14,7 +15,6 @@ import Processing_Modal from "./ModalsAndAlerts/Processing_Modal";
 import { AutoComplete, Divider } from "rsuite";
 import "rsuite/dist/rsuite.css";
 import Cookies from "universal-cookie";
-import Login_Page from "./Login_Page";
 
 const Class_Allocation = (props) => {
   const cookies = new Cookies();
@@ -31,6 +31,12 @@ const Class_Allocation = (props) => {
   const [activateButton, setactivateButton] = useState(false);
   const [showProcessing, setshowProcessing] = useState(false);
   const [Message, setMessage] = useState("");
+  const PCtx = useContext(PermissionContext);
+
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
+
   useEffect(() => {
     const AllTeachers = JSON.parse(props.TeachersNames);
     setLoadedTeachers(AllTeachers);

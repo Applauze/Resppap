@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { Button, Row, Col, Nav, ListGroup } from "react-bootstrap";
 import schoollogo from "./Images/schoollogo.png";
@@ -14,16 +14,17 @@ import BorderedCardNoHover from "./Cards/BorderedCardNoHover";
 import OK_Modal from "./ModalsAndAlerts/OK_Modal";
 import LogoutFunction from "./API_Call/exit";
 import { shadows_Into_Light, rubik, pt_Sans } from "@/app/util/fonts";
+import PermissionContext from "@/Store/permission-context";
 
 const TheHeader = () => {
-  const [MenuClicked, setMenuClicked] = useState(false);
   const [Modal_Message, setModal_Message] = useState("");
   const [Show_Modal, setShow_Modal] = useState(false);
   const [Modal_Title, setModal_Title] = useState("");
   const [Button_Title, setButton_Title] = useState("");
+  const PCtx = useContext(PermissionContext);
 
   const changeMenuClick = () => {
-    setMenuClicked(!MenuClicked);
+    PCtx.setMenuClicked(!PCtx.MenuClicked);
   };
 
   const AfterEvent = () => {
@@ -258,7 +259,7 @@ const TheHeader = () => {
               variant="secondary-outline"
               onClick={changeMenuClick}
             >
-              {MenuClicked ? (
+              {PCtx.MenuClicked ? (
                 <FontAwesomeIcon icon={faTimes} style={{ color: "black" }} />
               ) : (
                 <FontAwesomeIcon icon={faBars} style={{ color: "black" }} />
@@ -271,7 +272,7 @@ const TheHeader = () => {
             sm={12}
             xs={12}
             className={
-              MenuClicked
+              PCtx.MenuClicked
                 ? classes.MobileMenuPanelOn
                 : classes.MobileMenuPanelOff
             }
@@ -371,7 +372,7 @@ const TheHeader = () => {
                       View
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
-                          href="/displayreports"
+                          href="/displayresults"
                           className={classes.submobilelinks}
                         >
                           View Report Sheet

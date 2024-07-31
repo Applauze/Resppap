@@ -137,6 +137,7 @@
     font-family: Calibri;
     padding: 0px !important;
     color: #480101;
+    text-decoration: none !important;
   }
 
   .submobileP {
@@ -154,6 +155,7 @@
     padding: 0px !important;
     display: block;
     color: #7a0505;
+    text-decoration: none !important;
   }
 
   .MobileMenuPanelOn {

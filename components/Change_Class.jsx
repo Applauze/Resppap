@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PermissionContext from "@/Store/permission-context";
 import { AutoComplete } from "rsuite";
 import "rsuite/dist/rsuite.css";
 import axioscall from "./API_Call/axioscall";
@@ -14,7 +14,6 @@ import Class from "./SessionTermClass/Class";
 import Processing_Modal from "./ModalsAndAlerts/Processing_Modal";
 import { Container, Row, Col, Form, Button, Badge } from "react-bootstrap";
 import Cookies from "universal-cookie";
-import Login_Page from "./Login_Page";
 
 const Change_Class = (props) => {
   const [Message, setMessage] = useState("");
@@ -32,7 +31,11 @@ const Change_Class = (props) => {
   const [displayChangeOptions, setdisplayChangeOptions] = useState(false);
   const cookies = new Cookies();
   const TheColor = "brown";
+  const PCtx = useContext(PermissionContext);
 
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
   useEffect(() => {
     const activateTheButton = () => {
       if (session != "Select") {

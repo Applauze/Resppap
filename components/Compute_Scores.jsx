@@ -1,16 +1,20 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PermissionContext from "@/Store/permission-context";
 import { Container, Row, Col, Tabs, Tab } from "react-bootstrap";
 import { ReactNotifications } from "react-notifications-component";
 import Import_Scores_File from "./Import_Scores_File";
 import Enter_Scores from "./Enter_Scores";
 import Cookies from "universal-cookie";
-import Login_Page from "./Login_Page";
 import { DisplayNotification } from "./Notification";
 import BorderedCard from "./Cards/BorderedCard";
+
 const Compute_Scores = (props) => {
   const cookies = new Cookies();
-
+  const PCtx = useContext(PermissionContext);
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
   const displayN = (msg) => {
     DisplayNotification("Error", msg, "danger", "top-center", 7000);
   };

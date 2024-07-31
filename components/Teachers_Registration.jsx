@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PermissionContext from "@/Store/permission-context";
 import axioscall from "./API_Call/axioscall";
 import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
@@ -12,7 +13,6 @@ import classes from "./Teachers_Registration.module.css";
 import FormInputSelect from "./Inputs/FormInputSelect";
 import { DisplayNotification } from "./Notification";
 import Cookies from "universal-cookie";
-import Login_Page from "./Login_Page";
 
 const Teachers_Registration = (props) => {
   const cookies = new Cookies();
@@ -31,7 +31,10 @@ const Teachers_Registration = (props) => {
   const [Show_Modal, setShow_Modal] = useState(false);
   const [Saving, setSaving] = useState(false);
   var CryptoJS = require("crypto-js");
-
+  const PCtx = useContext(PermissionContext);
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
   const TheColor = "brown";
 
   useEffect(() => {
@@ -147,19 +150,26 @@ const Teachers_Registration = (props) => {
                     be left blank if the teacher has none.
                   </li>
                   <li>
-                    Note that password are case sensitive and must be atleast six characters long. i.e PASSWORD is not te same as Password nor password.
+                    Note that password are case sensitive and must be atleast
+                    six characters long. i.e PASSWORD is not te same as Password
+                    nor password.
                   </li>
                   <li>
-                   Ensure that the information enetered in Password Field and Retype Password field are the same.
+                    Ensure that the information enetered in Password Field and
+                    Retype Password field are the same.
                   </li>
                   <li>
-                    Your TeacherID and Password are very essential. Please keep it safe and confidential as you will need it for subsequent login.
+                    Your TeacherID and Password are very essential. Please keep
+                    it safe and confidential as you will need it for subsequent
+                    login.
                   </li>
                   <li>
-                    The Admin is to choose the Category of teachers you belong to.
+                    The Admin is to choose the Category of teachers you belong
+                    to.
                   </li>
                   <li>
-                    Direct any question or information that is not clear to the Admin before saving this form.
+                    Direct any question or information that is not clear to the
+                    Admin before saving this form.
                   </li>
                 </ul>
               </Col>

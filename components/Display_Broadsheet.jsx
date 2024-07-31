@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PermissionContext from "@/Store/permission-context";
 import Session from "./SessionTermClass/Session";
 import Class from "./SessionTermClass/Class";
 import Term from "./SessionTermClass/Term";
@@ -39,9 +40,16 @@ const Display_Broadsheet = (props) => {
     backgroundColor: "#003152",
     boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.2) ",
   };
+
+  const PCtx = useContext(PermissionContext);
+
   const buttonCss = {
     width: "100%",
   };
+
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
 
   useEffect(() => {
     const activateTheButton = () => {

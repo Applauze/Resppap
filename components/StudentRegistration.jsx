@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PermissionContext from "@/Store/permission-context";
 import axioscall from "./API_Call/axioscall";
 import axios from "axios";
 import { ReactNotifications } from "react-notifications-component";
@@ -35,6 +36,10 @@ const StudentRegistration = () => {
   const [Saving, setSaving] = useState(false);
 
   const TheColor = "brown";
+  const PCtx = useContext(PermissionContext);
+  useEffect(() => {
+    PCtx.setMenuClicked(false);
+  }, []);
 
   const AfterEvent = () => {
     setShow_Modal(false);
