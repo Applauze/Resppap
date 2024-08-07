@@ -67,9 +67,9 @@
   border: 1px solid white !important;
 }
 
-/* .rowHead {
+.rowHead {
   line-height: 12px !important;
-} */
+}
 
 .scores_td,
 .scores_td2 {
@@ -266,143 +266,6 @@
   text-align: center;
 }
 
-/* To be applied only to Pdf Exorted Documents */
-
-.Emmanuel_pdf {
-  font-size: 17px;
-  font-family: "Bauhaus 93";
-  color: brown;
-  text-align: center;
-  margin-bottom: -5px !important;
-}
-
-.Model_pdf {
-  font-size: 26px;
-  font-family: "Bauhaus 93";
-  color: brown;
-  text-align: center;
-  padding: 0px !important;
-  margin: -10px !important;
-}
-
-.logoimage_pdf {
-  width: 60px !important;
-  height: 60px !important;
-}
-
-.myvalue_pdf {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 12px;
-}
-
-.PrintCol_pdf {
-  height: 842px !important;
-  width: 700px !important;
-}
-
-/* .TheAttributes_pdf,
-.AttributeRow_pdf {
-  line-height: 10px;
-  font-size: 10px;
-} */
-.MainCardContainer_pdf {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.MainCardContainer * {
-  color: black;
-}
-
-.Pmb_pdf,
-.Tel_pdf {
-  font-family: "Times New Roman";
-  color: brown;
-  text-align: center;
-  padding: -10px;
-  margin: -8px;
-  font-size: 14px;
-}
-
-.mylabel_pdf {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 11px;
-  font-weight: bold;
-}
-
-.BoldTableHeading_pdf {
-  line-height: 8px !important;
-  font-weight: bold !important;
-  color: black !important;
-  font-size: 13px;
-  background-image: linear-gradient(to bottom, #ffffff 5%, #66ebe8 100%);
-  border: 1px solid white !important;
-}
-
-.RotatedHeading2_pdf {
-  font-weight: bold;
-  width: 6% !important;
-  white-space: wrap;
-  font-size: 10px !important;
-  background-image: linear-gradient(to bottom, #ffffff 5%, #66ebe8 100%);
-}
-
-.TheSubjects_pdf {
-  font-size: 12px;
-  font-weight: bold;
-  color: #760676 !important;
-  line-height: 3px !important;
-  font-style: italic !important;
-}
-
-.scores_td_pdf,
-.scores_td2_pdf {
-  font-size: 12px !important;
-  line-height: 3px !important;
-  font-family: "Times New Roman";
-  text-align: center !important;
-}
-
-.TheAttributesHeader_pdf {
-  background-image: linear-gradient(to bottom, #ffffff 5%, #66ebe8 100%);
-  font-size: 11px !important;
-  line-height: 11px !important;
-  font-family: "Times New Roman";
-  font-weight: bold;
-}
-
-.TheAttributes_pdf,
-.AttributeRow_pdf {
-  font-size: 11px !important;
-  line-height: 10px !important;
-  font-family: "Times New Roman";
-}
-
-.InfoTableRight_pdf,
-.InfoTableLeft_pdf {
-  padding-top: 2px !important;
-  padding-bottom: 2px !important;
-  font-family: "Times New Roman", Times, serif;
-  line-height: 10px;
-  vertical-align: middle;
-  font-size: 11px;
-  text-align: center !important;
-}
-
-.rowHead_pdf {
-  font-size: 10px;
-}
-
-.Comment_pdf {
-  line-height: 10px;
-}
-
-.CommenterStatus_pdf {
-  font-size: 9px;
-}
-
-/* To be applied only to Print Out */
-
 @media print {
   .Margin4Print {
     margin: 0px !important;
@@ -411,6 +274,10 @@
 
   .Hide4Print {
     display: none !important;
+  }
+
+  .myvalue {
+    font-size: 13px !important;
   }
 
   .PrintCol {

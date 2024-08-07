@@ -9,6 +9,7 @@ import Processing_Modal from "./ModalsAndAlerts/Processing_Modal";
 import classes from "./Display_Results.module.css";
 import QRCode from "qrcode.react";
 import generatePDF from "react-to-pdf";
+import { PDFExport } from "@progress/kendo-react-pdf";
 import Image from "next/image";
 import "./bootstrap.css";
 
@@ -39,6 +40,7 @@ const Display_Results = () => {
   const [activateSelector, setactivateSelector] = useState(true);
   const [activateButton, setactivateButton] = useState(false);
   const [displayStudents, setdisplayStudents] = useState(false);
+  const [isPdf, setisPdf] = useState(true);
   const [nexttermbegins, setnexttermbegins] = useState(0);
   const [schoolopens, setschoolopens] = useState(0);
   const [AllStudents, setAllStudents] = useState([]);
@@ -57,6 +59,7 @@ const Display_Results = () => {
   const [Fullname, setFullname] = useState("");
   const [DisplayMode, setDisplayMode] = useState("Print");
   const targetRef = useRef();
+  const pdfRef = useRef();
   const buttonCss = {
     width: "100%",
   };
@@ -163,6 +166,11 @@ const Display_Results = () => {
     setDisplayMode("PDF");
   };
 
+  const exportPDF = () => {
+    // setisPdf(true);
+    pdfRef.current.save();
+  };
+
   const GetTheStudents = async (e) => {
     e.preventDefault();
     setMessage(`The system is retrieving the students in ${claz}`);
@@ -225,11 +233,26 @@ const Display_Results = () => {
 
   const StudentDescription = (LABEL, value, colsp) => {
     return (
-      <Col md={colsp} lg={colsp} xs={11} sm={11} className={classes.Coler}>
+      <Col
+        md={colsp}
+        lg={colsp}
+        xs={colsp}
+        sm={colsp}
+        className={classes.Coler}
+      >
         <p className="small py-0 my-0">
-          <span className={classes.mylabel}>{LABEL}</span>:{" "}
+          <span className={isPdf ? classes.mylabel_pdf : classes.mylabel}>
+            {LABEL}
+          </span>
+          :{" "}
           <span
-            className={LABEL === "NAME" ? classes.myvalueName : classes.myvalue}
+            className={
+              LABEL === "NAME"
+                ? classes.myvalueName
+                : isPdf
+                ? classes.myvalue_pdf
+                : classes.myvalue
+            }
           >
             {value}
           </span>
@@ -242,8 +265,10 @@ const Display_Results = () => {
     return (
       <td
         className={
-          DisplayMode === "Print"
+          DisplayMode === "Printer"
             ? `${classes.RotatedHeading} ${classes.BoldTableHeading}`
+            : isPdf
+            ? `${classes.RotatedHeading2_pdf}`
             : `${classes.RotatedHeading2} ${classes.BoldTableHeading}`
         }
       >
@@ -255,7 +280,13 @@ const Display_Results = () => {
   const StudentAttributes = (n, ATT, RIndx) => {
     return (
       <tr key={RIndx} className={classes.AttributeRow}>
-        <td className={`py-1 ${classes.TheAttributes}`}>
+        <td
+          className={
+            isPdf
+              ? `py-1 ${classes.TheAttributes_pdf}`
+              : `py-1 ${classes.TheAttributes}`
+          }
+        >
           {ATT[`${term}_term_attribute`]}
         </td>
         <td className={`py-0 text-center text-bg ${classes.TheAttributes}`}>
@@ -268,8 +299,18 @@ const Display_Results = () => {
   const InfoTable = (left, right) => {
     return (
       <tr>
-        <td className={classes.InfoTableLeft}>{left}</td>
-        <td className={classes.InfoTableRight}>{right}</td>
+        <td
+          className={isPdf ? classes.InfoTableLeft_pdf : classes.InfoTableLeft}
+        >
+          {left}
+        </td>
+        <td
+          className={
+            isPdf ? classes.InfoTableRight_pdf : classes.InfoTableRight
+          }
+        >
+          {right}
+        </td>
       </tr>
     );
   };
@@ -377,376 +418,156 @@ const Display_Results = () => {
               lg={9}
               sm={11}
               xs={11}
-              className={`"w-100" ${classes.Margin4Print} ${classes.PrintCol}`}
+              className={
+                isPdf
+                  ? `"w-100" ${classes.Margin4Print} ${classes.PrintCol_pdf}`
+                  : `"w-100" ${classes.Margin4Print} ${classes.PrintCol}`
+              }
             >
-              <Row
-                ref={targetRef}
-                className={`"justify-content-around m-0 p-0 h-100" ${classes.MainCardContainer}`}
+              <PDFExport
+                paperSize={"A4"}
+                fileName="Doccc.pdf"
+                title=""
+                subject=""
+                keywords=""
+                ref={pdfRef}
               >
-                <Col
-                  md={12}
-                  lg={12}
-                  xs={12}
-                  sm={11}
-                  className={classes.CardHeader}
+                <Row
+                  ref={targetRef}
+                  className={
+                    isPdf
+                      ? `"justify-content-around m-0 p-0 h-100" ${classes.MainCardContainer_pdf}`
+                      : `"justify-content-around m-0 p-0 h-100" ${classes.MainCardContainer}`
+                  }
                 >
-                  <Row className="w-100">
-                    <Col
-                      md={3}
-                      lg={3}
-                      xs={3}
-                      sm={3}
-                      className="d-flex align-items-center justify-content-around"
-                    >
-                      <Image
-                        src={SchoolLogo}
-                        width={100}
-                        height={100}
-                        alt="School Logo"
-                      />
-                    </Col>
-                    <Col md={7} lg={7} xs={7} sm={7}>
-                      <p className={classes.Emmanuel}>
-                        EMMANUEL ALAYANDE UNIVERSITY OF EDUCATION
-                      </p>
-                      <p className={classes.Model}>MODEL HIGH SCHOOL, OYO</p>
-                      <p className={classes.Pmb}>P.M.B. 1010, ISOKUN, OYO</p>
-                      <p className={classes.Tel}>
-                        Tel: 08033824233 Email: upmosttony@gmail.com
-                      </p>
-                      <p className={classes.Report}>REPORT CARD</p>
-                    </Col>
-                  </Row>
-                </Col>
-                <Col
-                  md={12}
-                  lg={12}
-                  xs={12}
-                  sm={11}
-                  className={classes.RepCardCol}
-                >
-                  <Row className="justify-content-around">
-                    <Col md={10} lg={10} xs={11} sm={11}>
-                      <Row>
-                        {StudentDescription(
-                          "NAME",
-                          RetrievedStudentDetails.Fullname,
-                          12
-                        )}
-                        {StudentDescription("ADMISSION NO.", "123456789", 4)}
-                        {StudentDescription(
-                          "DATE OF BIRTH",
-                          RetrievedStudentDetails.dob,
-                          4
-                        )}
-                        {StudentDescription(
-                          "SEX",
-                          RetrievedStudentDetails.sex,
-                          4
-                        )}
-
-                        {StudentDescription(
-                          "SESSION",
-                          RetrievedStudentDetails.Session,
-                          4
-                        )}
-                        {StudentDescription(
-                          "TERM",
-                          RetrievedStudentDetails.Term,
-                          4
-                        )}
-                        {StudentDescription(
-                          "CLASS",
-                          RetrievedStudentDetails.Claz,
-                          4
-                        )}
-
-                        {StudentDescription(
-                          "NO IN CLASS",
-                          RetrievedStudentDetails.nic,
-                          4
-                        )}
-                        {StudentDescription("TOTAL ATTENDANCE", schoolopens, 4)}
-                        {StudentDescription(
-                          "NO OF TIMES PRESENT",
-                          p_attendance,
-                          4
-                        )}
-                        {StudentDescription(
-                          "NEXT TERM BEGINS ON",
-                          nexttermbegins,
-                          12
-                        )}
-                      </Row>
-                    </Col>
-                    <Col md={2} lg={2} xs={6} sm={6}>
-                      <Image
-                        src={RetrievedStudentDetails.PixUrl}
-                        width={100}
-                        height={120}
-                        alt="StudentID"
-                      />
-                    </Col>
-                  </Row>
-                  <Row className="justify-content-around">
-                    <Col
-                      md={12}
-                      lg={12}
-                      xs={12}
-                      sm={12}
-                      className={classes.theTableCol}
-                    >
-                      <Table
-                        responsive
-                        hover
-                        bordered
-                        striped
-                        className={classes.Tables}
+                  <Col
+                    md={12}
+                    lg={12}
+                    xs={12}
+                    sm={11}
+                    className={classes.CardHeader}
+                  >
+                    <Row className="w-100 d-flex justify-content-center align-items-center ">
+                      <Col
+                        md={2}
+                        lg={2}
+                        xs={2}
+                        sm={2}
+                        className="d-flex align-items-center justify-content-around h-100"
                       >
-                        <thead>
-                          <tr className={classes.rowHead}>
-                            <td
-                              className={
-                                DisplayMode === "Print"
-                                  ? `${classes.BoldTableHeading}`
-                                  : `${classes.TheSubjects} ${classes.BoldTableHeading}`
-                              }
-                            >
-                              SUBJECTS & SCORES
-                            </td>
-                            {RotatedHeading(term, "1ST SUMMARY", "1ST CA")}
-                            {RotatedHeading(term, "2ND SUMMARY", "2ND CA")}
-                            {RotatedHeading(term, "3RD SUMMARY", "EXAM")}
-                            {RotatedHeading(term, "AVERAGE", "TOTAL")}
-                            {RotatedHeading(term, "MAX.", "MAX.")}
-                            {RotatedHeading(term, "MIN.", "MIN.")}
-                            {RotatedHeading(term, "AVE.", "AVE.")}
-                            {claz.includes("JS") &&
-                              RotatedHeading(term, "POS", "POS")}
-                            {RotatedHeading(term, "GRDS", "GRDS")}
-                            {RotatedHeading(term, "RMKS", "RMKS")}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr className={classes.rowHead}>
-                            <td
-                              className={`pl-3 ${classes.TheSubjects} ${classes.scores_td2}`}
-                            >
-                              Marks Obtainable
-                            </td>
-                            <td className={classes.scores_td}>
-                              {term === "Third" ? "100" : "10"}
-                            </td>
-                            <td className={classes.scores_td}>
-                              {term === "Third" ? "100" : "20"}
-                            </td>
-                            <td className={classes.scores_td}>
-                              {term === "Third" ? "100" : "70"}
-                            </td>
-                            <td className={classes.scores_td}>100</td>
-                            <td className={classes.scores_td}>-</td>
-                            <td className={classes.scores_td}>-</td>
-                            <td className={classes.scores_td}>-</td>
-                            {claz.includes("JS") && (
-                              <td className={classes.scores_td}>-</td>
-                            )}
-                            <td className={classes.scores_td}>-</td>
-                            <td className={classes.scores_td}>-</td>
-                          </tr>
-                          {RetrievedSubjects.map((det, index) => (
-                            <tr key={index} className={classes.rowHead}>
-                              <td
-                                className={`pl-3 ${classes.TheSubjects} ${classes.scores_td2}`}
-                              >
-                                {det.subject_name}
-                              </td>
-                              <td className={classes.scores_td}>
-                                {det[`${term}_term_ca_score1`]}
-                              </td>
-                              <td className={classes.scores_td}>
-                                {det[`${term}_term_ca_score2`]}
-                              </td>
-                              <td className={classes.scores_td}>
-                                {det[`${term}_term_exam_score`]}
-                              </td>
-                              <td
-                                className={classes.scores_td}
-                                style={
-                                  parseInt(det[`${term}_term_total_score`]) < 40
-                                    ? { color: "red", fontWeight: "bold" }
-                                    : { color: "blue", fontWeight: "bold" }
-                                }
-                              >
-                                {det[`${term}_term_total_score`] == 0
-                                  ? "AB"
-                                  : det[`${term}_term_total_score`]}
-                              </td>
-                              <td className={classes.scores_td}>
-                                {det[`${term}_term_highest_score`]}
-                              </td>
-                              <td className={classes.scores_td}>
-                                {det[`${term}_term_lowest_score`]}
-                              </td>
-                              <td className={classes.scores_td}>
-                                {det[`${term}_term_average_score`]}
-                              </td>
-                              {claz.includes("JS") && (
-                                <td className={classes.scores_td}>
-                                  {det[`${term}_term_position`]}
-                                </td>
-                              )}
-                              <td className={classes.scores_td}>
-                                {det[`${term}_term_grade`]}
-                              </td>
-                              <td className={classes.scores_td}>
-                                {det[`${term}_term_remark`]}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </Table>
-                    </Col>
-                  </Row>
-                  <fieldset>
-                    <legend
-                      className="p-0 m-0"
-                      style={{ fontSize: "11px", fontWeight: "bold" }}
-                    >
-                      Affective & Psychomotor
-                    </legend>
-                    <Row>
-                      <Col md={3} lg={3} sm={12} xs={12}>
-                        <Table
-                          responsive
-                          hover
-                          bordered
-                          className={classes.Tables}
-                        >
-                          <thead>
-                            <tr className={classes.rowHead}>
-                              <td
-                                className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
-                              >
-                                ATTRIBUTES
-                              </td>
-                              <td
-                                className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
-                              >
-                                R
-                              </td>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {RetrievedAttributes1.map((RAtt, index) =>
-                              StudentAttributes(1, RAtt, index)
-                            )}
-                          </tbody>
-                        </Table>
+                        <Image
+                          className={classes.logoimage_pdf}
+                          src={SchoolLogo}
+                          width={100}
+                          height={100}
+                          alt="School Logo"
+                        />
                       </Col>
-                      <Col md={3} lg={3} sm={12} xs={12}>
-                        <Table
-                          responsive
-                          hover
-                          bordered
-                          className={classes.Tables}
+                      <Col md={8} lg={8} xs={8} sm={8}>
+                        <p
+                          className={
+                            isPdf ? classes.Emmanuel_pdf : classes.Emmanuel
+                          }
                         >
-                          <thead>
-                            <tr className={classes.rowHead}>
-                              <td
-                                className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
-                              >
-                                ATTRIBUTES
-                              </td>
-
-                              <td
-                                className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
-                              >
-                                R
-                              </td>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {RetrievedAttributes2.map((RAtt, index) =>
-                              StudentAttributes(2, RAtt, index)
-                            )}
-                          </tbody>
-                        </Table>
+                          EMMANUEL ALAYANDE UNIVERSITY OF EDUCATION
+                        </p>
+                        <p
+                          className={isPdf ? classes.Model_pdf : classes.Model}
+                        >
+                          MODEL HIGH SCHOOL, OYO
+                        </p>
+                        <p className={isPdf ? classes.Pmb_pdf : classes.Pmb}>
+                          P.M.B. 1010, ISOKUN, OYO
+                        </p>
+                        <p className={isPdf ? classes.Tel_pdf : classes.Tel}>
+                          Tel: 08033824233 Email: upmosttony@gmail.com
+                        </p>
+                        <p className={classes.Report}>REPORT CARD</p>
                       </Col>
-                      <Col md={3} lg={3} sm={12} xs={12}>
+                    </Row>
+                  </Col>
+                  <Col
+                    md={12}
+                    lg={12}
+                    xs={12}
+                    sm={11}
+                    className={classes.RepCardCol}
+                  >
+                    <Row className="justify-content-around">
+                      <Col md={10} lg={10} xs={11} sm={11}>
                         <Row>
-                          <Col md={12} lg={12} sm={12} xs={12}>
-                            <Table
-                              responsive
-                              hover
-                              bordered
-                              className={classes.Tables}
-                            >
-                              <thead>
-                                <tr className={classes.rowHead}>
-                                  <td
-                                    className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
-                                  >
-                                    ATTRIBUTES
-                                  </td>
+                          {StudentDescription(
+                            "NAME",
+                            RetrievedStudentDetails.Fullname,
+                            12
+                          )}
+                          {StudentDescription("ADMISSION NO.", "123456789", 4)}
+                          {StudentDescription(
+                            "DATE OF BIRTH",
+                            RetrievedStudentDetails.dob,
+                            4
+                          )}
+                          {StudentDescription(
+                            "SEX",
+                            RetrievedStudentDetails.sex,
+                            4
+                          )}
 
-                                  <td
-                                    className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
-                                  >
-                                    R
-                                  </td>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {RetrievedAttributes3.map((RAtt, index) =>
-                                  StudentAttributes(2, RAtt, index)
-                                )}
-                              </tbody>
-                            </Table>
-                          </Col>
-                          <Col md={12} lg={12} sm={12} xs={12}>
-                            <Table
-                              responsive
-                              hover
-                              bordered
-                              striped
-                              className={classes.Tables}
-                            >
-                              <thead>
-                                <tr>
-                                  <td
-                                    colSpan="2"
-                                    className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
-                                  >
-                                    GRADES DISTRIBUTION
-                                  </td>
-                                </tr>
-                              </thead>
-                              {claz.includes("JS") ? (
-                                <tbody>
-                                  {InfoTable("70-100", "A")}
-                                  {InfoTable("60-69", "B")}
-                                  {InfoTable("50-59", "C")}
-                                  {InfoTable("40-49", "D")}
-                                  {InfoTable("0-39", "F")}
-                                </tbody>
-                              ) : (
-                                <tbody>
-                                  {InfoTable("75-100", "A1")}
-                                  {InfoTable("70-74", "B2")}
-                                  {InfoTable("65-69", "B3")}
-                                  {InfoTable("60-64", "C4")}
-                                  {InfoTable("55-59", "C5")}
-                                  {InfoTable("50-54", "C6")}
-                                  {InfoTable("45-49", "D7")}
-                                  {InfoTable("40-44", "E8")}
-                                  {InfoTable("0-39", "F9")}
-                                </tbody>
-                              )}
-                            </Table>
-                          </Col>
+                          {StudentDescription(
+                            "SESSION",
+                            RetrievedStudentDetails.Session,
+                            4
+                          )}
+                          {StudentDescription(
+                            "TERM",
+                            RetrievedStudentDetails.Term,
+                            4
+                          )}
+                          {StudentDescription(
+                            "CLASS",
+                            RetrievedStudentDetails.Claz,
+                            4
+                          )}
+
+                          {StudentDescription(
+                            "NO IN CLASS",
+                            RetrievedStudentDetails.nic,
+                            4
+                          )}
+                          {StudentDescription(
+                            "TOTAL ATTENDANCE",
+                            schoolopens,
+                            4
+                          )}
+                          {StudentDescription(
+                            "NO OF TIMES PRESENT",
+                            p_attendance,
+                            4
+                          )}
+                          {StudentDescription(
+                            "NEXT TERM BEGINS ON",
+                            nexttermbegins,
+                            12
+                          )}
                         </Row>
                       </Col>
-                      <Col md={3} lg={3} sm={12} xs={12}>
+                      <Col md={2} lg={2} xs={6} sm={6}>
+                        <Image
+                          src={RetrievedStudentDetails.PixUrl}
+                          width={100}
+                          height={120}
+                          alt="StudentID"
+                        />
+                      </Col>
+                    </Row>
+                    <Row className="justify-content-around">
+                      <Col
+                        md={12}
+                        lg={12}
+                        xs={12}
+                        sm={12}
+                        className={classes.theTableCol}
+                      >
                         <Table
                           responsive
                           hover
@@ -755,122 +576,583 @@ const Display_Results = () => {
                           className={classes.Tables}
                         >
                           <thead>
-                            <tr>
-                              <th
-                                className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
+                            <tr className={classes.rowHead}>
+                              <td
+                                className={
+                                  DisplayMode === "Printer"
+                                    ? `${classes.BoldTableHeading}`
+                                    : isPdf
+                                    ? `${classes.BoldTableHeading_pdf}`
+                                    : `${classes.TheSubjects} ${classes.BoldTableHeading}`
+                                }
                               >
-                                KEYS
-                              </th>
-                              <th
-                                className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
-                              >
-                                ATTRIBUTES RATINGS
-                              </th>
+                                SUBJECTS & SCORES
+                              </td>
+                              {RotatedHeading(term, "1ST SUMMARY", "1ST CA")}
+                              {RotatedHeading(term, "2ND SUMMARY", "2ND CA")}
+                              {RotatedHeading(term, "3RD SUMMARY", "EXAM")}
+                              {RotatedHeading(term, "AVERAGE", "TOTAL")}
+                              {RotatedHeading(term, "MAX.", "MAX.")}
+                              {RotatedHeading(term, "MIN.", "MIN.")}
+                              {RotatedHeading(term, "AVE.", "AVE.")}
+                              {claz.includes("JS") &&
+                                RotatedHeading(term, "POS", "POS")}
+                              {RotatedHeading(term, "GRDS", "GRDS")}
+                              {RotatedHeading(term, "RMKS", "RMKS")}
                             </tr>
                           </thead>
                           <tbody>
-                            {InfoTable(
-                              5,
-                              "Maintains an excellent degree of observa traits"
-                            )}
-                            {InfoTable(
-                              4,
-                              "Maintains high level of observable traits of observable traits"
-                            )}
-                            {InfoTable(
-                              3,
-                              "Acceptable level of observable traits"
-                            )}
-                            {InfoTable(
-                              2,
-                              "Shows minimal regards for observable traits"
-                            )}
-                            {InfoTable(
-                              1,
-                              "Has no regards for the observable traits"
-                            )}
+                            <tr
+                              className={
+                                isPdf ? classes.rowHead_pdf : classes.rowHead
+                              }
+                            >
+                              <td
+                                className={
+                                  isPdf
+                                    ? `pl-3 ${classes.TheSubjects_pdf} `
+                                    : `pl-3 ${classes.TheSubjects} ${classes.scores_td2}`
+                                }
+                              >
+                                Marks Obtainable
+                              </td>
+                              <td
+                                className={
+                                  isPdf
+                                    ? classes.scores_td_pdf
+                                    : classes.scores_td
+                                }
+                              >
+                                {term === "Third" ? "100" : "10"}
+                              </td>
+                              <td
+                                className={
+                                  isPdf
+                                    ? classes.scores_td_pdf
+                                    : classes.scores_td
+                                }
+                              >
+                                {term === "Third" ? "100" : "20"}
+                              </td>
+                              <td
+                                className={
+                                  isPdf
+                                    ? classes.scores_td_pdf
+                                    : classes.scores_td
+                                }
+                              >
+                                {term === "Third" ? "100" : "70"}
+                              </td>
+                              <td
+                                className={
+                                  isPdf
+                                    ? classes.scores_td_pdf
+                                    : classes.scores_td
+                                }
+                              >
+                                100
+                              </td>
+                              <td
+                                className={
+                                  isPdf
+                                    ? classes.scores_td_pdf
+                                    : classes.scores_td
+                                }
+                              >
+                                -
+                              </td>
+                              <td
+                                className={
+                                  isPdf
+                                    ? classes.scores_td_pdf
+                                    : classes.scores_td
+                                }
+                              >
+                                -
+                              </td>
+                              <td
+                                className={
+                                  isPdf
+                                    ? classes.scores_td_pdf
+                                    : classes.scores_td
+                                }
+                              >
+                                -
+                              </td>
+                              {claz.includes("JS") && (
+                                <td
+                                  className={
+                                    isPdf
+                                      ? classes.scores_td_pdf
+                                      : classes.scores_td
+                                  }
+                                >
+                                  -
+                                </td>
+                              )}
+                              <td
+                                className={
+                                  isPdf
+                                    ? classes.scores_td_pdf
+                                    : classes.scores_td
+                                }
+                              >
+                                -
+                              </td>
+                              <td
+                                className={
+                                  isPdf
+                                    ? classes.scores_td_pdf
+                                    : classes.scores_td
+                                }
+                              >
+                                -
+                              </td>
+                            </tr>
+                            {RetrievedSubjects.map((det, index) => (
+                              <tr
+                                key={index}
+                                className={
+                                  isPdf ? classes.rowHead_pdf : classes.rowHead
+                                }
+                              >
+                                <td
+                                  className={
+                                    isPdf
+                                      ? `pl-3 ${classes.TheSubjects_pdf}`
+                                      : `pl-3 ${classes.TheSubjects} ${classes.scores_td2}`
+                                  }
+                                >
+                                  {det.subject_name}
+                                </td>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? classes.scores_td_pdf
+                                      : classes.scores_td
+                                  }
+                                >
+                                  {det[`${term}_term_ca_score1`]}
+                                </td>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? classes.scores_td_pdf
+                                      : classes.scores_td
+                                  }
+                                >
+                                  {det[`${term}_term_ca_score2`]}
+                                </td>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? classes.scores_td_pdf
+                                      : classes.scores_td
+                                  }
+                                >
+                                  {det[`${term}_term_exam_score`]}
+                                </td>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? classes.scores_td_pdf
+                                      : classes.scores_td
+                                  }
+                                  style={
+                                    parseInt(det[`${term}_term_total_score`]) <
+                                    40
+                                      ? { color: "red", fontWeight: "bold" }
+                                      : { color: "blue", fontWeight: "bold" }
+                                  }
+                                >
+                                  {det[`${term}_term_total_score`] == 0
+                                    ? "AB"
+                                    : det[`${term}_term_total_score`]}
+                                </td>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? classes.scores_td_pdf
+                                      : classes.scores_td
+                                  }
+                                >
+                                  {det[`${term}_term_highest_score`]}
+                                </td>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? classes.scores_td_pdf
+                                      : classes.scores_td
+                                  }
+                                >
+                                  {det[`${term}_term_lowest_score`]}
+                                </td>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? classes.scores_td_pdf
+                                      : classes.scores_td
+                                  }
+                                >
+                                  {det[`${term}_term_average_score`]}
+                                </td>
+                                {claz.includes("JS") && (
+                                  <td
+                                    className={
+                                      isPdf
+                                        ? classes.scores_td_pdf
+                                        : classes.scores_td
+                                    }
+                                  >
+                                    {det[`${term}_term_position`]}
+                                  </td>
+                                )}
+                                <td
+                                  className={
+                                    isPdf
+                                      ? classes.scores_td_pdf
+                                      : classes.scores_td
+                                  }
+                                >
+                                  {det[`${term}_term_grade`]}
+                                </td>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? classes.scores_td_pdf
+                                      : classes.scores_td
+                                  }
+                                >
+                                  {det[`${term}_term_remark`]}
+                                </td>
+                              </tr>
+                            ))}
                           </tbody>
                         </Table>
                       </Col>
                     </Row>
-                  </fieldset>
-                  <fieldset>
-                    <legend
-                      className="m-0 p-0"
-                      style={{ fontSize: "12px", fontWeight: "bold" }}
-                    >
-                      Remarks
-                    </legend>
+                    <fieldset>
+                      <legend
+                        className="p-0 m-0"
+                        style={{ fontSize: "11px", fontWeight: "bold" }}
+                      >
+                        Affective & Psychomotor
+                      </legend>
+                      <Row>
+                        <Col md={3} lg={3} sm={12} xs={12}>
+                          <Table
+                            responsive
+                            hover
+                            bordered
+                            className={classes.Tables}
+                          >
+                            <thead>
+                              <tr className={classes.rowHead}>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? `${classes.TheAttributesHeader_pdf}`
+                                      : `${classes.TheAttributes} ${classes.BoldTableHeading}`
+                                  }
+                                >
+                                  ATTRIBUTES
+                                </td>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? `${classes.TheAttributesHeader_pdf}`
+                                      : `${classes.TheAttributes} ${classes.BoldTableHeading}`
+                                  }
+                                >
+                                  R
+                                </td>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {RetrievedAttributes1.map((RAtt, index) =>
+                                StudentAttributes(1, RAtt, index)
+                              )}
+                            </tbody>
+                          </Table>
+                        </Col>
+                        <Col md={3} lg={3} sm={12} xs={12}>
+                          <Table
+                            responsive
+                            hover
+                            bordered
+                            className={classes.Tables}
+                          >
+                            <thead>
+                              <tr className={classes.rowHead}>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? `${classes.TheAttributesHeader_pdf}`
+                                      : `${classes.TheAttributes} ${classes.BoldTableHeading}`
+                                  }
+                                >
+                                  ATTRIBUTES
+                                </td>
 
-                    <Row>
-                      <Col lg={5} md={5} xs={11} sm={11}>
-                        <p className={classes.CommentParagraph}>
-                          <span
-                            className={classes.Comment}
-                          >{`"${ct_remark}"`}</span>
-                          <hr className={classes.CommenterDivider} />
-                          <span className={classes.Commenter}>
-                            MR OLADIPO A.A
-                          </span>
+                                <td
+                                  className={
+                                    isPdf
+                                      ? `${classes.TheAttributesHeader_pdf}`
+                                      : `${classes.TheAttributes} ${classes.BoldTableHeading}`
+                                  }
+                                >
+                                  R
+                                </td>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {RetrievedAttributes2.map((RAtt, index) =>
+                                StudentAttributes(2, RAtt, index)
+                              )}
+                            </tbody>
+                          </Table>
+                        </Col>
+                        <Col md={3} lg={3} sm={12} xs={12}>
+                          <Row>
+                            <Col md={12} lg={12} sm={12} xs={12}>
+                              <Table
+                                responsive
+                                hover
+                                bordered
+                                className={classes.Tables}
+                              >
+                                <thead>
+                                  <tr className={classes.rowHead}>
+                                    <td
+                                      className={
+                                        isPdf
+                                          ? `${classes.TheAttributesHeader_pdf}`
+                                          : `${classes.TheAttributes} ${classes.BoldTableHeading}`
+                                      }
+                                    >
+                                      ATTRIBUTES
+                                    </td>
 
-                          <span className={classes.CommenterStatus}>
-                            CLASS TEACHER
-                          </span>
-                          <span className={classes.CommenterStatus}>
-                            08033824233
-                          </span>
-                        </p>
-                      </Col>
-                      <Col lg={2} md={2} xs={11} sm={11}>
-                        <QRCode value={QRCodeString} />
-                      </Col>
-                      <Col lg={5} md={5} xs={11} sm={11}>
-                        <p className={classes.CommentParagraph}>
-                          <span
-                            className={classes.Comment}
-                          >{`"${p_remark}"`}</span>
-                          <hr className={classes.CommenterDivider} />
-                          <span className={classes.Commenter}>
-                            THE PRINCIPAL
-                          </span>
-                        </p>
+                                    <td
+                                      className={
+                                        isPdf
+                                          ? `${classes.TheAttributesHeader_pdf}`
+                                          : `${classes.TheAttributes} ${classes.BoldTableHeading}`
+                                      }
+                                    >
+                                      R
+                                    </td>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {RetrievedAttributes3.map((RAtt, index) =>
+                                    StudentAttributes(2, RAtt, index)
+                                  )}
+                                </tbody>
+                              </Table>
+                            </Col>
+                            <Col md={12} lg={12} sm={12} xs={12}>
+                              <Table
+                                responsive
+                                hover
+                                bordered
+                                striped
+                                className={classes.Tables}
+                              >
+                                <thead>
+                                  <tr>
+                                    <td
+                                      colSpan="2"
+                                      className={
+                                        isPdf
+                                          ? `mt-3 ${classes.TheAttributesHeader_pdf}`
+                                          : `${classes.TheAttributes} ${classes.BoldTableHeading}`
+                                      }
+                                    >
+                                      GRADES DISTRIBUTION
+                                    </td>
+                                  </tr>
+                                </thead>
+                                {claz.includes("JS") ? (
+                                  <tbody>
+                                    {InfoTable("70-100", "A")}
+                                    {InfoTable("60-69", "B")}
+                                    {InfoTable("50-59", "C")}
+                                    {InfoTable("40-49", "D")}
+                                    {InfoTable("0-39", "F")}
+                                  </tbody>
+                                ) : (
+                                  <tbody>
+                                    {InfoTable("75-100", "A1")}
+                                    {InfoTable("70-74", "B2")}
+                                    {InfoTable("65-69", "B3")}
+                                    {InfoTable("60-64", "C4")}
+                                    {InfoTable("55-59", "C5")}
+                                    {InfoTable("50-54", "C6")}
+                                    {InfoTable("45-49", "D7")}
+                                    {InfoTable("40-44", "E8")}
+                                    {InfoTable("0-39", "F9")}
+                                  </tbody>
+                                )}
+                              </Table>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col md={3} lg={3} sm={12} xs={12}>
+                          <Table
+                            responsive
+                            hover
+                            bordered
+                            striped
+                            className={classes.Tables}
+                          >
+                            <thead>
+                              <tr>
+                                <th
+                                  className={
+                                    isPdf
+                                      ? `${classes.TheAttributesHeader_pdf}`
+                                      : `${classes.TheAttributes} ${classes.BoldTableHeading}`
+                                  }
+                                >
+                                  KEYS
+                                </th>
+                                <th
+                                  className={
+                                    isPdf
+                                      ? `${classes.TheAttributesHeader_pdf}`
+                                      : `${classes.TheAttributes} ${classes.BoldTableHeading}`
+                                  }
+                                >
+                                  ATTRIBUTES RATINGS
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {InfoTable(
+                                5,
+                                "Maintains an excellent degree of observa traits"
+                              )}
+                              {InfoTable(
+                                4,
+                                "Maintains high level of observable traits of observable traits"
+                              )}
+                              {InfoTable(
+                                3,
+                                "Acceptable level of observable traits"
+                              )}
+                              {InfoTable(
+                                2,
+                                "Shows minimal regards for observable traits"
+                              )}
+                              {InfoTable(
+                                1,
+                                "Has no regards for the observable traits"
+                              )}
+                            </tbody>
+                          </Table>
+                        </Col>
+                      </Row>
+                    </fieldset>
+                    <fieldset>
+                      <legend
+                        className="m-0 p-0"
+                        style={{ fontSize: "12px", fontWeight: "bold" }}
+                      >
+                        Remarks
+                      </legend>
+
+                      <Row>
+                        <Col lg={5} md={5} xs={11} sm={11}>
+                          <p className={classes.CommentParagraph}>
+                            <span
+                              className={
+                                isPdf ? classes.Comment_pdf : classes.Comment
+                              }
+                            >{`"${ct_remark}"`}</span>
+                            <hr className={classes.CommenterDivider} />
+                            <span className={classes.Commenter}>
+                              MR OLADIPO A.A
+                            </span>
+
+                            <span
+                              className={
+                                isPdf
+                                  ? classes.CommentStatus_pdf
+                                  : classes.CommenterStatus
+                              }
+                            >
+                              CLASS TEACHER
+                            </span>
+                            <span
+                              className={
+                                isPdf
+                                  ? classes.CommentStatus_pdf
+                                  : classes.CommenterStatus
+                              }
+                            >
+                              08033824233
+                            </span>
+                          </p>
+                        </Col>
+                        <Col
+                          lg={2}
+                          md={2}
+                          xs={11}
+                          sm={11}
+                          className="align-content-center text-center"
+                        >
+                          <QRCode value={QRCodeString} />
+                        </Col>
+                        <Col lg={5} md={5} xs={11} sm={11}>
+                          <p className={classes.CommentParagraph}>
+                            <span
+                              className={classes.Comment}
+                            >{`"${p_remark}"`}</span>
+                            <hr className={classes.CommenterDivider} />
+                            <span className={classes.Commenter}>
+                              THE PRINCIPAL
+                            </span>
+                          </p>
+                        </Col>
+                      </Row>
+                    </fieldset>
+
+                    <Row className="justify-content-around m-0 p-0">
+                      <Col
+                        lg={12}
+                        md={12}
+                        xs={11}
+                        sm={11}
+                        className={classes.Applause}
+                      >
+                        Software developed by: Applause Infotech | 08033824233
                       </Col>
                     </Row>
-                  </fieldset>
-
-                  <Row className="justify-content-around m-0 p-0">
-                    <Col
-                      lg={12}
-                      md={12}
-                      xs={11}
-                      sm={11}
-                      className={classes.Applause}
-                    >
-                      Software developed by: Applause Infotech | 08033824233
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-              <Row
-                className={`"justify-content-around p-3" ${classes.Hide4Print}`}
-              >
-                <Col lg={4} md={4} xs={11} sm={11} className="text-center">
-                  <ButtonBackground
-                    ButtonName="PRINT"
-                    className={classes.SubmitButton}
-                    ButtonAction={PrintTheReport}
-                    ButtonCss={buttonCss}
-                  />
-                </Col>
-                <Col lg={4} md={4} xs={11} sm={11} className="text-center">
-                  <ButtonBackground
-                    ButtonName="PDF"
-                    className={classes.SubmitButton}
-                    ButtonAction={GenerateThePdf}
-                    ButtonCss={buttonCss}
-                  />
-                </Col>
-              </Row>
+                  </Col>
+                </Row>
+                <Row
+                  className={`"justify-content-around p-3" ${classes.Hide4Print}`}
+                >
+                  <Col lg={4} md={4} xs={11} sm={11} className="text-center">
+                    <ButtonBackground
+                      ButtonName="PRINT"
+                      className={classes.SubmitButton}
+                      ButtonAction={PrintTheReport}
+                      ButtonCss={buttonCss}
+                    />
+                  </Col>
+                  <Col lg={4} md={4} xs={11} sm={11} className="text-center">
+                    <ButtonBackground
+                      ButtonName="PDF"
+                      className={classes.SubmitButton}
+                      // ButtonAction={GenerateThePdf}
+                      ButtonAction={exportPDF}
+                      ButtonCss={buttonCss}
+                    />
+                  </Col>
+                </Row>
+              </PDFExport>
             </Col>
           )}
         </Row>

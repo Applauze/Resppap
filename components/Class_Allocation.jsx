@@ -59,37 +59,47 @@ const Class_Allocation = (props) => {
 
   const AuthorizeTeacher = async (e) => {
     e.preventDefault();
-    setshowProcessing(true);
-    setMessage(`The system is authorizing ${Teachername}`);
-    let m = AllTheTeachers.indexOf(Teachername);
-    console.log(m);
-    let AllIDs = [...AllTheTeachersID];
-    let Allocation = {
-      TeacherID: AllIDs[m],
-      Session: session,
-      Term: term,
-      Claz: claz,
-    };
+    if (AllTheTeachers.includes(Teachername)) {
+      setshowProcessing(true);
+      setMessage(`The system is authorizing ${Teachername}`);
+      let m = AllTheTeachers.indexOf(Teachername);
+      console.log(m);
+      let AllIDs = [...AllTheTeachersID];
+      let Allocation = {
+        TeacherID: AllIDs[m],
+        Session: session,
+        Term: term,
+        Claz: claz,
+      };
 
-    let SaveTheAllocation = await axioscall(
-      "save_class_teacher_allocation",
-      Allocation
-    );
+      let SaveTheAllocation = await axioscall(
+        "save_class_teacher_allocation",
+        Allocation
+      );
 
-    if (SaveTheAllocation === "Saved Successfully") {
-      setshowProcessing(false);
+      if (SaveTheAllocation === "Saved Successfully") {
+        setshowProcessing(false);
+        DisplayNotification(
+          "Success",
+          `${Teachername} successfully authorized for  ${claz}, ${term} Term, ${session} Session`,
+          "success",
+          "top-center",
+          5000
+        );
+
+        setTeachername("");
+        setterm("Select");
+        setsession("Select");
+        setclaz("Select");
+      }
+    } else {
       DisplayNotification(
-        "Success",
-        `${Teachername} successfully authorized for  ${claz}, ${term} Term, ${session} Session`,
-        "success",
+        "Error",
+        `${Teachername} is not a registered Teacher of this School`,
+        "danger",
         "top-center",
         5000
       );
-
-      setTeachername("");
-      setterm("Select");
-      setsession("Select");
-      setclaz("Select");
     }
   };
 

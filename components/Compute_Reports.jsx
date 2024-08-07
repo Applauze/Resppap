@@ -206,7 +206,7 @@ const Compute_Reports = () => {
 
   const StudentDescription = (LABEL, value, colsp) => {
     return (
-      <Col md={colsp} lg={colsp} xs={11} sm={11}>
+      <Col md={colsp} lg={colsp} xs={colsp} sm={colsp}>
         <p className="small py-0 my-0">
           <span className={classes.mylabel}>{LABEL}</span>:{" "}
           <span
@@ -221,7 +221,7 @@ const Compute_Reports = () => {
 
   const StudentDescription1 = (LABEL, colsp) => {
     return (
-      <Col md={colsp} lg={colsp} xs={11} sm={11}>
+      <Col md={colsp} lg={colsp} xs={colsp} sm={colsp}>
         <p className="small py-0 my-0">
           <span className={classes.mylabel}>
             {LABEL}
@@ -464,7 +464,7 @@ const Compute_Reports = () => {
       </BorderedCardNoHover>
       {DisplayCardPanel && (
         <Row className={classes.PanelContainer}>
-          <Col md={3} lg={3} sm={11} xs={11}>
+          <Col md={3} lg={3} sm={12} xs={12}>
             <BorderedCardNoHover MyStyle={{ borderRadius: "0px" }}>
               <h6 className={classes.ListHeading}>
                 {claz.toUpperCase() + " STUDENTS"}
@@ -488,8 +488,8 @@ const Compute_Reports = () => {
             <Col
               md={9}
               lg={9}
-              sm={11}
-              xs={11}
+              sm={12}
+              xs={12}
               className={classes.MainCardContainer}
             >
               <Row className="justify-content-around">
@@ -843,7 +843,7 @@ const Compute_Reports = () => {
                     <legend>Remarks</legend>
 
                     <Row>
-                      <Col>
+                      <Col lg={6} md={12} sm={12} xs={12}>
                         <Form.Label style={{ display: "inline-block" }}>
                           <Button
                             className={classes.PlusButton}
@@ -895,7 +895,7 @@ const Compute_Reports = () => {
                           08033824233{" "}
                         </p>
                       </Col>
-                      <Col>
+                      <Col lg={6} md={12} sm={12} xs={12}>
                         <Form.Label style={{ display: "inline-block" }}>
                           <Button
                             className={classes.PlusButton}
