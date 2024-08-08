@@ -27,10 +27,10 @@
 }
 
 .RotatedHeading {
-  writing-mode: sideways-lr;
+  /* writing-mode: sideways-lr; */
   font-weight: bold;
   width: 6% !important;
-  padding-left: 2.9% !important;
+  padding-left: 2% !important;
 }
 
 .RotatedHeading2 {
