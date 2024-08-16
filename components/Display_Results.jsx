@@ -418,100 +418,73 @@ const Display_Results = () => {
               lg={9}
               sm={11}
               xs={11}
-              className={
-                isPdf
-                  ? `"w-100" ${classes.Margin4Print} ${classes.PrintCol_pdf}`
-                  : `"w-100" ${classes.Margin4Print} ${classes.PrintCol}`
-              }
+              className={`"w-100" ${classes.Margin4Print} ${classes.PrintCol}`}
             >
-              <PDFExport
-                paperSize={"A4"}
-                fileName="Doccc.pdf"
-                title=""
-                subject=""
-                keywords=""
-                ref={pdfRef}
+              <Row
+                ref={targetRef}
+                className={`"justify-content-around m-0 p-0 h-100" ${classes.MainCardContainer}`}
               >
-                <Row
-                  ref={targetRef}
-                  className={
-                    isPdf
-                      ? `"justify-content-around m-0 p-0 h-100" ${classes.MainCardContainer_pdf}`
-                      : `"justify-content-around m-0 p-0 h-100" ${classes.MainCardContainer}`
-                  }
+                <Col
+                  md={12}
+                  lg={12}
+                  xs={12}
+                  sm={11}
+                  className={classes.CardHeader}
                 >
-                  <Col
-                    md={12}
-                    lg={12}
-                    xs={12}
-                    sm={11}
-                    className={classes.CardHeader}
-                  >
-                    <Row className="w-100 d-flex justify-content-center align-items-center ">
-                      <Col
-                        md={2}
-                        lg={2}
-                        xs={2}
-                        sm={2}
-                        className="d-flex align-items-center justify-content-around h-100"
-                      >
-                        <Image
-                          className={classes.logoimage_pdf}
-                          src={SchoolLogo}
-                          width={100}
-                          height={100}
-                          alt="School Logo"
-                        />
-                      </Col>
-                      <Col md={8} lg={8} xs={8} sm={8}>
-                        <p
-                          className={
-                            isPdf ? classes.Emmanuel_pdf : classes.Emmanuel
-                          }
-                        >
-                          EMMANUEL ALAYANDE UNIVERSITY OF EDUCATION
-                        </p>
-                        <p
-                          className={isPdf ? classes.Model_pdf : classes.Model}
-                        >
-                          MODEL HIGH SCHOOL, OYO
-                        </p>
-                        <p className={isPdf ? classes.Pmb_pdf : classes.Pmb}>
-                          P.M.B. 1010, ISOKUN, OYO
-                        </p>
-                        <p className={isPdf ? classes.Tel_pdf : classes.Tel}>
-                          Tel: 08033824233 Email: upmosttony@gmail.com
-                        </p>
-                        <p className={classes.Report}>REPORT CARD</p>
-                      </Col>
-                    </Row>
-                  </Col>
-                  <Col
-                    md={12}
-                    lg={12}
-                    xs={12}
-                    sm={11}
-                    className={classes.RepCardCol}
-                  >
-                    <Row className="justify-content-around">
-                      <Col md={10} lg={10} xs={11} sm={11}>
-                        <Row>
-                          {StudentDescription(
-                            "NAME",
-                            RetrievedStudentDetails.Fullname,
-                            12
-                          )}
-                          {StudentDescription("ADMISSION NO.", "123456789", 4)}
-                          {StudentDescription(
-                            "DATE OF BIRTH",
-                            RetrievedStudentDetails.dob,
-                            4
-                          )}
-                          {StudentDescription(
-                            "SEX",
-                            RetrievedStudentDetails.sex,
-                            4
-                          )}
+                  <Row className="w-100">
+                    <Col
+                      md={3}
+                      lg={3}
+                      xs={3}
+                      sm={3}
+                      className="d-flex align-items-center justify-content-around"
+                    >
+                      <Image
+                        src={SchoolLogo}
+                        width={100}
+                        height={100}
+                        alt="School Logo"
+                      />
+                    </Col>
+                    <Col md={7} lg={7} xs={7} sm={7}>
+                      <p className={classes.Emmanuel}>
+                        EMMANUEL ALAYANDE UNIVERSITY OF EDUCATION
+                      </p>
+                      <p className={classes.Model}>MODEL HIGH SCHOOL, OYO</p>
+                      <p className={classes.Pmb}>P.M.B. 1010, ISOKUN, OYO</p>
+                      <p className={classes.Tel}>
+                        Tel: 08033824233 Email: upmosttony@gmail.com
+                      </p>
+                      <p className={classes.Report}>REPORT CARD</p>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col
+                  md={12}
+                  lg={12}
+                  xs={12}
+                  sm={11}
+                  className={classes.RepCardCol}
+                >
+                  <Row className="justify-content-around">
+                    <Col md={10} lg={10} xs={11} sm={11}>
+                      <Row>
+                        {StudentDescription(
+                          "NAME",
+                          RetrievedStudentDetails.Fullname,
+                          12
+                        )}
+                        {StudentDescription("ADMISSION NO.", "123456789", 4)}
+                        {StudentDescription(
+                          "DATE OF BIRTH",
+                          RetrievedStudentDetails.dob,
+                          4
+                        )}
+                        {StudentDescription(
+                          "SEX",
+                          RetrievedStudentDetails.sex,
+                          4
+                        )}
 
                           {StudentDescription(
                             "SESSION",
@@ -893,6 +866,224 @@ const Display_Results = () => {
                                 >
                                   ATTRIBUTES
                                 </td>
+                        {StudentDescription(
+                          "NO IN CLASS",
+                          RetrievedStudentDetails.nic,
+                          4
+                        )}
+                        {StudentDescription("TOTAL ATTENDANCE", schoolopens, 4)}
+                        {StudentDescription(
+                          "NO OF TIMES PRESENT",
+                          p_attendance,
+                          4
+                        )}
+                        {StudentDescription(
+                          "NEXT TERM BEGINS ON",
+                          nexttermbegins,
+                          12
+                        )}
+                      </Row>
+                    </Col>
+                    <Col md={2} lg={2} xs={6} sm={6}>
+                      <Image
+                        src={RetrievedStudentDetails.PixUrl}
+                        width={100}
+                        height={120}
+                        alt="StudentID"
+                      />
+                    </Col>
+                  </Row>
+                  <Row className="justify-content-around">
+                    <Col
+                      md={12}
+                      lg={12}
+                      xs={12}
+                      sm={12}
+                      className={classes.theTableCol}
+                    >
+                      <Table
+                        responsive
+                        hover
+                        bordered
+                        striped
+                        className={classes.Tables}
+                      >
+                        <thead>
+                          <tr className={classes.rowHead}>
+                            <td
+                              className={
+                                DisplayMode === "Print"
+                                  ? `${classes.BoldTableHeading}`
+                                  : `${classes.TheSubjects} ${classes.BoldTableHeading}`
+                              }
+                            >
+                              SUBJECTS & SCORES
+                            </td>
+                            {RotatedHeading(term, "1ST SUMM.", "1ST CA")}
+                            {RotatedHeading(term, "2ND SUMM.", "2ND CA")}
+                            {RotatedHeading(term, "3RD SUMM.", "EXAM")}
+                            {RotatedHeading(term, "AVE.", "TOTAL")}
+                            {RotatedHeading(term, "MAX.", "MAX.")}
+                            {RotatedHeading(term, "MIN.", "MIN.")}
+                            {RotatedHeading(term, "AVE.", "AVE.")}
+                            {claz.includes("JS") &&
+                              RotatedHeading(term, "POS", "POS")}
+                            {RotatedHeading(term, "GRDS", "GRDS")}
+                            {RotatedHeading(term, "RMKS", "RMKS")}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className={classes.rowHead}>
+                            <td
+                              className={`pl-3 ${classes.TheSubjects} ${classes.scores_td2}`}
+                            >
+                              Marks Obtainable
+                            </td>
+                            <td className={classes.scores_td}>
+                              {term === "Third" ? "100" : "10"}
+                            </td>
+                            <td className={classes.scores_td}>
+                              {term === "Third" ? "100" : "20"}
+                            </td>
+                            <td className={classes.scores_td}>
+                              {term === "Third" ? "100" : "70"}
+                            </td>
+                            <td className={classes.scores_td}>100</td>
+                            <td className={classes.scores_td}>-</td>
+                            <td className={classes.scores_td}>-</td>
+                            <td className={classes.scores_td}>-</td>
+                            {claz.includes("JS") && (
+                              <td className={classes.scores_td}>-</td>
+                            )}
+                            <td className={classes.scores_td}>-</td>
+                            <td className={classes.scores_td}>-</td>
+                          </tr>
+                          {RetrievedSubjects.map((det, index) => (
+                            <tr key={index} className={classes.rowHead}>
+                              <td
+                                className={`pl-3 ${classes.TheSubjects} ${classes.scores_td2}`}
+                              >
+                                {det.subject_name}
+                              </td>
+                              <td className={classes.scores_td}>
+                                {term === "Third"
+                                  ? det["first_term_total_score"] === null
+                                    ? "AB"
+                                    : det["first_term_total_score"]
+                                  : det[`${term}_term_ca_score1`]}
+                              </td>
+                              <td className={classes.scores_td}>
+                                {term === "Third"
+                                  ? det["second_term_total_score"] === null
+                                    ? "AB"
+                                    : det["second_term_total_score"]
+                                  : det[`${term}_term_ca_score2`]}
+                              </td>
+                              <td className={classes.scores_td}>
+                                {term === "Third"
+                                  ? det["third_term_total_score"] === null
+                                    ? "AB"
+                                    : det["third_term_total_score"]
+                                  : det[`${term}_term_exam_score`]}
+                              </td>
+                              <td className={classes.scores_td}>
+                                {term === "Third"
+                                  ? det["overall_average_score"] == "0" ||
+                                    det["overall_average_score"] == null
+                                    ? "AB"
+                                    : det["overall_average_score"]
+                                  : det[`${term}_term_total_score`] == 0
+                                  ? "AB"
+                                  : det[`${term}_term_total_score`]}
+                              </td>
+                              <td className={classes.scores_td}>
+                                {term === "Third"
+                                  ? det["overall_highest_score"]
+                                  : det[`${term}_term_highest_score`]}
+                              </td>
+                              <td className={classes.scores_td}>
+                                {term === "Third"
+                                  ? det["overall_lowest_score"]
+                                  : det[`${term}_term_lowest_score`]}
+                              </td>
+                              <td className={classes.scores_td}>
+                                {term === "Third"
+                                  ? det["general_average_score"]
+                                  : det[`{term}_term_average_score`]}
+                              </td>
+                              {claz.includes("JS") && (
+                                <td className={classes.scores_td}>
+                                  {term === "Third"
+                                    ? det[`overall_position`]
+                                    : det[`${term}_term_position`]}
+                                </td>
+                              )}
+                              <td className={classes.scores_td}>
+                                {term === "Third"
+                                  ? det[`overall_grade`]
+                                  : det[`${term}_term_grade`]}
+                              </td>
+                              <td className={classes.scores_td}>
+                                {term === "Third"
+                                  ? det[`overall_remark`]
+                                  : det[`${term}_term_remark`]}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </Table>
+                    </Col>
+                  </Row>
+                  <fieldset>
+                    <legend
+                      className="p-0 m-0"
+                      style={{ fontSize: "11px", fontWeight: "bold" }}
+                    >
+                      Affective & Psychomotor
+                    </legend>
+                    <Row>
+                      <Col md={3} lg={3} sm={12} xs={12}>
+                        <Table
+                          responsive
+                          hover
+                          bordered
+                          className={classes.Tables}
+                        >
+                          <thead>
+                            <tr className={classes.rowHead}>
+                              <td
+                                className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
+                              >
+                                ATTRIBUTES
+                              </td>
+                              <td
+                                className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
+                              >
+                                R
+                              </td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {RetrievedAttributes1.map((RAtt, index) =>
+                              StudentAttributes(1, RAtt, index)
+                            )}
+                          </tbody>
+                        </Table>
+                      </Col>
+                      <Col md={3} lg={3} sm={12} xs={12}>
+                        <Table
+                          responsive
+                          hover
+                          bordered
+                          className={classes.Tables}
+                        >
+                          <thead>
+                            <tr className={classes.rowHead}>
+                              <td
+                                className={`${classes.TheAttributes} ${classes.BoldTableHeading}`}
+                              >
+                                ATTRIBUTES
+                              </td>
 
                                 <td
                                   className={

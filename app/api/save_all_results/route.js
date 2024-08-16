@@ -112,7 +112,7 @@ export async function POST(request, response) {
 
           increament = 1;
         }
-        prev = element[`${Term}_term_total_score`];
+        prev = element[considerator];
         return ele;
       });
       return ATS;
@@ -235,10 +235,22 @@ export async function POST(request, response) {
       const getoveralltotalandaverage = (overall) => {
         overall = overall.map((ovr) => {
           let el = {};
-          let ovsum =
-            ovr.first_term_total_score +
-            ovr.second_term_total_score +
-            ovr.third_term_total_score;
+          let ov1 =
+            ovr.first_term_total_score === null ||
+            ovr.first_term_total_score === ""
+              ? 0
+              : ovr.first_term_total_score;
+          let ov2 =
+            ovr.second_term_total_score === null ||
+            ovr.second_term_total_score === ""
+              ? 0
+              : ovr.second_term_total_score;
+          let ov3 =
+            ovr.third_term_total_score === null ||
+            ovr.third_term_total_score === ""
+              ? 0
+              : ovr.third_term_total_score;
+          let ovsum = ov1 + ov2 + ov3;
           let ovave = Math.ceil(ovsum / ovr.divisor);
           let grdrmk = Claz.includes("JS")
             ? GetJuniorGrade(ovave)

@@ -92,7 +92,7 @@ const Compute_Reports = () => {
       ThisStudentParam
     );
     ThisStudentReportInJson = JSON.parse(ThisStudentReportInJson);
-
+    console.log(ThisStudentReportInJson.ThisStudentScores);
     ThisStudentParam = {
       ...ThisStudentParam,
       dob: element.dob,
@@ -607,38 +607,66 @@ const Compute_Reports = () => {
                                 {det.subject_name}
                               </td>
                               <td className={classes.scores_td}>
-                                {det[`${term}_term_ca_score1`]}
+                                {term === "Third"
+                                  ? det["first_term_total_score"] === null
+                                    ? "AB"
+                                    : det["first_term_total_score"]
+                                  : det[`${term}_term_ca_score1`]}
                               </td>
                               <td className={classes.scores_td}>
-                                {det[`${term}_term_ca_score2`]}
+                                {term === "Third"
+                                  ? det["second_term_total_score"] === null
+                                    ? "AB"
+                                    : det["second_term_total_score"]
+                                  : det[`${term}_term_ca_score2`]}
                               </td>
                               <td className={classes.scores_td}>
-                                {det[`${term}_term_exam_score`]}
+                                {term === "Third"
+                                  ? det["third_term_total_score"] === null
+                                    ? "AB"
+                                    : det["third_term_total_score"]
+                                  : det[`${term}_term_exam_score`]}
                               </td>
                               <td className={classes.scores_td}>
-                                {det[`${term}_term_total_score`] == 0
+                                {term === "Third"
+                                  ? det["overall_average_score"] == 0
+                                    ? "AB"
+                                    : det["overall_average_score"]
+                                  : det[`${term}_term_total_score`] == 0
                                   ? "AB"
                                   : det[`${term}_term_total_score`]}
                               </td>
                               <td className={classes.scores_td}>
-                                {det[`${term}_term_highest_score`]}
+                                {term === "Third"
+                                  ? det["overall_highest_score"]
+                                  : det[`${term}_term_highest_score`]}
                               </td>
                               <td className={classes.scores_td}>
-                                {det[`${term}_term_lowest_score`]}
+                                {term === "Third"
+                                  ? det["overall_lowest_score"]
+                                  : det[`${term}_term_lowest_score`]}
                               </td>
                               <td className={classes.scores_td}>
-                                {det[`${term}_term_average_score`]}
+                                {term === "Third"
+                                  ? det["general_average_score"]
+                                  : det[`{term}_term_average_score`]}
                               </td>
                               {claz.includes("JS") && (
                                 <td className={classes.scores_td}>
-                                  {det[`${term}_term_position`]}
+                                  {term === "Third"
+                                    ? det[`overall_position`]
+                                    : det[`${term}_term_position`]}
                                 </td>
                               )}
                               <td className={classes.scores_td}>
-                                {det[`${term}_term_grade`]}
+                                {term === "Third"
+                                  ? det[`overall_grade`]
+                                  : det[`${term}_term_grade`]}
                               </td>
                               <td className={classes.scores_td}>
-                                {det[`${term}_term_remark`]}
+                                {term === "Third"
+                                  ? det[`overall_remark`]
+                                  : det[`${term}_term_remark`]}
                               </td>
                             </tr>
                           ))}

@@ -8,7 +8,7 @@ export async function POST(request, response) {
   const { student_id, Session, Term, Claz } = body.dataFromCaller;
   let select_sql = "";
   if (Term === "Third") {
-    select_sql = `SELECT subject_name, first_term_total_score, second_term_total_score, third_term_total_score, overall_average, overall_highest_score, overall_lowest_score, overall_position, overall_grade, overall_remark, general_average FROM  ${Session}_subjects_registered  WHERE class = '${Claz}'  AND student_id = ${student_id} AND status = 'Active'`;
+    select_sql = `SELECT subject_name, first_term_total_score, second_term_total_score, third_term_total_score, overall_average_score, overall_highest_score, overall_lowest_score, overall_position, overall_grade, overall_remark, general_average_score FROM  ${Session}_subjects_registered  WHERE class = '${Claz}'  AND student_id = '${student_id}' AND status = 'Active'`;
   } else {
     select_sql = `SELECT subject_name, ${Term}_term_ca_score1, ${Term}_term_ca_score2, ${Term}_term_exam_score, ${Term}_term_total_score, ${Term}_term_highest_score, ${Term}_term_lowest_score, ${Term}_term_average_score, ${Term}_term_position, ${Term}_term_grade, ${Term}_term_remark  FROM ${Session}_subjects_registered  WHERE class = '${Claz}' AND student_id = '${student_id}' AND  status = 'Active'`;
   }
@@ -42,6 +42,7 @@ export async function POST(request, response) {
   };
 
   const theData = JSON.stringify(ThisStudentReport);
+
   connect.end();
   return result.length > 0
     ? NextResponse.json({ message: theData, success: true })

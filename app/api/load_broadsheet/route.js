@@ -66,11 +66,13 @@ export async function POST(request, response) {
 
           if (Term === "Third") {
             if (
-              Res["overall_average_score"] &&
-              Res["overall_average_score"] != 0 &&
-              Res["overall_average_score"] != null
+              Res["overall_average_score"] == null ||
+              Res["overall_average_score"] == undefined
             ) {
+              Info[p] = "-";
+            } else {
               let Mark = parseFloat(Res["overall_average_score"]);
+
               No_Offered++;
               Total_Sum += Mark;
               if (Mark >= 50) {
@@ -78,9 +80,7 @@ export async function POST(request, response) {
               } else {
                 No_Failed++;
               }
-              Info[p] = Res[overall_average_score];
-            } else {
-              Info[p] = "-";
+              Info[p] = Res["overall_average_score"];
             }
           } else {
             if (
