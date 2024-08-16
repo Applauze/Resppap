@@ -151,7 +151,7 @@ const Login_Page = (props) => {
                           fontFamily: "Times New Roman",
                         }}
                       >
-                        WELCOME TO APPLAUSE BUSMAS!
+                        WELCOME TO APPLAUSE RESPAPP!
                       </h2>
                       <h6 className="text-center">
                         Please login with your Username and Password
