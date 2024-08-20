@@ -1,0 +1,13 @@
+.MissionImage {
+  width: 100px;
+  height: 100px;
+}
+
+.Missionh5 {
+  font-size: 40px;
+  color: #08696e;
+  text-shadow: 1px 1px 1px #808080;
+}
+.MissionP {
+  text-align: center;
+}

@@ -1,0 +1,16 @@
+.NumberRecord {
+  font-size: 60px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0px;
+  /* text-shadow: 2px 2px 2px #470404; */
+  color: #08696e;
+}
+
+.NumberDescription {
+  color: #d90505;
+  text-align: center;
+  /* text-shadow: 0.5px 0.5px 1px #470404; */
+  font-weight: bold;
+  font-size: 20px;
+}

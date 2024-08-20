@@ -3,6 +3,8 @@ import {
   Roboto_Serif,
   Shadows_Into_Light,
   PT_Sans,
+  Ubuntu,
+  Kanit,
 } from "next/font/google";
 
 export const rubik_init = Rubik({
@@ -29,8 +31,22 @@ export const pt_Sans_init = PT_Sans({
   variable: "--pt_Sans_init",
   weight: ["400"],
 });
+export const ubuntu_init = Ubuntu({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--ubuntu_init",
+  weight: ["500"],
+});
+export const kanit_init = Kanit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--kanit_init",
+  weight: ["500"],
+});
 
 export const rubik = rubik_init.className;
 export const roboto_serif = roboto_serif_init.className;
 export const shadows_Into_Light = shadows_Into_Light_init.className;
 export const pt_Sans = pt_Sans_init.className;
+export const ubuntu = ubuntu_init.className;
+export const kanit = kanit_init.className;

@@ -1,0 +1,99 @@
+.MainImageRow {
+  background-image: url("./Images/schoolImages/mainimage3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 600px;
+  width: 100%;
+}
+
+.MissionParagraph {
+  text-align: justify;
+  color: rgb(126, 5, 5);
+  /* color: rgb(210, 210, 210) */
+  font-weight: bolder;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-shadow: 0.5px 0px 2px #868282;
+}
+
+.VisionMission {
+  background-color: rgba(111, 168, 209, 0.5);
+}
+
+.AtAGlance {
+  color: #08696e;
+  text-align: center;
+}
+.AtAGlance2 {
+  color: #08696e;
+  text-align: left;
+}
+
+.AtAGlance3 {
+  color: #08696e;
+  text-align: right;
+}
+
+.hrGlance {
+  margin-left: 200px;
+  margin-right: 200px !important;
+  margin-top: 0px;
+}
+.hrGlance2 {
+  margin-top: 0px;
+}
+
+.PrincipalImage {
+  width: 140px;
+  height: 140px;
+}
+
+.PrincipalMessage {
+  text-align: justify !important;
+  font-size: 18px !important;
+}
+
+.pmsgW {
+  font-size: 30px;
+  color: #920808;
+  font-weight: bold;
+}
+
+.DrAyoola {
+  background-color: #868282;
+  text-align: center;
+  font-size: 12px;
+  margin: 0px;
+  font-family: "Times New Roman";
+  padding: 2px;
+  font-weight: bold;
+  display: block;
+}
+
+.Designation {
+  text-align: center;
+  font-size: 10px;
+  background-color: #dadada;
+  margin: 0px;
+  font-family: "Times New Roman";
+  padding: 2px;
+  display: block;
+}
+
+.WhyChooseParagraph {
+  color: #920808;
+  font-size: 18px;
+}
+
+.NewsImage {
+  width: "50px" !important;
+  height: "50px" !important;
+}
+
+@media screen and (max-width: 768px) {
+  .MainImageRow {
+    height: 600px;
+    width: 100%;
+  }
+}

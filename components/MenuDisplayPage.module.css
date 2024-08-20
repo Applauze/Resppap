@@ -1,9 +1,0 @@
-.EachMenuCol {
-  padding: 40px;
-}
-
-@media screen and (max-width: 768px) {
-  .EachMenuCol {
-    padding: 20px 40px;
-  }
-}
