@@ -24,7 +24,7 @@ const NewsAndEventsComponents = (props) => {
       </Col>
       <Col lg={6} md={6} sm={12}>
         <p className={`${classes.NewsTitle} ${kanit}`}>{props.NewsTitle}</p>
-        <p className="NewsDescription">{props.NewsDetails}</p>
+        <p className="text-justify">{props.NewsDetails}</p>
         <p>
           <Link href="#" className={classes.theLinks}>
             {"Read more >>>"}

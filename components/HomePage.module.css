@@ -45,8 +45,8 @@
 }
 
 .PrincipalImage {
-  width: 140px;
-  height: 140px;
+  width: 300px;
+  height: 300px;
 }
 
 .PrincipalMessage {
@@ -58,6 +58,7 @@
   font-size: 30px;
   color: #920808;
   font-weight: bold;
+  color: #e7f5c5;
 }
 
 .DrAyoola {
@@ -89,6 +90,11 @@
 .NewsImage {
   width: "50px" !important;
   height: "50px" !important;
+}
+
+.socialmedia {
+  color: #920808;
+  font-size: 30px;
 }
 
 @media screen and (max-width: 768px) {

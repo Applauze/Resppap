@@ -1,5 +1,16 @@
-import React from "react";
-import { Button, Row, Col, Nav, ListGroup } from "react-bootstrap";
+"use client";
+import React, { useState } from "react";
+import {
+  Button,
+  Row,
+  Col,
+  Card,
+  ListGroup,
+  Table,
+  CardHeader,
+  CardBody,
+  Form,
+} from "react-bootstrap";
 import { Divider } from "rsuite";
 import Principal from "@/components/Images/schoolImages/Principal.jpg";
 import Image from "next/image";
@@ -16,8 +27,82 @@ import { kanit, rubik, pt_Sans } from "@/app/util/fonts";
 import NumberRecordsDescription from "./HomePageComponents/NumberRecordsDescription";
 import MissionVissionCoreComponents from "./HomePageComponents/MissionVissionCoreComponents";
 import NewsAndEventsComponents from "./HomePageComponents/NewsAndEventsComponents";
+import Gallery from "react-photo-gallery";
+import gal_img1 from "@/components/Images/schoolImages/Gal/gal_img1.jpg";
+import gal_img2 from "@/components/Images/schoolImages/Gal/gal_img2.jpg";
+import gal_img3 from "@/components/Images/schoolImages/Gal/gal_img3.jpg";
+import gal_img4 from "@/components/Images/schoolImages/Gal/gal_img4.jpg";
+import gal_img5 from "@/components/Images/schoolImages/Gal/gal_img5.jpg";
+import gal_img6 from "@/components/Images/schoolImages/Gal/gal_img6.jpg";
+import gal_img7 from "@/components/Images/schoolImages/Gal/gal_img7.jpg";
+import gal_img8 from "@/components/Images/schoolImages/Gal/gal_img8.jpg";
+import gal_img9 from "@/components/Images/schoolImages/Gallery/gal_img9.jpeg";
+import gal_img10 from "@/components/Images/schoolImages/Gallery/gal_img10.jpeg";
+import gal_img11 from "@/components/Images/schoolImages/Gallery/gal_img11.jpeg";
+import gal_img12 from "@/components/Images/schoolImages/Gallery/gal_img12.jpeg";
+import gal_img13 from "@/components/Images/schoolImages/Gallery/gal_img13.jpeg";
+import gal_img14 from "@/components/Images/schoolImages/Gallery/gal_img14.jpeg";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaSearch,
+  FaShoppingCart,
+} from "react-icons/fa";
+import Link from "next/link";
+
+import { RowsPhotoAlbum } from "react-photo-album";
+import "react-photo-album/rows.css";
+import TestimonialsComponents from "./HomePageComponents/TestimonialsComponents";
 
 const HomePage = () => {
+  const [Cname, setCname] = useState("");
+  const [Cemail, setCemail] = useState("");
+  const [Comment, setComment] = useState("");
+
+  const photos = [
+    {
+      src: gal_img1,
+      width: 800,
+      height: 600,
+    },
+    {
+      src: gal_img2,
+      width: 800,
+      height: 600,
+    },
+    {
+      src: gal_img3,
+      width: 4,
+      height: 3,
+    },
+    {
+      src: gal_img4,
+      width: 4,
+      height: 3,
+    },
+    {
+      src: gal_img5,
+      width: 4,
+      height: 3,
+    },
+    {
+      src: gal_img6,
+      width: 4,
+      height: 3,
+    },
+    {
+      src: gal_img7,
+      width: 4,
+      height: 3,
+    },
+    {
+      src: gal_img8,
+      width: 4,
+      height: 3,
+    },
+  ];
+
   return (
     <Row>
       <Col md={12} sm={12} lg={12} className="p-0 m-0">
@@ -127,12 +212,12 @@ const HomePage = () => {
         </Row>
         {/* At a glance section */}
         <Row>
-          <Col md={12} sm={12} className="pt-3  m-0">
+          <Col md={12} lg={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>AT A GLANCE</Divider>
             </h3>
           </Col>
-          <Col md={12} sm={12}>
+          <Col md={12} lg={12} sm={12}>
             <hr className={classes.hrGlance} />
           </Col>
           <Col md={12} sm={12} lg={12} className="my-2">
@@ -190,7 +275,7 @@ const HomePage = () => {
             <Row>
               <Col md={12} sm={12} className="pt-3  m-0">
                 <h3 className={classes.AtAGlance2}>
-                  <Divider>WHY YOU SHOULD US</Divider>
+                  <Divider>WHY WE ARE THE BEST</Divider>
                 </h3>
               </Col>
               <Col md={12} sm={12}>
@@ -299,7 +384,7 @@ const HomePage = () => {
           </Col>
           <Col>
             <NewsAndEventsComponents
-              NewsImage={mainimage1}
+              NewsImage={gal_img1}
               NewsMonth={"SEPTEMBER"}
               NewsDay={30}
               NewsTitle={"EAUED MHS celebrates 10 years of Existence"}
@@ -309,12 +394,14 @@ const HomePage = () => {
             />
             <hr className="mx-5 my-3 p-0" />
             <NewsAndEventsComponents
-              NewsImage={mainimage1}
+              NewsImage={gal_img2}
               NewsMonth={"SEPTEMBER"}
               NewsDay={25}
-              NewsTitle={"EAUED MHS celebrates 10 years of Existence"}
+              NewsTitle={
+                "Adenike wins first position in Oyo State Inter SChool Debate Competition"
+              }
               NewsDetails={
-                "It was a great joy at the grand finale of a week long celebration of ten years anniversary of EAUED MHS as the students and staff could not hold their feelings. The Principal of the school, Mr A.A. Ayoola opened the danced floor with other dignatries bith from the mother University and the School."
+                "Adenile Odunayo, a SS2 student of the school represented Oyo East Local Goverment at the Oyo State Inter School debate competition helid in Ibadan and came first at teh end of the competion beating about other 40 schools in attendance. While presenting the award, the Governor of the state, Engr Seyi Makinde congratulated the young scholar and encouraged her to do the state proud at the National level"
               }
             />
             <hr className="mx-5 my-3 p-0" />
@@ -338,6 +425,375 @@ const HomePage = () => {
               }
             />
             <hr className="mx-5 my-3 p-0" />
+          </Col>
+        </Row>
+
+        <Row className="px-5 py-4">
+          <Col md={4} lg={4} sm={12}>
+            <Row>
+              <Col md={12} sm={12} lg={12} className="pt-3  m-0">
+                <h3 className={classes.AtAGlance2}>
+                  <Divider>ACADEMIC CALENDAR</Divider>
+                </h3>
+              </Col>
+              <Col md={12} sm={12}>
+                <hr className={classes.hrGlance2} />
+              </Col>
+              <Col>
+                <Table striped bordered responsive>
+                  <thead>
+                    <tr>
+                      <th>DATES</th>
+                      <th>EVENTS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>September 15, 2024</td>
+                      <td>Resumption of Boaders</td>
+                    </tr>
+                    <tr>
+                      <td>Sept 16, 2024</td>
+                      <td>Resumption of all Students</td>
+                    </tr>
+                    <tr>
+                      <td>Oct 19, 2024 - Oct 21, 2024</td>
+                      <td>First Continuous Assessment Test</td>
+                    </tr>
+                    <tr>
+                      <td>Oct 22, 2024</td>
+                      <td>Open Day</td>
+                    </tr>
+                    <tr>
+                      <td>Oct 31, 2024 & Nov 1, 2024</td>
+                      <td>Mid Term Break</td>
+                    </tr>
+                    <tr>
+                      <td>Nov 4, 2024</td>
+                      <td>Cultural Day</td>
+                    </tr>
+                    <tr>
+                      <td>Dec 2, 2024 - Dec 13, 2024</td>
+                      <td>Examination days</td>
+                    </tr>
+                    <tr>
+                      <td>Dec 17, 2024</td>
+                      <td>General PTA Meeting</td>
+                    </tr>
+                    <tr>
+                      <td>December 19, 2024</td>
+                      <td>Vacation Day</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </Col>
+            </Row>
+          </Col>
+          <Col md={4} lg={4} sm={12}>
+            <Row>
+              <Col md={12} sm={12} lg={12} className="pt-3  m-0">
+                <h3 className={classes.AtAGlance2}>
+                  <Divider>FEES</Divider>
+                </h3>
+              </Col>
+              <Col md={12} sm={12}>
+                <hr className={classes.hrGlance2} />
+              </Col>
+              <Col>
+                <Table striped bordered responsive>
+                  <thead>
+                    <tr>
+                      <th>FEES</th>
+                      <th className="text-center">AMOUNT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>JS1 - 3 (NEW STUDENTS)SCHOOL FEE</td>
+                      <td className="text-center"> ₦45,000.00 </td>
+                    </tr>
+                    <tr>
+                      <td>JS1 -3 (RETURNING STUDENTS) SCHOOL FEE</td>
+                      <td className="text-center">₦40,000</td>
+                    </tr>
+                    <tr>
+                      <td>SS1 - 3 (NEW STUDENTS) SCHOOL FEE</td>
+                      <td className="text-center">₦50,000.00 </td>
+                    </tr>
+                    <tr>
+                      <td>SS1 -3 (RETURNING STUDENTS) SCHOOL FEE</td>
+                      <td className="text-center">₦47,000</td>
+                    </tr>
+
+                    <tr>
+                      <td>BOARDING FEE (OPTIONAL)</td>
+                      <td className="text-center">₦60,000</td>
+                    </tr>
+                    <tr>
+                      <td>LESSON FEE</td>
+                      <td className="text-center">₦25,000</td>
+                    </tr>
+                    <tr>
+                      <td>TRANSPORT FEE (OPTIONAL)</td>
+                      <td className="text-center">₦35,000</td>
+                    </tr>
+                    <tr>
+                      <td>LABORATORY FEE (SCIENCE STUDENTS)</td>
+                      <td className="text-center">₦2,500</td>
+                    </tr>
+                    <tr>
+                      <td>VALEDICTORY FEE (FINAL YEAR STUDENTS)</td>
+                      <td className="text-center">₦5,000</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </Col>
+            </Row>
+          </Col>
+          <Col md={4} lg={4} sm={12}>
+            <Row>
+              <Col md={12} sm={12} lg={12} className="pt-3  m-0">
+                <h3 className={classes.AtAGlance2}>
+                  <Divider>BANK DETAILS</Divider>
+                </h3>
+              </Col>
+              <Col md={12} sm={12}>
+                <hr className={classes.hrGlance2} />
+              </Col>
+              <Col>
+                <Table striped bordered responsive>
+                  <tbody>
+                    <tr>
+                      <td>
+                        ZENITH BANK
+                        <br />
+                        EAUED MODEL HIGH SCHOOL,OYO <br />
+                        0050545878
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        FIRST BANK
+                        <br />
+                        EAUED MODEL HIGH SCHOOL,OYO <br />
+                        2022554125
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        GT BANK
+                        <br />
+                        EAUED MODEL HIGH SCHOOL,OYO <br />
+                        3563322159
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+
+        <Row className="px-5">
+          <Col md={12} sm={12} className="pt-3  m-0">
+            <h3 className={classes.AtAGlance}>
+              <Divider>OUR PICTURES SPEAK</Divider>
+            </h3>
+          </Col>
+          <Col md={12} sm={12}>
+            <hr className={classes.hrGlance} />
+          </Col>
+          <Col>
+            <Gallery photos={photos} />
+          </Col>
+        </Row>
+
+        {/*  Testimonials Section */}
+
+        <Row className="px-5">
+          <Col md={12} sm={12} className="pt-3  m-0">
+            <h3 className={classes.AtAGlance}>
+              <Divider>TESTIMONIALS</Divider>
+            </h3>
+          </Col>
+          <Col md={12} sm={12}>
+            <hr className={classes.hrGlance} />
+          </Col>
+          <Col md={12} sm={12}>
+            <Row>
+              <Col md={3} lg={3} sm={12}>
+                <TestimonialsComponents
+                  Tes="EAUED MHS gives sound academic knowldege to the students.
+                    My daughter is a good testimony. I recommend this school
+                    always..."
+                  Pers="Mrs Adenike Raymond"
+                  col={{ backgroundColor: "#f5c5cd" }}
+                />
+              </Col>
+              <Col md={3} lg={3} sm={12}>
+                <TestimonialsComponents
+                  Tes="I have never regretted sending all my four children to
+                    EAUED Model High School. If you want the best for your ward,
+                    enroll him/her your in this school..."
+                  Pers="Dr Akinade A.P"
+                  col={{ backgroundColor: "#c5ebf5" }}
+                />
+              </Col>
+              <Col md={3} lg={3} sm={12}>
+                <TestimonialsComponents
+                  Tes="Model High School is a place where you can get the quality value for the money spend on your children. The school gets all what it takes to excel"
+                  Pers="Mr Olowolagba Kazeem"
+                  col={{ backgroundColor: "#e7f5c5" }}
+                />
+              </Col>
+              <Col md={3} lg={3} sm={12}>
+                <TestimonialsComponents
+                  Tes="When it comes to quality education in a very conducive environment, give it to Model High School, Oyo. They are simply the best..."
+                  Pers="Mrs Owolabi Sharon"
+                  col={{ backgroundColor: "#c5f5d0" }}
+                />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        {/*  Contact Section */}
+
+        <Row className="px-5">
+          <Col md={12} sm={12} className="pt-3  m-0">
+            <h3 className={classes.AtAGlance}>
+              <Divider>CONTACT US</Divider>
+            </h3>
+          </Col>
+          <Col md={12} sm={12}>
+            <hr className={classes.hrGlance} />
+          </Col>
+          <Col md={12} sm={12}>
+            <Row>
+              <Col md="4" lg="4" sm="12">
+                <Card>
+                  <CardHeader>Our Address</CardHeader>
+                  <CardBody>
+                    <p className="text-justify">
+                      Opposite Old Oyo National Park, Along Oyo - Iseyin express
+                      way, Isokun, Oyo, Oyo State
+                    </p>
+                    <p className="my-0 py-0">
+                      Phones: +234(0)8033824233, +234(0)8052478877
+                    </p>
+                    <p className="my-0 py-0">
+                      Email: modelhighschool@eauedmhs.com.ng
+                    </p>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col md="4" lg="4" sm="12">
+                <Card>
+                  <CardHeader>Our Handles</CardHeader>
+                  <CardBody className="pl-3">
+                    <Link
+                      className={`d-inline-block my-1 ${classes.socialmediatext}`}
+                      href="/#"
+                    >
+                      <span className={classes.socialmedia}>
+                        <FaFacebook />
+                      </span>{" "}
+                      @eaued model high school, oyo
+                    </Link>
+                    <Link
+                      className={`d-inline-block my-1 ${classes.socialmediatext}`}
+                      href="/#"
+                    >
+                      <span className={classes.socialmedia}>
+                        {" "}
+                        <FaTwitter />
+                      </span>{" "}
+                      @eaued model high school, oyo
+                    </Link>
+                    <Link
+                      className={`d-inline-block my-1 ${classes.socialmediatext}`}
+                      href="/#"
+                    >
+                      <span className={classes.socialmedia}>
+                        <FaInstagram />{" "}
+                      </span>
+                      @eaued model high school, oyo
+                    </Link>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col md="4" lg="4" sm="12">
+                <Card>
+                  <CardHeader>Send Us Message</CardHeader>
+                  <CardBody>
+                    <Form>
+                      <Form.Group className="my-2">
+                        <Form.Label
+                          style={{ color: "brown", fontWeight: "bold" }}
+                        >
+                          NAME
+                          <span className={classes.CompulsoryItem}>
+                            <sup>*</sup>
+                          </span>
+                        </Form.Label>
+                        <Form.Control
+                          type="text"
+                          value={Cname}
+                          onChange={(e) => setCname(e.target.value)}
+                          name="Cname"
+                          required={true}
+                          placeholder="Your Name"
+                        />
+                      </Form.Group>
+                      <Form.Group className="my-2">
+                        <Form.Label
+                          style={{ color: "brown", fontWeight: "bold" }}
+                        >
+                          EMAIL
+                          <span className={classes.CompulsoryItem}>
+                            <sup>*</sup>
+                          </span>
+                        </Form.Label>
+                        <Form.Control
+                          type="email"
+                          value={Cemail}
+                          onChange={(e) => setCemail(e.target.value)}
+                          name="Cemail"
+                          required={true}
+                          placeholder="Your E-mail address"
+                        />
+                      </Form.Group>
+                      <Form.Group className="my-2">
+                        <Form.Label
+                          style={{ color: "brown", fontWeight: "bold" }}
+                        >
+                          MESSAGE
+                          <span className={classes.CompulsoryItem}>
+                            <sup>*</sup>
+                          </span>
+                        </Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          rows={5}
+                          type="email"
+                          value={Cemail}
+                          onChange={(e) => setCemail(e.target.value)}
+                          name="Cemail"
+                          required={true}
+                          placeholder="Your E-mail address"
+                        />
+                      </Form.Group>
+                      <Button
+                        variant="outline-danger"
+                        type="submit"
+                        className="float-end d-inline-block my-2"
+                      >
+                        SEND
+                      </Button>
+                    </Form>
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Col>
