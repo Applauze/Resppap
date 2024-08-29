@@ -92,8 +92,16 @@
   height: "50px" !important;
 }
 
-.socialmedia {
-  color: #920808;
+.socialmediaF {
+  color: #3904bf;
+  font-size: 30px;
+}
+.socialmediaT {
+  color: #5ebdea;
+  font-size: 30px;
+}
+.socialmediaI {
+  color: #ea1010;
   font-size: 30px;
 }
 
@@ -101,5 +109,11 @@
   .MainImageRow {
     height: 600px;
     width: 100%;
+  }
+
+  .colNumRec,
+  .colTestimonial {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
   }
 }

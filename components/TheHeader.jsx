@@ -135,24 +135,34 @@ const TheHeader = () => {
               </li>
               <li className="d-inline-block mx-0 px-2 ">
                 <MainLinks
-                  LinkName="REGISTRATION"
+                  LinkName="ABOUT US"
                   ThePanel={
                     <AllPanel
                       TheLink={[
                         {
-                          title: "Student's Registration",
-                          desc: "This opens a new form to register a newly admitted student who has no record on the software yet.",
-                          path: "/studentregistration",
+                          title: "History",
+                          desc: "Brief Information about the history of the school",
+                          path: "/history",
                         },
                         {
-                          title: "Teacher's Registration",
-                          desc: "This opens a new form to register a new teacher and provide the teacher with necessary login details",
-                          path: "/teachersregistration",
+                          title: "University Management",
+                          desc: "The Profile of the Principal Officers of our Mother School (EAUED)",
+                          path: "/topmanagement",
                         },
                         {
-                          title: "Subjects' Registration",
-                          desc: "This opens a new form to register all the subjects offered by a  subject here",
-                          path: "/subjectssregistration",
+                          title: "School Management",
+                          desc: "The profile of the Principal Officers of the school",
+                          path: "/schoolmanagement",
+                        },
+                        {
+                          title: "Our Mission",
+                          desc: "Our Mission Statement",
+                          path: "/mission",
+                        },
+                        {
+                          title: "Our Vision",
+                          desc: "Our Long term Projection",
+                          path: "/mission",
                         },
                       ]}
                     />
@@ -161,19 +171,34 @@ const TheHeader = () => {
               </li>
               <li className="d-inline-block mx-4 px-2 ">
                 <MainLinks
-                  LinkName="COMPUTATION"
+                  LinkName="ACADEMICS"
                   ThePanel={
                     <AllPanel
                       TheLink={[
                         {
-                          title: "Scores Computation",
-                          desc: "Subject Teachers input the scores of their students by selecting the necessary details",
-                          path: "/computescores",
+                          title: "Overview",
+                          desc: "An overview of our academic programs that make us the best",
+                          path: "/academicoverview",
                         },
                         {
-                          title: "Students Attributes",
-                          desc: "Class Teachers input the attributes of students in their class. This include the psychomotor and thhe affective domain",
-                          path: "/computereports",
+                          title: "Curriculum",
+                          desc: "The Curriculum we operate with for our academic programs",
+                          path: "/curriculum",
+                        },
+                        {
+                          title: "Junior Secondary School",
+                          desc: "Details of our Junior Secondary School academic programs",
+                          path: "/jss",
+                        },
+                        {
+                          title: "Senior Secondary School",
+                          desc: "Details of our Senior Secondary School academic programs",
+                          path: "/sss",
+                        },
+                        {
+                          title: "External Examinations",
+                          desc: "The external examinations written by our students",
+                          path: "/examination",
                         },
                       ]}
                     />
@@ -182,48 +207,87 @@ const TheHeader = () => {
               </li>
               <li className="d-inline-block mx-4 px-2 ">
                 <MainLinks
-                  LinkName="VIEW"
+                  LinkName="INFORMATION"
                   ThePanel={
                     <AllPanel
                       TheLink={[
                         {
-                          title: "View Report Sheet",
-                          desc: "Students completed Report Sheet can be viewed and printed or exported to parents here",
-                          path: "/displayresults",
+                          title: "School Calendar",
+                          desc: "The school calendar for the present term",
+                          path: "/calendar",
                         },
                         {
-                          title: "View Broad Sheet",
-                          desc: "Teachers view the cummulative broadsheet of scores of all the students in all subjects  in their class here",
-                          path: "/displaybroadsheet",
+                          title: "News & Events",
+                          desc: "Major events happening within and outside the school ",
+                          path: "/news",
+                        },
+                        {
+                          title: "Photo Gallery",
+                          desc: "Our events in pictures",
+                          path: "/gallery",
+                        },
+                        {
+                          title: "Video Gallery",
+                          desc: "Our recordings on school major events",
+                          path: "/gallery",
                         },
                       ]}
                     />
                   }
                 />
-              </li>
-              <li className="d-inline-block mx-4 px-2 ">
-                <MainLinks LinkName="AWARDS" />
               </li>
               <li className="d-inline-block mx-4 px-2 ">
                 <MainLinks
-                  LinkName="ADMIN"
+                  LinkName="FACILITIES"
                   ThePanel={
                     <AllPanel
                       TheLink={[
                         {
-                          title: "Subject Teacher Allocation",
-                          desc: "Authorize a teacher to the subject he/she teaches for easy access to scores computation",
-                          path: "/subjectteacherallocation",
+                          title: "Hostel",
+                          desc: "Information about the school hostel for the boarders",
+                          path: "/hostel",
                         },
                         {
-                          title: "Class Teacher Allocation",
-                          desc: "Authorize teacher to perform class teacher's work for a particular class",
-                          path: "/classteacherallocation",
+                          title: "School Laboratories",
+                          desc: "Information on our Science and other laboratories",
+                          path: "/laboratories",
                         },
                         {
-                          title: "Change Student's Class",
-                          desc: "Change a student class and move all his records from a his previous class to his/her new class",
-                          path: "/changestudentclass",
+                          title: "ICT Center",
+                          desc: "Our well equipped information and communication technology center",
+                          path: "/ict",
+                        },
+                        {
+                          title: "School Buses",
+                          desc: "Our medium of transportation",
+                          path: "/transport",
+                        },
+                        {
+                          title: "Other Facilities",
+                          desc: "So mny attractive facilities of the school",
+                          path: "/others",
+                        },
+                      ]}
+                    />
+                  }
+                />
+              </li>
+
+              <li className="d-inline-block mx-4 px-2 ">
+                <MainLinks
+                  LinkName="PORTALS"
+                  ThePanel={
+                    <AllPanel
+                      TheLink={[
+                        {
+                          title: "Result Portal",
+                          desc: "Check the students academic Performance",
+                          path: "/result",
+                        },
+                        {
+                          title: "School Fees Portal",
+                          desc: "Make payment online or check payment status",
+                          path: "/fees",
                         },
                       ]}
                     />
@@ -231,10 +295,7 @@ const TheHeader = () => {
                 />
               </li>
               <li className="d-inline-block mx-4 px-2 ">
-                <MainLinks LinkName="ABOUT" />
-              </li>
-              <li className="d-inline-block mx-4 px-2 ">
-                <MainLinks LinkName="LOG OUT" Action={ExitFunction} />
+                <MainLinks LinkName="CONTACT US" />
               </li>
             </ul>
           </Col>
@@ -315,13 +376,13 @@ const TheHeader = () => {
                     className={`${classes.MobileMenuList} w-100 m-0 d-block`}
                   >
                     <div className={`${rubik} ${classes.subLinks}`}>
-                      Registration
+                      About us
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
                           href="/studentregistration"
                           className={classes.submobilelinks}
                         >
-                          Students Registration
+                          University Management
                         </Link>
                       </p>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
@@ -329,7 +390,7 @@ const TheHeader = () => {
                           href="/teachersregistration"
                           className={classes.submobilelinks}
                         >
-                          Staff Registration
+                          School Management
                         </Link>
                       </p>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
@@ -346,13 +407,13 @@ const TheHeader = () => {
                     className={`${classes.MobileMenuList} w-100 m-0 d-block`}
                   >
                     <div className={`${rubik} ${classes.subLinks}`}>
-                      Computation
+                      Admission
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
                           href="/computescores"
                           className={classes.submobilelinks}
                         >
-                          Scores Computation
+                          Overview
                         </Link>
                       </p>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
@@ -360,7 +421,31 @@ const TheHeader = () => {
                           href="/computereports"
                           className={classes.submobilelinks}
                         >
-                          Students Attributes
+                          Admission Process
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/computereports"
+                          className={classes.submobilelinks}
+                        >
+                          Apply Now
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/computereports"
+                          className={classes.submobilelinks}
+                        >
+                          Placement Assessment
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/computereports"
+                          className={classes.submobilelinks}
+                        >
+                          Admission List
                         </Link>
                       </p>
                     </div>
@@ -369,13 +454,13 @@ const TheHeader = () => {
                     className={`${classes.MobileMenuList} w-100 m-0 d-block`}
                   >
                     <div className={`${rubik} ${classes.subLinks}`}>
-                      View
+                      Academics
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
                           href="/displayresults"
                           className={classes.submobilelinks}
                         >
-                          View Report Sheet
+                          Overview
                         </Link>
                       </p>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
@@ -383,36 +468,47 @@ const TheHeader = () => {
                           href="/displaybroadsheet"
                           className={classes.submobilelinks}
                         >
-                          View Broad Sheet
+                          Curriculum
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/computereports"
+                          className={classes.submobilelinks}
+                        >
+                          JSS
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/computereports"
+                          className={classes.submobilelinks}
+                        >
+                          SSS
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/computereports"
+                          className={classes.submobilelinks}
+                        >
+                          External Examinations
                         </Link>
                       </p>
                     </div>
                   </ListGroup.Item>
-                  <ListGroup.Item
-                    className={`${classes.MobileMenuList} w-100 m-0`}
-                  >
-                    <Link href="#" className={`${rubik} ${classes.subLinks}`}>
-                      Award
-                    </Link>
-                  </ListGroup.Item>
-                  <ListGroup.Item
-                    className={`${classes.MobileMenuList} w-100 m-0`}
-                  >
-                    <Link href="#" className={`${rubik} ${classes.subLinks}`}>
-                      About
-                    </Link>
-                  </ListGroup.Item>
+
                   <ListGroup.Item
                     className={`${classes.MobileMenuList} w-100 m-0 d-block`}
                   >
                     <div className={`${rubik} ${classes.subLinks}`}>
-                      Admin
+                      Information
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
                           href="/subjectteacherallocation"
                           className={classes.submobilelinks}
                         >
-                          Subject Teacher Allocation
+                          Calendar
                         </Link>
                       </p>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
@@ -420,7 +516,7 @@ const TheHeader = () => {
                           href="/classteacherallocation"
                           className={classes.submobilelinks}
                         >
-                          Class Teacher Allocation
+                          News & Events
                         </Link>
                       </p>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
@@ -428,7 +524,77 @@ const TheHeader = () => {
                           href="/classteacherallocation"
                           className={classes.submobilelinks}
                         >
-                          Change Student Class
+                          Photo Gallery
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/classteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          Video Gallery
+                        </Link>
+                      </p>
+                    </div>
+                  </ListGroup.Item>
+                  <ListGroup.Item
+                    className={`${classes.MobileMenuList} w-100 m-0 d-block`}
+                  >
+                    <div className={`${rubik} ${classes.subLinks}`}>
+                      Facilities
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/subjectteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          School Hostel
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/classteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          School Laboratories
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/classteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          ICT Center
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/classteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          School Buses
+                        </Link>
+                      </p>
+                    </div>
+                  </ListGroup.Item>
+                  <ListGroup.Item
+                    className={`${classes.MobileMenuList} w-100 m-0 d-block`}
+                  >
+                    <div className={`${rubik} ${classes.subLinks}`}>
+                      Portal
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/subjectteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          Result Portal
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/classteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          Fees Portal
                         </Link>
                       </p>
                     </div>

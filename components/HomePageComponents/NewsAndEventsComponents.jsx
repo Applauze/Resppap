@@ -17,14 +17,14 @@ const NewsAndEventsComponents = (props) => {
         <Image
           src={props.NewsImage}
           alt="News Image"
-          width={400}
-          height={200}
-          className="thumbnail"
+          thumbnail
+          roundedCircle
+          className={`border border-gray-300 ${classes.NewsImage}`}
         />
       </Col>
       <Col lg={6} md={6} sm={12}>
         <p className={`${classes.NewsTitle} ${kanit}`}>{props.NewsTitle}</p>
-        <p className="text-justify">{props.NewsDetails}</p>
+        <p className="text-ju">{props.NewsDetails}</p>
         <p>
           <Link href="#" className={classes.theLinks}>
             {"Read more >>>"}

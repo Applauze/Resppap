@@ -22,3 +22,19 @@
   font-weight: bold;
   font-size: 22px;
 }
+
+.NewsImage {
+  width: 400px;
+  height: 200px;
+}
+
+@media screen and (max-width: 768px) {
+  .NewsImage {
+    width: 100% !important;
+  }
+
+  .theLinks {
+    display: block;
+    text-align: right;
+  }
+}

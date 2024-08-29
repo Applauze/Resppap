@@ -226,7 +226,7 @@ const HomePage = () => {
                 md={3}
                 lg={3}
                 sm={12}
-                className="d-flex  justify-content-center"
+                className={`${classes.colNumRec} d-flex  justify-content-center my-sm-2`}
               >
                 <NumberRecordsDescription
                   figure={800}
@@ -237,7 +237,7 @@ const HomePage = () => {
                 md={3}
                 lg={3}
                 sm={12}
-                className="d-flex  justify-content-center"
+                className={`${classes.colNumRec} d-flex  justify-content-center my-sm-2`}
               >
                 <NumberRecordsDescription
                   figure={100}
@@ -248,7 +248,7 @@ const HomePage = () => {
                 md={3}
                 lg={3}
                 sm={12}
-                className="d-flex  justify-content-center"
+                className={`${classes.colNumRec} d-flex  justify-content-center my-sm-2`}
               >
                 <NumberRecordsDescription
                   figure={5}
@@ -259,7 +259,7 @@ const HomePage = () => {
                 md={3}
                 lg={3}
                 sm={12}
-                className="d-flex  justify-content-center"
+                className={`${classes.colNumRec} d-flex  justify-content-center my-sm-2`}
               >
                 <NumberRecordsDescription
                   figure={150}
@@ -621,7 +621,7 @@ const HomePage = () => {
           </Col>
           <Col md={12} sm={12}>
             <Row>
-              <Col md={3} lg={3} sm={12}>
+              <Col md={3} lg={3} sm={12} className={classes.colTestimonial}>
                 <TestimonialsComponents
                   Tes="EAUED MHS gives sound academic knowldege to the students.
                     My daughter is a good testimony. I recommend this school
@@ -630,7 +630,7 @@ const HomePage = () => {
                   col={{ backgroundColor: "#f5c5cd" }}
                 />
               </Col>
-              <Col md={3} lg={3} sm={12}>
+              <Col md={3} lg={3} sm={12} className={classes.colTestimonial}>
                 <TestimonialsComponents
                   Tes="I have never regretted sending all my four children to
                     EAUED Model High School. If you want the best for your ward,
@@ -639,14 +639,14 @@ const HomePage = () => {
                   col={{ backgroundColor: "#c5ebf5" }}
                 />
               </Col>
-              <Col md={3} lg={3} sm={12}>
+              <Col md={3} lg={3} sm={12} className={classes.colTestimonial}>
                 <TestimonialsComponents
                   Tes="Model High School is a place where you can get the quality value for the money spend on your children. The school gets all what it takes to excel"
                   Pers="Mr Olowolagba Kazeem"
                   col={{ backgroundColor: "#e7f5c5" }}
                 />
               </Col>
-              <Col md={3} lg={3} sm={12}>
+              <Col md={3} lg={3} sm={12} className={classes.colTestimonial}>
                 <TestimonialsComponents
                   Tes="When it comes to quality education in a very conducive environment, give it to Model High School, Oyo. They are simply the best..."
                   Pers="Mrs Owolabi Sharon"
@@ -669,6 +669,10 @@ const HomePage = () => {
           </Col>
           <Col md={12} sm={12}>
             <Row>
+              <p className="text-center">
+                You can drop you comments, suggestions, complaint or contact
+                here and we shall get back to you.
+              </p>
               <Col md="4" lg="4" sm="12">
                 <Card>
                   <CardHeader>Our Address</CardHeader>
@@ -694,7 +698,7 @@ const HomePage = () => {
                       className={`d-inline-block my-1 ${classes.socialmediatext}`}
                       href="/#"
                     >
-                      <span className={classes.socialmedia}>
+                      <span className={classes.socialmediaF}>
                         <FaFacebook />
                       </span>{" "}
                       @eaued model high school, oyo
@@ -703,7 +707,7 @@ const HomePage = () => {
                       className={`d-inline-block my-1 ${classes.socialmediatext}`}
                       href="/#"
                     >
-                      <span className={classes.socialmedia}>
+                      <span className={classes.socialmediaT}>
                         {" "}
                         <FaTwitter />
                       </span>{" "}
@@ -713,7 +717,7 @@ const HomePage = () => {
                       className={`d-inline-block my-1 ${classes.socialmediatext}`}
                       href="/#"
                     >
-                      <span className={classes.socialmedia}>
+                      <span className={classes.socialmediaI}>
                         <FaInstagram />{" "}
                       </span>
                       @eaued model high school, oyo
@@ -774,10 +778,10 @@ const HomePage = () => {
                         <Form.Control
                           as="textarea"
                           rows={5}
-                          type="email"
-                          value={Cemail}
-                          onChange={(e) => setCemail(e.target.value)}
-                          name="Cemail"
+                          type="Comment"
+                          value={Comment}
+                          onChange={(e) => setComment(e.target.value)}
+                          name="Comment"
                           required={true}
                           placeholder="Your E-mail address"
                         />
