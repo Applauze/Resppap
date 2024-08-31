@@ -2,25 +2,41 @@
 import React, { useState } from "react";
 import { Card, Row, Col } from "react-bootstrap";
 import classes from "./TheFooter.module.css";
+import Link from "next/link";
+import { kanit } from "@/app/util/fonts";
 const TheFooter = () => {
   const [FooterDetails, setFooterDetails] = useState([
     {
       header: "ABOUT US",
-      body: "Our mission is to provide quality services to people in achieving optimum health as we deliver the best products and values to every stakeholder.",
+      p1: "History",
+      p2: "University Management",
+      p3: "School Management",
+      p4: "Our Mission",
+      p5: "Our Vision",
     },
     {
-      header: "OUR ADDRESS",
-      body: "Idi Ose Junction, Opp. Musalat Petrol Station, Agunpopo, Oyo, Oyo State.",
+      header: "Academics",
+      p1: "Overview",
+      p2: "Curriculum",
+      p3: "Junior Secondary School",
+      p4: "Senior Secondary School",
+      p5: "External Examinations",
     },
     {
-      header: "CONTACT US",
-      body: "PHONE NUMBERS: 08054247571, 07067088368",
+      header: "INFORMATION",
+      p1: "School Calendar",
+      p2: "News & Events",
+      p3: "Photo Gallery",
+      p4: "Video Gallery",
     },
     {
-      header: " OUR SOFTWARE DEVELOPER",
-      body: "APPLAUSE INFOTECH",
-      tel: "TELEPHONE:08033824233",
-      email: "EMAIL:Upmosttony@gmail.com",
+      header: " FACILITIES",
+      p1: "Hostels",
+      p2: "School Laboratories",
+      p3: "ICT Center",
+      p3: "Medical Center",
+      p4: "Library",
+      p5: "School Buses",
     },
   ]);
 
@@ -30,6 +46,7 @@ const TheFooter = () => {
         <Card style={{ backgroundColor: "#d9ffff" }}>
           <Card.Body>
             <Row>
+              <h4 className={`${kanit} mb-3`}>QUICK LINKS</h4>
               {FooterDetails.map((ft, index) => (
                 <Col md={3} sm={12} xs={12} key={index}>
                   <h6 className={classes.FootHeader} style={{ color: "brown" }}>
@@ -37,35 +54,50 @@ const TheFooter = () => {
                   </h6>
                   <hr className="my-1 " />
                   <p
+                    href="#"
                     className="text-justify m-0"
                     style={{ fontFamily: "Times New Roman" }}
                   >
-                    {ft.body}
+                    <Link href="#" className={classes.QuickLinks}>
+                      {ft.p1}
+                    </Link>
                   </p>
-                  {ft.Add && (
-                    <p
-                      className="text-justify m-0"
-                      style={{ fontFamily: "Times New Roman" }}
-                    >
-                      {ft.Add}
-                    </p>
-                  )}
-                  {ft.tel && (
-                    <p
-                      className="text-justify m-0"
-                      style={{ fontFamily: "Times New Roman" }}
-                    >
-                      {ft.tel}
-                    </p>
-                  )}
-                  {ft.email && (
-                    <p
-                      className="text-justify m-0"
-                      style={{ fontFamily: "Times New Roman" }}
-                    >
-                      {ft.email}
-                    </p>
-                  )}
+                  <p
+                    href="#"
+                    className="text-justify m-0"
+                    style={{ fontFamily: "Times New Roman" }}
+                  >
+                    <Link href="#" className={classes.QuickLinks}>
+                      {ft.p2}
+                    </Link>
+                  </p>
+                  <p
+                    href="#"
+                    className="text-justify m-0"
+                    style={{ fontFamily: "Times New Roman" }}
+                  >
+                    <Link href="#" className={classes.QuickLinks}>
+                      {ft.p3}
+                    </Link>
+                  </p>
+                  <p
+                    href="#"
+                    className="text-justify m-0"
+                    style={{ fontFamily: "Times New Roman" }}
+                  >
+                    <Link href="#" className={classes.QuickLinks}>
+                      {ft.p4}
+                    </Link>
+                  </p>
+                  <p
+                    href="#"
+                    className="text-justify m-0"
+                    style={{ fontFamily: "Times New Roman" }}
+                  >
+                    <Link href="#" className={classes.QuickLinks}>
+                      {ft.p5}
+                    </Link>
+                  </p>
                 </Col>
               ))}
             </Row>

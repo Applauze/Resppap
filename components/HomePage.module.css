@@ -45,8 +45,8 @@
 }
 
 .PrincipalImage {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
 }
 
 .PrincipalMessage {
@@ -87,6 +87,11 @@
   font-size: 18px;
 }
 
+.FeesTable,
+.FeesTable * {
+  font-family: "Times New Roman", Times, serif;
+}
+
 .NewsImage {
   width: "50px" !important;
   height: "50px" !important;
@@ -105,6 +110,12 @@
   font-size: 30px;
 }
 
+.HomeImages {
+  width: 100% !important;
+  height: 250px !important;
+  border: 5px solid #fac9c9 !important;
+}
+
 @media screen and (max-width: 768px) {
   .MainImageRow {
     height: 600px;
@@ -112,8 +123,15 @@
   }
 
   .colNumRec,
-  .colTestimonial {
+  .colTestimonial,
+  .colTheContacts {
     margin-top: 15px !important;
     margin-bottom: 15px !important;
+  }
+
+  .HomeImages {
+    width: 100% !important;
+    height: 400px !important;
+    border: 5px solid #fac9c9 !important;
   }
 }

@@ -258,14 +258,19 @@ const TheHeader = () => {
                           path: "/ict",
                         },
                         {
+                          title: "Medical Center",
+                          desc: "Check out our standard medical center managed by qualified and experienced medical personnel",
+                          path: "/medics",
+                        },
+                        {
+                          title: "School Library",
+                          desc: "Our well equiped library with large and relevant collections of books and digital resources",
+                          path: "/library",
+                        },
+                        {
                           title: "School Buses",
                           desc: "Our medium of transportation",
                           path: "/transport",
-                        },
-                        {
-                          title: "Other Facilities",
-                          desc: "So mny attractive facilities of the school",
-                          path: "/others",
                         },
                       ]}
                     />
@@ -363,6 +368,7 @@ const TheHeader = () => {
                     borderRadius: "0px",
                     margin: "0px",
                     display: "inline-block",
+                    width: "100%",
                   }}
                 >
                   <ListGroup.Item
@@ -379,6 +385,14 @@ const TheHeader = () => {
                       About us
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
+                          href="/history"
+                          className={classes.submobilelinks}
+                        >
+                          History
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
                           href="/studentregistration"
                           className={classes.submobilelinks}
                         >
@@ -391,14 +405,6 @@ const TheHeader = () => {
                           className={classes.submobilelinks}
                         >
                           School Management
-                        </Link>
-                      </p>
-                      <p className={`${classes.submobileP} ml-3 my-0`}>
-                        <Link
-                          href="/subjectsregistration"
-                          className={classes.submobilelinks}
-                        >
-                          Subjects Registration
                         </Link>
                       </p>
                     </div>
@@ -564,6 +570,22 @@ const TheHeader = () => {
                           className={classes.submobilelinks}
                         >
                           ICT Center
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/classteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          Medical Center
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/classteacherallocation"
+                          className={classes.submobilelinks}
+                        >
+                          School Library
                         </Link>
                       </p>
                       <p className={`${classes.submobileP} ml-3 my-0`}>

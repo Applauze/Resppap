@@ -2,9 +2,19 @@
   font-weight: bold;
 }
 
+.QuickLinks:hover {
+  color: #bc0202;
+}
+
 @media screen and (max-width: 768px) {
   .FootHeader {
     margin-top: 20px !important;
+  }
+
+  .QuickLinks,
+  .FootHeader {
+    display: block;
+    margin-left: 50px;
   }
 }
 

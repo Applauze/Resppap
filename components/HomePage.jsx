@@ -22,7 +22,8 @@ import vision from "@/components/Images/schoolImages/vision.png";
 import core from "@/components/Images/schoolImages/core.png";
 import award from "@/components/Images/schoolImages/award.jpeg";
 import BorderedCard from "./Cards/BorderedCard";
-import BorderedCardNoHover from "./Cards/BorderedCardNoHover";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import { kanit, rubik, pt_Sans } from "@/app/util/fonts";
 import NumberRecordsDescription from "./HomePageComponents/NumberRecordsDescription";
 import MissionVissionCoreComponents from "./HomePageComponents/MissionVissionCoreComponents";
@@ -54,12 +55,14 @@ import Link from "next/link";
 import { RowsPhotoAlbum } from "react-photo-album";
 import "react-photo-album/rows.css";
 import TestimonialsComponents from "./HomePageComponents/TestimonialsComponents";
+import Image_Modal from "./ModalsAndAlerts/Image_Modal";
 
 const HomePage = () => {
   const [Cname, setCname] = useState("");
   const [Cemail, setCemail] = useState("");
   const [Comment, setComment] = useState("");
-
+  const [ImageModal, setImageModal] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const photos = [
     {
       src: gal_img1,
@@ -103,6 +106,17 @@ const HomePage = () => {
     },
   ];
 
+  const handleMouseEnter = (mg) => {
+    console.log("Entering");
+    setImageModal(mg);
+    setIsModalVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    console.log("Exiting...");
+    setIsModalVisible(false);
+  };
+
   return (
     <Row>
       <Col md={12} sm={12} lg={12} className="p-0 m-0">
@@ -119,13 +133,13 @@ const HomePage = () => {
             <BorderedCard
               MyStyle={{ backgroundColor: "rgba(210, 210, 210, 0.5)" }}
             >
-              <h4>WELCOME TO EAUED MHS</h4>
-              <hr />
               <p className={classes.MissionParagraph}>
-                Our Mission is to encoutrage academic excellence and creativity
-                through a rigorous and relevant curriculum, innovative teaching
-                methods and a commitment to character development.
+                "Education is the most powerful weapon which you can use to
+                change the world. It is the foundation upon which we build our
+                future..."
               </p>
+              <hr />
+              <h6 className="text-end">NELSON MANDELA</h6>
             </BorderedCard>
             {/* <Image src={mainimage2} alt="" /> */}
           </Col>
@@ -440,7 +454,12 @@ const HomePage = () => {
                 <hr className={classes.hrGlance2} />
               </Col>
               <Col>
-                <Table striped bordered responsive>
+                <Table
+                  striped
+                  bordered
+                  responsive
+                  className={classes.FeesTable}
+                >
                   <thead>
                     <tr>
                       <th>DATES</th>
@@ -500,7 +519,12 @@ const HomePage = () => {
                 <hr className={classes.hrGlance2} />
               </Col>
               <Col>
-                <Table striped bordered responsive>
+                <Table
+                  striped
+                  bordered
+                  responsive
+                  className={classes.FeesTable}
+                >
                   <thead>
                     <tr>
                       <th>FEES</th>
@@ -561,7 +585,12 @@ const HomePage = () => {
                 <hr className={classes.hrGlance2} />
               </Col>
               <Col>
-                <Table striped bordered responsive>
+                <Table
+                  striped
+                  bordered
+                  responsive
+                  className={classes.FeesTable}
+                >
                   <tbody>
                     <tr>
                       <td>
@@ -604,7 +633,19 @@ const HomePage = () => {
             <hr className={classes.hrGlance} />
           </Col>
           <Col>
-            <Gallery photos={photos} />
+            <Row className="g-2">
+              {photos.map((pht, index) => (
+                <Col md={3} lg={3} sm={12} key={index}>
+                  <Image
+                    src={pht.src}
+                    className={`${classes.HomeImages} thumbnail roundedCircle`}
+                    alt={pht + index}
+                    onClick={() => handleMouseEnter(pht.src)}
+                    // onMouseLeave={handleMouseLeave}
+                  />
+                </Col>
+              ))}
+            </Row>
           </Col>
         </Row>
 
@@ -673,7 +714,7 @@ const HomePage = () => {
                 You can drop you comments, suggestions, complaint or contact
                 here and we shall get back to you.
               </p>
-              <Col md="4" lg="4" sm="12">
+              <Col md="4" lg="4" sm="12" className={classes.colTheContacts}>
                 <Card>
                   <CardHeader>Our Address</CardHeader>
                   <CardBody>
@@ -690,42 +731,7 @@ const HomePage = () => {
                   </CardBody>
                 </Card>
               </Col>
-              <Col md="4" lg="4" sm="12">
-                <Card>
-                  <CardHeader>Our Handles</CardHeader>
-                  <CardBody className="pl-3">
-                    <Link
-                      className={`d-inline-block my-1 ${classes.socialmediatext}`}
-                      href="/#"
-                    >
-                      <span className={classes.socialmediaF}>
-                        <FaFacebook />
-                      </span>{" "}
-                      @eaued model high school, oyo
-                    </Link>
-                    <Link
-                      className={`d-inline-block my-1 ${classes.socialmediatext}`}
-                      href="/#"
-                    >
-                      <span className={classes.socialmediaT}>
-                        {" "}
-                        <FaTwitter />
-                      </span>{" "}
-                      @eaued model high school, oyo
-                    </Link>
-                    <Link
-                      className={`d-inline-block my-1 ${classes.socialmediatext}`}
-                      href="/#"
-                    >
-                      <span className={classes.socialmediaI}>
-                        <FaInstagram />{" "}
-                      </span>
-                      @eaued model high school, oyo
-                    </Link>
-                  </CardBody>
-                </Card>
-              </Col>
-              <Col md="4" lg="4" sm="12">
+              <Col md="4" lg="4" sm="12" className={classes.colTheContacts}>
                 <Card>
                   <CardHeader>Send Us Message</CardHeader>
                   <CardBody>
@@ -783,7 +789,7 @@ const HomePage = () => {
                           onChange={(e) => setComment(e.target.value)}
                           name="Comment"
                           required={true}
-                          placeholder="Your E-mail address"
+                          placeholder="Your Message"
                         />
                       </Form.Group>
                       <Button
@@ -797,10 +803,53 @@ const HomePage = () => {
                   </CardBody>
                 </Card>
               </Col>
+              <Col md="4" lg="4" sm="12" className={classes.colTheContacts}>
+                <Card>
+                  <CardHeader>Our Handles</CardHeader>
+                  <CardBody className="pl-3">
+                    <Link
+                      className={`d-inline-block my-1 ${classes.socialmediatext}`}
+                      href="/#"
+                    >
+                      <span className={classes.socialmediaF}>
+                        <FaFacebook />
+                      </span>{" "}
+                      @eaued model high school, oyo
+                    </Link>
+                    <Link
+                      className={`d-inline-block my-1 ${classes.socialmediatext}`}
+                      href="/#"
+                    >
+                      <span className={classes.socialmediaT}>
+                        {" "}
+                        <FaTwitter />
+                      </span>{" "}
+                      @eaued model high school, oyo
+                    </Link>
+                    <Link
+                      className={`d-inline-block my-1 ${classes.socialmediatext}`}
+                      href="/#"
+                    >
+                      <span className={classes.socialmediaI}>
+                        <FaInstagram />{" "}
+                      </span>
+                      @eaued model high school, oyo
+                    </Link>
+                  </CardBody>
+                </Card>
+              </Col>
             </Row>
           </Col>
         </Row>
       </Col>
+      {isModalVisible && (
+        <Image_Modal
+          Open={isModalVisible}
+          Img={ImageModal}
+          Alt="Img"
+          Exit={handleMouseLeave}
+        />
+      )}
     </Row>
   );
 };

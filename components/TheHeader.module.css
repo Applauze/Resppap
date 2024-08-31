@@ -160,14 +160,14 @@
 
   .MobileMenuPanelOn {
     display: inline-block;
-    width: 300px !important;
+    width: 50% !important;
     padding: 0px !important;
     animation: PanelMovement 1s;
   }
 
   @keyframes PanelMovement {
     0% {
-      margin-left: -298px;
+      margin-left: 0px;
     }
     50% {
       margin-left: 100px;
