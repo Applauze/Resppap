@@ -143,7 +143,7 @@ const HomePage = () => {
                 change the world. It is the foundation upon which we build our
                 future..."
               </p>
-              <hr />
+              <hr className="p-0 m-0" />
               <p className={`${kanit} text-end text-small`}>NELSON MANDELA</p>
             </BorderedCard>
             {/* <Image src={mainimage2} alt="" /> */}
