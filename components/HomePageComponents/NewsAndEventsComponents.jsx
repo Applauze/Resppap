@@ -7,7 +7,7 @@ import classes from "./NewsAndEventsComponents.module.css";
 import Link from "next/link";
 const NewsAndEventsComponents = (props) => {
   return (
-    <Row className="px-5 pt-3">
+    <Row className="px-2 pt-3">
       <Col lg={2} md={2} sm={12}>
         <p className={`${classes.NewsMonth} ${kanit}`}>{props.NewsMonth}</p>
         <hr className="m-0 p-0 w-25 mx-auto text-center d-flex justify-content-center" />
@@ -24,7 +24,7 @@ const NewsAndEventsComponents = (props) => {
       </Col>
       <Col lg={6} md={6} sm={12}>
         <p className={`${classes.NewsTitle} ${kanit}`}>{props.NewsTitle}</p>
-        <p className="text-ju">{props.NewsDetails}</p>
+        <p className={classes.NewsDetails}>{props.NewsDetails}</p>
         <p>
           <Link href="#" className={classes.theLinks}>
             {"Read more >>>"}

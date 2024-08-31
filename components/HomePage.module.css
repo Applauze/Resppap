@@ -116,9 +116,30 @@
   border: 5px solid #fac9c9 !important;
 }
 
+.RowSection {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
 @media screen and (max-width: 768px) {
   .MainImageRow {
-    height: 600px;
+    background-image: url("./Images/schoolImages/mainimage_sm_2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 100%;
+  }
+
+  .MissionParagraph {
+    text-align: justify;
+    color: rgb(126, 5, 5);
+    font-weight: bolder;
+    text-shadow: 0.5px 0px 2px #868282;
+  }
+
+  .MainImageRow {
+    height: 300px;
     width: 100%;
   }
 
@@ -145,7 +166,15 @@
 
   .HomeImages {
     width: 100% !important;
-    height: 300px !important;
+    height: 250px !important;
     border: 5px solid #fac9c9 !important;
+  }
+
+  .OverlayBox {
+    width: 80%;
+    height: 40%;
+    margin: auto;
+    padding: 0px !important;
+    font-size: 12px;
   }
 }

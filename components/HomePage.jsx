@@ -56,6 +56,7 @@ import { RowsPhotoAlbum } from "react-photo-album";
 import "react-photo-album/rows.css";
 import TestimonialsComponents from "./HomePageComponents/TestimonialsComponents";
 import Image_Modal from "./ModalsAndAlerts/Image_Modal";
+import { Kanit } from "next/font/google";
 
 const HomePage = () => {
   const [Cname, setCname] = useState("");
@@ -128,10 +129,14 @@ const HomePage = () => {
             md={4}
             lg={4}
             sm={12}
-            className="px-5 py-3 d-flex align-content-center justify-content-md-center"
+            className={`${classes.OverlayBox} "px-md-5 py-md-3 px-lg-5 py-lg-3 px-sm-auto py-sm-auto d-flex align-content-center justify-content-md-center`}
           >
             <BorderedCard
-              MyStyle={{ backgroundColor: "rgba(210, 210, 210, 0.5)" }}
+              MyStyle={{
+                backgroundColor: "rgba(210, 210, 210, 0.5)",
+                paddingLeft: "3px",
+                paddingRight: "3px",
+              }}
             >
               <p className={classes.MissionParagraph}>
                 "Education is the most powerful weapon which you can use to
@@ -139,7 +144,7 @@ const HomePage = () => {
                 future..."
               </p>
               <hr />
-              <h6 className="text-end">NELSON MANDELA</h6>
+              <p className={`${kanit} text-end text-small`}>NELSON MANDELA</p>
             </BorderedCard>
             {/* <Image src={mainimage2} alt="" /> */}
           </Col>
@@ -183,7 +188,7 @@ const HomePage = () => {
           <Col md={4} lg={4} sm={12}></Col>
         </Row>
         {/* Principal Speech Section */}
-        <Row className="px-md-5 px-lg-5 px-sm-2">
+        <Row className={classes.RowSection}>
           <Col md={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>WELCOME TO EAUED MHS!</Divider>
@@ -225,7 +230,7 @@ const HomePage = () => {
           </Col>
         </Row>
         {/* At a glance section */}
-        <Row>
+        <Row className={classes.RowSection}>
           <Col md={12} lg={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>AT A GLANCE</Divider>
@@ -284,7 +289,7 @@ const HomePage = () => {
           </Col>
         </Row>
         {/* Why you should choose us section */}
-        <Row className="px-5 py-4">
+        <Row className={classes.RowSection}>
           <Col md={4} lg={4} sm={12}>
             <Row>
               <Col md={12} sm={12} className="pt-3  m-0">
@@ -387,7 +392,7 @@ const HomePage = () => {
         </Row>
 
         {/* News and Events Section  */}
-        <Row>
+        <Row className={classes.RowSection}>
           <Col md={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>NEWS & EVENTS</Divider>
@@ -442,7 +447,7 @@ const HomePage = () => {
           </Col>
         </Row>
 
-        <Row className="px-5 py-4">
+        <Row className={classes.RowSection}>
           <Col md={4} lg={4} sm={12}>
             <Row>
               <Col md={12} sm={12} lg={12} className="pt-3  m-0">
@@ -623,7 +628,7 @@ const HomePage = () => {
           </Col>
         </Row>
 
-        <Row className="px-md-5 px-lg-5 px-sm-2">
+        <Row className={classes.RowSection}>
           <Col md={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>OUR PICTURES SPEAK</Divider>
@@ -633,7 +638,7 @@ const HomePage = () => {
             <hr className={classes.hrGlance} />
           </Col>
           <Col>
-            <Row className="g-lg-2 g-md-2 g-sm-0">
+            <Row>
               {photos.map((pht, index) => (
                 <Col md={3} lg={3} sm={12} key={index}>
                   <Image
@@ -651,7 +656,7 @@ const HomePage = () => {
 
         {/*  Testimonials Section */}
 
-        <Row className="px-md-5 px-lg-5 px-sm-2">
+        <Row className={classes.RowSection}>
           <Col md={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>TESTIMONIALS</Divider>
@@ -699,7 +704,7 @@ const HomePage = () => {
         </Row>
         {/*  Contact Section */}
 
-        <Row className="px-md-5 px-lg-5 px-sm-2">
+        <Row className={classes.RowSection}>
           <Col md={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>CONTACT US</Divider>
