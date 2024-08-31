@@ -122,16 +122,30 @@
     width: 100%;
   }
 
+  .PrincipalImage {
+    width: 130px;
+    height: 100px;
+  }
+
+  .hrGlance {
+    margin-left: 50px;
+    margin-right: 50px !important;
+    margin-top: 0px;
+    border: solid 1px #820606;
+  }
+
   .colNumRec,
   .colTestimonial,
   .colTheContacts {
     margin-top: 15px !important;
     margin-bottom: 15px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
   }
 
   .HomeImages {
     width: 100% !important;
-    height: 400px !important;
+    height: 300px !important;
     border: 5px solid #fac9c9 !important;
   }
 }

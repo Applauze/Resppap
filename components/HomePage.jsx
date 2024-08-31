@@ -15,7 +15,7 @@ import { Divider } from "rsuite";
 import Principal from "@/components/Images/schoolImages/Principal.jpg";
 import Image from "next/image";
 import classes from "./HomePage.module.css";
-import mainimage2 from "@/components/Images/schoolImages/mainimage3.jpg";
+import mainimage2 from "@/components/Images/schoolImages/mainimage_sm_3.jpg";
 import mainimage1 from "@/components/Images/schoolImages/mainimage1.jpg";
 import mission from "@/components/Images/schoolImages/mission.png";
 import vision from "@/components/Images/schoolImages/vision.png";
@@ -147,8 +147,8 @@ const HomePage = () => {
 
         <Row className={classes.VisionMission}>
           <Col md={4} lg={4} sm={12}>
-            <Row className="px-5">
-              <Col className="my-3">
+            <Row className="px-lg-5 px-md-5 px-sm-0">
+              <Col className="my-lg-3 my-md-3 my-sm-0">
                 <MissionVissionCoreComponents
                   img={mission}
                   title="Our Mission"
@@ -158,8 +158,8 @@ const HomePage = () => {
             </Row>
           </Col>
           <Col md={4} lg={4} sm={12}>
-            <Row className="px-5">
-              <Col className="my-3">
+            <Row className="px-lg-5 px-md-5 px-sm-0">
+              <Col className="my-lg-3 my-md-3 my-sm-0">
                 <MissionVissionCoreComponents
                   img={vision}
                   title="Our Vision"
@@ -169,8 +169,8 @@ const HomePage = () => {
             </Row>
           </Col>
           <Col md={4} lg={4} sm={12}>
-            <Row className="px-5">
-              <Col className="my-3">
+            <Row className="px-lg-5 px-md-5 px-sm-0">
+              <Col className="my-lg-3 my-md-3 my-sm-0">
                 <MissionVissionCoreComponents
                   img={core}
                   title="Core Values"
@@ -183,7 +183,7 @@ const HomePage = () => {
           <Col md={4} lg={4} sm={12}></Col>
         </Row>
         {/* Principal Speech Section */}
-        <Row className="px-5">
+        <Row className="px-md-5 px-lg-5 px-sm-2">
           <Col md={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>WELCOME TO EAUED MHS!</Divider>
@@ -623,7 +623,7 @@ const HomePage = () => {
           </Col>
         </Row>
 
-        <Row className="px-5">
+        <Row className="px-md-5 px-lg-5 px-sm-2">
           <Col md={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>OUR PICTURES SPEAK</Divider>
@@ -633,7 +633,7 @@ const HomePage = () => {
             <hr className={classes.hrGlance} />
           </Col>
           <Col>
-            <Row className="g-2">
+            <Row className="g-lg-2 g-md-2 g-sm-0">
               {photos.map((pht, index) => (
                 <Col md={3} lg={3} sm={12} key={index}>
                   <Image
@@ -651,7 +651,7 @@ const HomePage = () => {
 
         {/*  Testimonials Section */}
 
-        <Row className="px-5">
+        <Row className="px-md-5 px-lg-5 px-sm-2">
           <Col md={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>TESTIMONIALS</Divider>
@@ -699,7 +699,7 @@ const HomePage = () => {
         </Row>
         {/*  Contact Section */}
 
-        <Row className="px-5">
+        <Row className="px-md-5 px-lg-5 px-sm-2">
           <Col md={12} sm={12} className="pt-3  m-0">
             <h3 className={classes.AtAGlance}>
               <Divider>CONTACT US</Divider>
