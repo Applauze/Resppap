@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { Button, Row, Col, Nav, ListGroup } from "react-bootstrap";
+import { Accordion, Panel } from "rsuite";
 import schoollogo from "./Images/schoollogo.png";
 import Image from "next/image";
 import classes from "./TheHeader.module.css";
@@ -15,7 +16,7 @@ import OK_Modal from "./ModalsAndAlerts/OK_Modal";
 import LogoutFunction from "./API_Call/exit";
 import { shadows_Into_Light, rubik, pt_Sans } from "@/app/util/fonts";
 import PermissionContext from "@/Store/permission-context";
-
+import "rsuite/dist/rsuite.min.css";
 const TheHeader = () => {
   const [Modal_Message, setModal_Message] = useState("");
   const [Show_Modal, setShow_Modal] = useState(false);
@@ -362,27 +363,10 @@ const TheHeader = () => {
                   width: "100%",
                 }}
               >
-                <ListGroup
-                  style={{
-                    margin: "0px !important",
-                    borderRadius: "0px",
-                    margin: "0px",
-                    display: "inline-block",
-                    width: "100%",
-                  }}
-                >
-                  <ListGroup.Item
-                    className={`${classes.MobileMenuList} w-100 m-0`}
-                  >
-                    <Link href="/" className={`${rubik} ${classes.subLinks}`}>
-                      Home
-                    </Link>
-                  </ListGroup.Item>
-                  <ListGroup.Item
-                    className={`${classes.MobileMenuList} w-100 m-0 d-block`}
-                  >
-                    <div className={`${rubik} ${classes.subLinks}`}>
-                      About us
+                <div className="d-block" style={{ backgroundColor: "#d5d5fd" }}>
+                  <Panel header="Homes" style={{ height: "50px" }}></Panel>
+                  <Accordion defaultActiveKey={1}>
+                    <Accordion.Panel header="About" eventKey={2}>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
                           href="/history"
@@ -407,13 +391,8 @@ const TheHeader = () => {
                           School Management
                         </Link>
                       </p>
-                    </div>
-                  </ListGroup.Item>
-                  <ListGroup.Item
-                    className={`${classes.MobileMenuList} w-100 m-0 d-block`}
-                  >
-                    <div className={`${rubik} ${classes.subLinks}`}>
-                      Admission
+                    </Accordion.Panel>
+                    <Accordion.Panel header="Admission" eventKey={3}>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
                           href="/computescores"
@@ -454,13 +433,8 @@ const TheHeader = () => {
                           Admission List
                         </Link>
                       </p>
-                    </div>
-                  </ListGroup.Item>
-                  <ListGroup.Item
-                    className={`${classes.MobileMenuList} w-100 m-0 d-block`}
-                  >
-                    <div className={`${rubik} ${classes.subLinks}`}>
-                      Academics
+                    </Accordion.Panel>
+                    <Accordion.Panel header="Academics" eventKey={4}>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
                           href="/displayresults"
@@ -501,14 +475,8 @@ const TheHeader = () => {
                           External Examinations
                         </Link>
                       </p>
-                    </div>
-                  </ListGroup.Item>
-
-                  <ListGroup.Item
-                    className={`${classes.MobileMenuList} w-100 m-0 d-block`}
-                  >
-                    <div className={`${rubik} ${classes.subLinks}`}>
-                      Information
+                    </Accordion.Panel>
+                    <Accordion.Panel header="Information" eventKey={5}>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
                           href="/subjectteacherallocation"
@@ -541,13 +509,8 @@ const TheHeader = () => {
                           Video Gallery
                         </Link>
                       </p>
-                    </div>
-                  </ListGroup.Item>
-                  <ListGroup.Item
-                    className={`${classes.MobileMenuList} w-100 m-0 d-block`}
-                  >
-                    <div className={`${rubik} ${classes.subLinks}`}>
-                      Facilities
+                    </Accordion.Panel>
+                    <Accordion.Panel header="Facilities" eventKey={6}>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
                           href="/subjectteacherallocation"
@@ -596,13 +559,8 @@ const TheHeader = () => {
                           School Buses
                         </Link>
                       </p>
-                    </div>
-                  </ListGroup.Item>
-                  <ListGroup.Item
-                    className={`${classes.MobileMenuList} w-100 m-0 d-block`}
-                  >
-                    <div className={`${rubik} ${classes.subLinks}`}>
-                      Portal
+                    </Accordion.Panel>
+                    <Accordion.Panel header="Portals" eventKey={7}>
                       <p className={`${classes.submobileP} ml-3 my-0`}>
                         <Link
                           href="/subjectteacherallocation"
@@ -619,20 +577,9 @@ const TheHeader = () => {
                           Fees Portal
                         </Link>
                       </p>
-                    </div>
-                  </ListGroup.Item>
-                  <ListGroup.Item
-                    className={`${classes.MobileMenuList} w-100 m-0`}
-                  >
-                    <Link
-                      href="#"
-                      className={`${rubik} ${classes.subLinks}`}
-                      onClick={(e) => ExitFunction(e, "Log Out")}
-                    >
-                      Log Out
-                    </Link>
-                  </ListGroup.Item>
-                </ListGroup>
+                    </Accordion.Panel>
+                  </Accordion>
+                </div>
               </BorderedCardNoHover>
             </div>
           </Col>

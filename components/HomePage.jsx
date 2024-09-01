@@ -209,23 +209,23 @@ const HomePage = () => {
                 <span className={classes.Designation}>PRINCIPAL</span>
               </span>
               <span className={classes.pmsgW}>W</span>elcome to Emmanuel
-              Alayande University of Education Model High School Model High
-              School, a vibrant and inclusive learning community where students,
-              teachers and parents work together to achieve excellence. I am
-              thrilled to welcome you to our school website where you can
-              explore our rich history, academic programs, extracurricular
-              activities and community events. Our school is committed to
-              providing a supportive and stimulating environment that fosters
-              intellectual curiosity, creativity and character development. At
-              AEUED MHS, we believe that every student has the potential to
-              suceed and make a positive impact in the world. Our dedicated
-              teachers and staff are passionate about helping students grow into
-              compassionate, confident and critically thinking individuals.
-              Wether you are a prospective student, parent or community member,
-              I invite you to explore our website and discover what makes EAUED
-              MHS a special place. Please feel free to contact us with any
-              questions or to scheldulea visit. Thank you for your interest in
-              our school. I look forward to welcoming you to our community!
+              Alayande University of Education Model High School, a vibrant and
+              inclusive learning community where students, teachers and parents
+              work together to achieve excellence. I am thrilled to welcome you
+              to our school website where you can explore our rich history,
+              academic programs, extracurricular activities and community
+              events. Our school is committed to providing a supportive and
+              stimulating environment that fosters intellectual curiosity,
+              creativity and character development. At EAUED MHS, we believe
+              that every student has the potential to suceed and make a positive
+              impact in the world. Our dedicated teachers and staff are
+              passionate about helping students grow into compassionate,
+              confident and critically thinking individuals. Wether you are a
+              prospective student, parent or community member, I invite you to
+              explore our website and discover what makes EAUED MHS a special
+              place. Please feel free to contact us with any questions or to
+              scheldulea visit. Thank you for your interest in our school. I
+              look forward to welcoming you to our community!
             </p>
           </Col>
         </Row>
@@ -425,22 +425,22 @@ const HomePage = () => {
             />
             <hr className="mx-5 my-3 p-0" />
             <NewsAndEventsComponents
-              NewsImage={mainimage1}
+              NewsImage={gal_img9}
               NewsMonth={"SEPTEMBER"}
               NewsDay={22}
-              NewsTitle={"EAUED MHS celebrates 10 years of Existence"}
+              NewsTitle={"Students advised to always come to school early"}
               NewsDetails={
-                "It was a great joy at the grand finale of a week long celebration of ten years anniversary of EAUED MHS as the students and staff could not hold their feelings. The Principal of the school, Mr A.A. Ayoola opened the danced floor with other dignatries bith from the mother University and the School."
+                "The Proprietor of the School, Prof. Olatunbosun Emmanuel has urged the students of EAUED MHS to always come regularly and very early to school. Represented by Dean, Faculty of Science, Mr Farayola P.I, the proprietor advises that coming to school early will give them enough time to settle down before the commencement of their classes."
               }
             />
             <hr className="mx-5 my-3 p-0" />
             <NewsAndEventsComponents
-              NewsImage={mainimage1}
+              NewsImage={gal_img13}
               NewsMonth={"SEPTEMBER"}
               NewsDay={20}
-              NewsTitle={"EAUED MHS celebrates 10 years of Existence"}
+              NewsTitle={"Skimeh donates ultra modern ICT Center to the School"}
               NewsDetails={
-                "It was a great joy at the grand finale of a week long celebration of ten years anniversary of EAUED MHS as the students and staff could not hold their feelings. The Principal of the school, Mr A.A. Ayoola opened the danced floor with other dignatries bith from the mother University and the School."
+                "Hon. Akeem Adeniyi Adeyemi, the member of House of representatives representing Oyo East, Oyo West, Atiba and Afijio local government at his second year anniversary donated a world class ultra modern ICT center equipped with fifty computer systems and Solar Power Unit on 3rd September, 2024. The Principal, Dr Amos Ayoola, while receiving the gifit appreciate the Honourable and promised that the school will always supprt him in his endeavours"
               }
             />
             <hr className="mx-5 my-3 p-0" />

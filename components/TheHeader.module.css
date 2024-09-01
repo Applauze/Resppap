@@ -151,8 +151,8 @@
 
   .submobilelinks {
     font-family: "Times New Roman";
-    font-size: 16px;
-    padding: 0px !important;
+    font-size: 17px;
+    padding: 5px !important;
     display: block;
     color: #7a0505;
     text-decoration: none !important;
@@ -160,9 +160,13 @@
 
   .MobileMenuPanelOn {
     display: inline-block;
-    width: 50% !important;
+    width: 100% !important;
     padding: 0px !important;
     animation: PanelMovement 1s;
+  }
+
+  .noIcon .rs-accordion-header-icon {
+    display: none !important;
   }
 
   @keyframes PanelMovement {
