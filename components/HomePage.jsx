@@ -194,9 +194,9 @@ const HomePage = () => {
               <Divider>WELCOME TO EAUED MHS!</Divider>
             </h3>
           </Col>
-          <Col md={12} sm={12}>
+          {/* <Col md={12} sm={12}>
             <hr className={classes.hrGlance} />
-          </Col>
+          </Col> */}
           <Col>
             <p className={classes.PrincipalMessage}>
               <span className="border border-gray-300 p-2 border-rounded d-inline-block float-start m-3">
@@ -236,16 +236,16 @@ const HomePage = () => {
               <Divider>AT A GLANCE</Divider>
             </h3>
           </Col>
-          <Col md={12} lg={12} sm={12}>
+          {/* <Col md={12} lg={12} sm={12}>
             <hr className={classes.hrGlance} />
-          </Col>
-          <Col md={12} sm={12} lg={12} className="my-2">
+          </Col> */}
+          <Col md={12} sm={12} lg={12} className="my-2 ">
             <Row className="justify-content-around">
               <Col
                 md={3}
                 lg={3}
                 sm={12}
-                className={`${classes.colNumRec} d-flex  justify-content-center my-sm-2`}
+                className={`${classes.colNumRec} d-flex   justify-content-center my-sm-2`}
               >
                 <NumberRecordsDescription
                   figure={800}
@@ -297,9 +297,9 @@ const HomePage = () => {
                   <Divider>WHY WE ARE THE BEST</Divider>
                 </h3>
               </Col>
-              <Col md={12} sm={12}>
+              {/* <Col md={12} sm={12}>
                 <hr className={classes.hrGlance2} />
-              </Col>
+              </Col> */}
               <Col>
                 <ul>
                   <li className={`${classes.WhyChooseParagraph} ${kanit}`}>
@@ -350,9 +350,9 @@ const HomePage = () => {
                   <Divider>OUR ACHIEVEMENTS</Divider>
                 </h3>
               </Col>
-              <Col md={12} sm={12}>
+              {/* <Col md={12} sm={12}>
                 <hr className={classes.hrGlance2} />
-              </Col>
+              </Col> */}
               <Col>
                 <ul>
                   <li className={`${classes.WhyChooseParagraph} ${kanit}`}>
@@ -398,9 +398,9 @@ const HomePage = () => {
               <Divider>NEWS & EVENTS</Divider>
             </h3>
           </Col>
-          <Col md={12} sm={12}>
+          {/* <Col md={12} sm={12}>
             <hr className={classes.hrGlance} />
-          </Col>
+          </Col> */}
           <Col>
             <NewsAndEventsComponents
               NewsImage={gal_img1}
@@ -455,9 +455,9 @@ const HomePage = () => {
                   <Divider>ACADEMIC CALENDAR</Divider>
                 </h3>
               </Col>
-              <Col md={12} sm={12}>
+              {/* <Col md={12} sm={12}>
                 <hr className={classes.hrGlance2} />
-              </Col>
+              </Col> */}
               <Col>
                 <Table
                   striped
@@ -520,9 +520,9 @@ const HomePage = () => {
                   <Divider>FEES</Divider>
                 </h3>
               </Col>
-              <Col md={12} sm={12}>
+              {/* <Col md={12} sm={12}>
                 <hr className={classes.hrGlance2} />
-              </Col>
+              </Col> */}
               <Col>
                 <Table
                   striped
@@ -586,9 +586,9 @@ const HomePage = () => {
                   <Divider>BANK DETAILS</Divider>
                 </h3>
               </Col>
-              <Col md={12} sm={12}>
+              {/* <Col md={12} sm={12}>
                 <hr className={classes.hrGlance2} />
-              </Col>
+              </Col> */}
               <Col>
                 <Table
                   striped
@@ -634,9 +634,9 @@ const HomePage = () => {
               <Divider>OUR PICTURES SPEAK</Divider>
             </h3>
           </Col>
-          <Col md={12} sm={12}>
+          {/* <Col md={12} sm={12}>
             <hr className={classes.hrGlance} />
-          </Col>
+          </Col> */}
           <Col>
             <Row>
               {photos.map((pht, index) => (
@@ -662,9 +662,9 @@ const HomePage = () => {
               <Divider>TESTIMONIALS</Divider>
             </h3>
           </Col>
-          <Col md={12} sm={12}>
+          {/* <Col md={12} sm={12}>
             <hr className={classes.hrGlance} />
-          </Col>
+          </Col> */}
           <Col md={12} sm={12}>
             <Row>
               <Col md={3} lg={3} sm={12} className={classes.colTestimonial}>
@@ -710,9 +710,9 @@ const HomePage = () => {
               <Divider>CONTACT US</Divider>
             </h3>
           </Col>
-          <Col md={12} sm={12}>
+          {/* <Col md={12} sm={12}>
             <hr className={classes.hrGlance} />
-          </Col>
+          </Col> */}
           <Col md={12} sm={12}>
             <Row>
               <p className="text-center">

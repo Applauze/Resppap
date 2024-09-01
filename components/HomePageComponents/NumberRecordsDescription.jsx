@@ -5,7 +5,7 @@ import classes from "./NumberRecordDescription.module.css";
 import CountUp from "react-countup";
 const NumberRecordsDescription = (props) => {
   return (
-    <BorderedCardNoHover MyStyle={{ width: "80%" }}>
+    <BorderedCardNoHover MyStyle={{ width: "80%", margin: "auto" }}>
       <p className={`${pt_Sans} ${classes.NumberRecord}`}>
         <CountUp
           enableScrollSpy={true}
