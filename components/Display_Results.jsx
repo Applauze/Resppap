@@ -214,7 +214,7 @@ const Display_Results = () => {
     } else {
       DisplayNotification(
         "Error",
-        `You are not an authorized teacher for the selected class. Please contact the Administrator`,
+        `You are not an authorized teacher for the selected class. Please contact the Administrator. Thanks`,
         "danger",
         "top-center",
         7000
@@ -295,7 +295,7 @@ const Display_Results = () => {
               <h4 className="text-center h4">DISPLAY REPORT SHEET</h4>
             </Col>
           </Row>
-          {/* <hr /> */}
+
           <Row>
             <Form onSubmit={GetTheStudents}>
               <Row className="justify-content-around">
