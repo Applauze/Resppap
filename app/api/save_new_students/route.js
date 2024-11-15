@@ -23,7 +23,7 @@ export async function POST(request, response) {
   let SID = Date.now() + Math.floor(Math.random() * 100 + 0);
   SID = SID.toString();
   SID = SID.substring(2);
-  let Student_Id = "STD_" + SID;
+  let Student_Id = "MHS" + SID;
   let PixDirectory = "";
 
   const file = data.get("pictureSelected") ? data.get("pictureSelected") : null;

@@ -1,0 +1,29 @@
+.PinColumn {
+  border: 2px solid #000040;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.PinP {
+  margin: 10px;
+}
+
+@media print {
+  .Margin4Print {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+
+  .Hide4Print {
+    display: none !important;
+  }
+
+  .PinP {
+    font-size: 12px;
+    margin: 0px;
+  }
+
+  .PINUrl {
+    font-size: 12px;
+  }
+}

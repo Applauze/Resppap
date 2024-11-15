@@ -8,6 +8,8 @@ import Processing_Modal from "./ModalsAndAlerts/Processing_Modal";
 import classes from "./Compute_Reports.module.css";
 import Image from "next/image";
 import PermissionContext from "@/Store/permission-context";
+import MaleDummy from "./Images/MaleDummy.jpg";
+import FemaleDummy from "./Images/FemaleDummy.jpg";
 import {
   Container,
   Row,
@@ -44,6 +46,8 @@ const Compute_Reports = () => {
   const [nexttermbegins, setnexttermbegins] = useState(0);
   const [schoolopens, setschoolopens] = useState(0);
   const [ResumptionCheck, setResumptionCheck] = useState(false);
+  const [TeachersComments, setTeachersComments] = useState([]);
+  const [PrincipalsComments, setPrincipalsComments] = useState([]);
   const [p_remark, setp_remark] = useState("");
   const [sel_ct_remark, setsel_ct_remark] = useState("Select");
   const [sel_p_remark, setsel_p_remark] = useState("Select");
@@ -53,6 +57,7 @@ const Compute_Reports = () => {
   const [DisplayMainCard, setDisplayMainCard] = useState(false);
   const [st_id, setst_id] = useState("");
   const [Fullname, setFullname] = useState("");
+  const [Firstname, setFirstname] = useState("");
   const PCtx = useContext(PermissionContext);
   const buttonBackground = {
     backgroundColor: "#003152",
@@ -92,7 +97,7 @@ const Compute_Reports = () => {
       ThisStudentParam
     );
     ThisStudentReportInJson = JSON.parse(ThisStudentReportInJson);
-    console.log(ThisStudentReportInJson.ThisStudentScores);
+    // console.log(ThisStudentReportInJson.ThisStudentScores);
     ThisStudentParam = {
       ...ThisStudentParam,
       dob: element.dob,
@@ -106,7 +111,8 @@ const Compute_Reports = () => {
       PixUrl: element.pixurl,
     };
     setFullname(element.Fullname);
-
+    let fn = element.Fullname.split(" ");
+    setFirstname(fn[1]);
     let PsychoAttributes = ThisStudentReportInJson.ThisStudentAttributes;
     let AllComments = ThisStudentReportInJson.ThisStudentComments;
     let AllTermProp = ThisStudentReportInJson.ThisTermProperties;
@@ -158,17 +164,35 @@ const Compute_Reports = () => {
       Category: Category ? Category : "Nothing",
     };
 
-    let StudentsInJson = await axioscall(
+    let StudentsAndCommentsInJson = await axioscall(
       "load_students_for_reports",
       ReportsParam
     );
+    console.log(StudentsAndCommentsInJson);
 
-    if (!StudentsInJson.includes("Not Authorized")) {
-      if (!StudentsInJson.includes("Error")) {
-        StudentsInJson = JSON.parse(StudentsInJson);
+    if (!StudentsAndCommentsInJson.includes("Not Authorized")) {
+      if (!StudentsAndCommentsInJson.includes("Error")) {
+        StudentsAndCommentsInJson = JSON.parse(StudentsAndCommentsInJson);
         let AllStds = [];
-        let NIC = StudentsInJson.AllStudents.length;
-        StudentsInJson.AllStudents.forEach((element) => {
+        let AllComments = StudentsAndCommentsInJson.AllComments;
+        let TCom = [];
+        let PCom = [];
+        AllComments.forEach((element) => {
+          if (term === "Third") {
+            if (element.term === "Third") {
+              PCom.push(element.comment);
+            } else {
+              TCom.push(element.comment);
+            }
+          } else {
+            PCom.push(element.comment);
+            TCom.push(element.comment);
+          }
+        });
+        setTeachersComments(TCom);
+        setPrincipalsComments(PCom);
+        let NIC = StudentsAndCommentsInJson.AllStudents.length;
+        StudentsAndCommentsInJson.AllStudents.forEach((element) => {
           AllStds = [
             ...AllStds,
             {
@@ -206,7 +230,7 @@ const Compute_Reports = () => {
 
   const StudentDescription = (LABEL, value, colsp) => {
     return (
-      <Col md={colsp} lg={colsp} xs={colsp} sm={colsp}>
+      <Col md={colsp} lg={colsp} xs={11} sm={11}>
         <p className="small py-0 my-0">
           <span className={classes.mylabel}>{LABEL}</span>:{" "}
           <span
@@ -221,7 +245,7 @@ const Compute_Reports = () => {
 
   const StudentDescription1 = (LABEL, colsp) => {
     return (
-      <Col md={colsp} lg={colsp} xs={colsp} sm={colsp}>
+      <Col md={colsp} lg={colsp} xs={11} sm={11}>
         <p className="small py-0 my-0">
           <span className={classes.mylabel}>
             {LABEL}
@@ -464,7 +488,7 @@ const Compute_Reports = () => {
       </BorderedCardNoHover>
       {DisplayCardPanel && (
         <Row className={classes.PanelContainer}>
-          <Col md={3} lg={3} sm={12} xs={12}>
+          <Col md={3} lg={3} sm={11} xs={11}>
             <BorderedCardNoHover MyStyle={{ borderRadius: "0px" }}>
               <h6 className={classes.ListHeading}>
                 {claz.toUpperCase() + " STUDENTS"}
@@ -488,8 +512,8 @@ const Compute_Reports = () => {
             <Col
               md={9}
               lg={9}
-              sm={12}
-              xs={12}
+              sm={11}
+              xs={11}
               className={classes.MainCardContainer}
             >
               <Row className="justify-content-around">
@@ -545,9 +569,16 @@ const Compute_Reports = () => {
                     </Col>
                     <Col md={2} lg={2} xs={6} sm={6}>
                       <Image
-                        src={RetrievedStudentDetails.PixUrl}
-                        width={100}
-                        height={120}
+                        src={
+                          RetrievedStudentDetails.PixUrl === null ||
+                          RetrievedStudentDetails.PixUrl === ""
+                            ? RetrievedStudentDetails.sex === "Male"
+                              ? MaleDummy
+                              : FemaleDummy
+                            : RetrievedStudentDetails.PixUrl
+                        }
+                        width={80}
+                        height={80}
                         alt="StudentID"
                       />
                       {/* <p className={classes.DisplayedName}>
@@ -871,7 +902,7 @@ const Compute_Reports = () => {
                     <legend>Remarks</legend>
 
                     <Row>
-                      <Col lg={6} md={12} sm={12} xs={12}>
+                      <Col>
                         <Form.Label style={{ display: "inline-block" }}>
                           <Button
                             className={classes.PlusButton}
@@ -895,27 +926,13 @@ const Compute_Reports = () => {
                             value={sel_ct_remark}
                             onChange={(e) => ChangeCTComment(e.target.value)}
                           >
-                            <option> Select</option>
-                            <option value="Shola Allyson is actually a great singer">
-                              Shola Allyson is actually a great singer
-                            </option>
-                            <option value="Shola Allyson is actually a great singer">
-                              Shola Allyson is actually a great singer
-                            </option>
-                            <option value="Shola Allyson is actually a great singer">
-                              Shola Allyson is actually a great singer
-                            </option>
-                            <option value="Shola Allyson is actually a great singer">
-                              Shola Allyson is actually a great singer
-                            </option>
-                            <option value="Shola Allyson is actually a great singer">
-                              Shola Allyson is actually a great singer
-                            </option>
-                            {/* {props.Data.map((cat, index) => (
-                        <option key={index} value={cat}>
-                          {cat} 
-                        </option>
-                      ))}*/}
+                            <option> Select a Comment</option>
+
+                            {TeachersComments.map((cat, index) => (
+                              <option key={index} value={`${Firstname} ${cat}`}>
+                                {`${Firstname} ${cat}`}
+                              </option>
+                            ))}
                           </Form.Select>
                         )}
                         <p className={classes.ClassTeacherName}>
@@ -923,7 +940,7 @@ const Compute_Reports = () => {
                           08033824233{" "}
                         </p>
                       </Col>
-                      <Col lg={6} md={12} sm={12} xs={12}>
+                      <Col>
                         <Form.Label style={{ display: "inline-block" }}>
                           <Button
                             className={classes.PlusButton}
@@ -945,27 +962,12 @@ const Compute_Reports = () => {
                             value={sel_p_remark}
                             onChange={(e) => ChangePComment(e.target.value)}
                           >
-                            <option> Select</option>
-                            <option value="Shola Allyson is actually a great singer">
-                              Shola Allyson is actually a great singer
-                            </option>
-                            <option value="Shola Allyson is actually a great singer">
-                              Shola Allyson is actually a great singer
-                            </option>
-                            <option value="Shola Allyson is actually a great singer">
-                              Shola Allyson is actually a great singer
-                            </option>
-                            <option value="Shola Allyson is actually a great singer">
-                              Shola Allyson is actually a great singer
-                            </option>
-                            <option value="Shola Allyson is actually a great singer">
-                              Shola Allyson is actually a great singer
-                            </option>
-                            {/* {props.Data.map((cat, index) => (
-                        <option key={index} value={cat}>
-                          {cat} 
-                        </option>
-                      ))}*/}
+                            <option> Select a Comment</option>
+                            {PrincipalsComments.map((cat, index) => (
+                              <option key={index} value={`${Firstname} ${cat}`}>
+                                {`${Firstname} ${cat}`}
+                              </option>
+                            ))}
                           </Form.Select>
                         )}
                       </Col>

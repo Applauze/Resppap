@@ -190,9 +190,9 @@
 
 .MainCardContainer {
   border: inset 5px brown;
-  width: 100% !important;
-  margin: 0px !important;
-  padding: 0px !important;
+  /* width: 100% !important; */
+
+  margin-right: 20px !important;
 }
 .PanelContainer {
   padding-left: 0px !important;
@@ -331,6 +331,13 @@
   transform: scaleZ(1.5);
 }
 
+.TheForm {
+  border: solid brown 5px;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #fbfcfc;
+}
+
 @media print {
   .Margin4Print {
     margin: 0px !important;
@@ -363,9 +370,7 @@
   .MainCardContainer {
     margin-left: 10px;
     margin-right: 10px;
-  }
-
-  .MainCardContainer * {
+    padding-right: 15px !important;
     color: black;
   }
 

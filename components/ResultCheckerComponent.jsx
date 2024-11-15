@@ -6,9 +6,9 @@ import Class from "./SessionTermClass/Class";
 import Term from "./SessionTermClass/Term";
 import ButtonBackground from "./Inputs/ButtonBackground";
 import Processing_Modal from "./ModalsAndAlerts/Processing_Modal";
-import classes from "./Display_Results.module.css";
+import classes from "./ResultCheckerComponent.module.css";
 import QRCode from "qrcode.react";
-// import generatePDF from "react-to-pdf";
+import generatePDF from "react-to-pdf";
 import html2pdf from "html2pdf.js";
 import Image from "next/image";
 import MaleDummy from "./Images/MaleDummy.jpg";
@@ -31,9 +31,10 @@ import "react-notifications-component/dist/theme.css";
 import BorderedCardNoHover from "./Cards/BorderedCardNoHover";
 import Cookies from "universal-cookie";
 import SchoolLogo from "./Images/schoollogo.png";
-import modellogo from "./Images/modellogo.jpg";
+import FormInputPassword from "./Inputs/FormInputPassword";
+import FormInputText from "./Inputs/FormInputText";
 
-const Display_Results = () => {
+const ResultCheckerComponent = () => {
   const [session, setsession] = useState("Select");
   const [claz, setclaz] = useState("Select");
   const [term, setterm] = useState("Select");
@@ -45,6 +46,7 @@ const Display_Results = () => {
   const [displayStudents, setdisplayStudents] = useState(false);
   const [nexttermbegins, setnexttermbegins] = useState(0);
   const [schoolopens, setschoolopens] = useState(0);
+  const [ePIN, setePIN] = useState();
   const [AllStudents, setAllStudents] = useState([]);
   const [RetrievedStudentDetails, setRetrievedStudentDetails] = useState([]);
   const [RetrievedSubjects, setRetrievedSubjects] = useState([]);
@@ -53,11 +55,14 @@ const Display_Results = () => {
   const [RetrievedAttributes3, setRetrievedAttributes3] = useState([]);
   const [ct_remark, setct_remark] = useState("");
   const [p_remark, setp_remark] = useState("");
+  const [StdID, setStdID] = useState("");
+  const [st_id, setst_id] = useState("");
+  const [ToggleButton, setToggleButton] = useState(false);
   const [p_attendance, setp_attendance] = useState("");
   const cookies = new Cookies();
   const [DisplayCardPanel, setDisplayCardPanel] = useState(false);
   const [DisplayMainCard, setDisplayMainCard] = useState(false);
-  const [st_id, setst_id] = useState("");
+  const [displayResult, setdisplayResult] = useState(false);
   const [Fullname, setFullname] = useState("");
   const [DisplayMode, setDisplayMode] = useState("Print");
   const targetRef = useRef();
@@ -71,18 +76,69 @@ const Display_Results = () => {
   }, []);
 
   useEffect(() => {
-    const activateTheButton = () => {
-      if (session != "Select" && claz != "Select" && term != "Select") {
-        setactivateButton(true);
+    setDisplayCardPanel(false);
+  }, [session, claz, term, ePIN, StdID]);
+
+  const GetTheResult = async (e) => {
+    e.preventDefault();
+    if (
+      term != "Select" &&
+      session != "Select" &&
+      claz != "Select" &&
+      ePIN != "" &&
+      StdID != ""
+    ) {
+      var CryptoJS = require("crypto-js");
+
+      let PIN = "Applause143";
+      console.log(PIN);
+      let aPIN = CryptoJS.AES.encrypt(ePIN, PIN).toString();
+
+      let CheckerInfo = {
+        Session: session,
+        Term: term,
+        Claz: claz,
+        EPIN: aPIN,
+        SID: StdID,
+      };
+
+      let ThisDetails = await axioscall("get_result_checker_info", CheckerInfo);
+      // console.log(ThisDetails);
+      if (ThisDetails != "Error") {
+        ThisDetails = JSON.parse(ThisDetails);
+        if (ThisDetails.responder) {
+          GetThisStudentReport(ThisDetails.StudentDetails);
+        } else {
+          DisplayNotification(
+            "Error",
+            `The information supplied are incorrect. Please check and try again`,
+            "danger",
+            "top-center",
+            5000
+          );
+        }
       } else {
-        setactivateButton(false);
+        DisplayNotification(
+          "Error",
+          `The information supplied are incorrect. Please check and try again`,
+          "danger",
+          "top-center",
+          5000
+        );
       }
-    };
-    setdisplayStudents(false);
-    activateTheButton();
-  }, [session, claz, term]);
+    } else {
+      DisplayNotification(
+        "Error",
+        `All information must be submitted. Kindly check for the missing information`,
+        "danger",
+        "top-center",
+        5000
+      );
+    }
+  };
 
   const GetThisStudentReport = async (element) => {
+    setDisplayCardPanel(false);
     setMessage(`The system is retrieving  ${element.Fullname}'s report`);
     setQRCodeString(
       `${element.Fullname} + ${session} Session + ${term} Term + ${claz}`
@@ -90,7 +146,7 @@ const Display_Results = () => {
     setshowProcessing(true);
     setDisplayMainCard(false);
     let ThisStudentParam = {
-      student_id: element.student_id,
+      student_id: StdID,
       Session: session,
       Term: term,
       Claz: claz,
@@ -101,7 +157,7 @@ const Display_Results = () => {
       "load_this_student_report",
       ThisStudentParam
     );
-
+    // console.log(ThisStudentReportInJson);
     ThisStudentReportInJson = JSON.parse(ThisStudentReportInJson);
 
     ThisStudentParam = {
@@ -147,22 +203,9 @@ const Display_Results = () => {
       setnexttermbegins(AllTermProp[0]["Resumption"]);
       setschoolopens(AllTermProp[0]["SchoolOpens"]);
     }
+    setDisplayCardPanel(true);
     // setRetrievedComments(ThisStudentReportInJson.ThisStudentComments);
   };
-
-  // useEffect(() => {
-  //   if (DisplayMode === "PDF") {
-  //     generatePDF(targetRef, {
-  //       filename: `${Fullname}`,
-  //       page: {
-  //         format: "A4",
-  //       },
-  //       resolution: 1,
-  //       scale: 0.5,
-  //     });
-  //     setDisplayMode("Print");
-  //   }
-  // }, [DisplayMode]);
 
   useEffect(() => {
     if (DisplayMode === "PDF") {
@@ -223,7 +266,6 @@ const Display_Results = () => {
           ];
         });
         setAllStudents(AllStds);
-        setDisplayCardPanel(true);
       } else {
         DisplayNotification(
           "Error",
@@ -310,90 +352,114 @@ const Display_Results = () => {
   return (
     <div fluid className={classes.Margin4Print}>
       <ReactNotifications />
-      <div className={classes.Hide4Print}>
-        <BorderedCardNoHover MyStyle={{ borderRadius: "0px" }}>
-          <Row>
-            <Col md={12} lg={12} sm={11} xs={11}>
-              <h4 className="text-center h4">DISPLAY REPORT SHEET</h4>
-            </Col>
-          </Row>
-          {/* <hr /> */}
-          <Row>
-            <Form onSubmit={GetTheStudents}>
-              <Row className="justify-content-around">
-                <Col md={12} lg={12} sm={11} xs={11}>
-                  <h6 className="text-center h6">
-                    Please fill in the details of the class you want to work on
-                  </h6>
-                </Col>
-                <hr />
-                <Col lg={4} md={4} sm={11} xs={11} className=" ">
-                  <Session
-                    Session={session}
-                    setSession={setsession}
-                    Disabled={!activateSelector}
-                  />
-                </Col>
-                <Col lg={4} md={4} sm={11} xs={11}>
-                  <Term
-                    Term={term}
-                    setTerm={setterm}
-                    Disabled={!activateSelector}
-                  />
-                </Col>
+      <div>
+        <Row className={classes.Hide4Print}>
+          <Col md={12} lg={12} sm={11} xs={11}>
+            <h4 className="text-center h4">RESULT CHECKER</h4>
+          </Col>
+        </Row>
+        {/* <hr /> */}
 
-                <hr className="d-md-none d-lg-none d-sm-block d-xs-block mt-3 mb-1" />
-                <Col lg={4} md={4} sm={11} xs={11}>
-                  <Class
-                    Claz={claz}
-                    setClaz={setclaz}
-                    Disabled={!activateSelector}
-                  />
-                </Col>
-                <hr className="d-md-none d-lg-none d-sm-block d-xs-block mt-3 mb-1" />
-              </Row>
-              <Row className="justify-content-end">
-                <Col
-                  lg={3}
-                  md={3}
-                  sm={11}
-                  xs={11}
-                  className="mt-2 col-offset-9"
-                >
-                  <ButtonBackground
-                    ButtonType="submit"
-                    ButtonDisable={!activateButton}
-                    ButtonName="Retrieve Students"
-                  />
-                </Col>
-              </Row>
-            </Form>
-          </Row>
-        </BorderedCardNoHover>
-      </div>
-      {DisplayCardPanel && (
-        <Row className={`${classes.PanelContainer} ${classes.Margin4Print}`}>
-          <Col md={3} lg={3} sm={11} xs={11} className={classes.Hide4Print}>
+        <Row className="justify-content-around ">
+          <Col lg={3} md={3} sm={12} xs={12} className={classes.Hide4Print}>
             <BorderedCardNoHover MyStyle={{ borderRadius: "0px" }}>
-              <h6 className={classes.ListHeading}>
-                {claz.toUpperCase() + " STUDENTS"}
-              </h6>
-              <ListGroup as="ol" numbered variant="flush">
-                {AllStudents.map((student, index) => (
-                  <ListGroup.Item
-                    key={index}
-                    action
-                    onClick={() => GetThisStudentReport(student)}
-                    as="li"
+              <Form onSubmit={GetTheResult} className={classes.TheForm}>
+                <Row className="justify-content-around">
+                  <Col md={12} lg={12} sm={11} xs={11}>
+                    <h6 className="text-center h6">STUDENT'S DETAILS</h6>
+                    <hr className="mt-2" />
+                  </Col>
+
+                  <Col lg={12} md={12} sm={11} xs={11}>
+                    <FormInputText
+                      Label="STUDENT ID"
+                      GetValue={setStdID}
+                      Owner={StdID}
+                      Color={"brown"}
+                    />
+                    <hr className="mt-2" />
+                  </Col>
+
+                  <Col lg={12} md={12} sm={11} xs={11} className=" ">
+                    <Session
+                      Session={session}
+                      setSession={setsession}
+                      Disabled={!activateSelector}
+                    />
+                    <hr className="mt-2" />
+                  </Col>
+
+                  <Col lg={12} md={12} sm={11} xs={11}>
+                    <Term
+                      Term={term}
+                      setTerm={setterm}
+                      Disabled={!activateSelector}
+                    />
+                    <hr className="mt-2" />
+                  </Col>
+                  <Col lg={12} md={12} sm={11} xs={11}>
+                    <Class
+                      Claz={claz}
+                      setClaz={setclaz}
+                      Disabled={!activateSelector}
+                    />
+                    <hr className="mt-2" />
+                  </Col>
+
+                  <Col lg={12} md={12} sm={11} xs={11}>
+                    {ToggleButton ? (
+                      <FormInputText
+                        Label="PIN"
+                        GetValue={setePIN}
+                        Owner={ePIN}
+                        Color={"brown"}
+                      />
+                    ) : (
+                      <FormInputPassword
+                        Label="PIN"
+                        GetValue={setePIN}
+                        Owner={ePIN}
+                        Color={"brown"}
+                      />
+                    )}
+
+                    <Row className="justify-content-end">
+                      <Col
+                        md={6}
+                        lg={6}
+                        sm={6}
+                        className="d-flex justify-content-end mt-1"
+                      >
+                        <button
+                          type="button"
+                          className="btn btn-danger btn-sm"
+                          onClick={() => setToggleButton(!ToggleButton)}
+                        >
+                          {ToggleButton ? "Hide PIN" : "Show PIN"}
+                        </button>
+                      </Col>
+                    </Row>
+                    <hr className="mt-2" />
+                  </Col>
+
+                  <Col
+                    lg={12}
+                    md={12}
+                    sm={11}
+                    xs={11}
+                    className="d-flex justify-content-end"
                   >
-                    {student.Fullname}
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
+                    <ButtonBackground
+                      ButtonType="submit"
+                      ButtonName="CHECK RESULT"
+                    />
+                  </Col>
+                </Row>
+              </Form>
             </BorderedCardNoHover>
           </Col>
 
-          {DisplayMainCard && (
+          {DisplayCardPanel && (
             <Col
               md={9}
               lg={9}
@@ -404,7 +470,7 @@ const Display_Results = () => {
               <Row
                 ref={targetRef}
                 id="element-to-print"
-                className={`align-items-start d-flex m-0 p-0  ${classes.MainCardContainer}`}
+                className={`align-items-start d-flex mx-2 p-0 w-100 ${classes.MainCardContainer}`}
               >
                 <Col
                   md={12}
@@ -419,10 +485,10 @@ const Display_Results = () => {
                       lg={3}
                       xs={3}
                       sm={3}
-                      className="d-flex align-items-center justify-content-around"
+                      className="d-flex align-items-center justify-content-around "
                     >
                       <Image
-                        src={modellogo}
+                        src={SchoolLogo}
                         width={95}
                         height={95}
                         alt="School Logo"
@@ -437,7 +503,7 @@ const Display_Results = () => {
                       <p className={classes.Tel}>
                         Tel: 08033824233 Email: upmosttony@gmail.com
                       </p>
-                      <p className={classes.Report}>REPORT SHEET</p>
+                      <p className={classes.Report}>REPORT CARD</p>
                     </Col>
                   </Row>
                 </Col>
@@ -952,7 +1018,10 @@ const Display_Results = () => {
             </Col>
           )}
         </Row>
-      )}
+      </div>
+      {/* )}
+        </Row>
+      )} */}
       <Processing_Modal
         Show={showProcessing}
         message={Message}
@@ -963,4 +1032,4 @@ const Display_Results = () => {
   );
 };
 
-export default Display_Results;
+export default ResultCheckerComponent;

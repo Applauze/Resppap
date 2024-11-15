@@ -1,7 +1,8 @@
+"use client";
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { rubik, pt_Sans } from "@/app/util/fonts";
-
+import classes from "./FormInputText.module.css";
 const FormInputSelect = (props) => {
   return (
     <div>
@@ -13,6 +14,11 @@ const FormInputSelect = (props) => {
         }}
       >
         {props.Label}
+        {props.Compulsory && (
+          <span className={classes.CompulsoryItem}>
+            <sup> * </sup>
+          </span>
+        )}
       </Form.Label>
       <Form.Select
         value={props.Owner}

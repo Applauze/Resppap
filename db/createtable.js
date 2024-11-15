@@ -29,6 +29,30 @@ const connectDatabase = () => {
   return connection;
 };
 
+const checkTableExistence = async (connection, tableName, sql) => {
+  try {
+    const tableQuery = `SHOW TABLES LIKE '${tableName}_subjects_registered'`;
+    const result = await new Promise((resolve, reject) => {
+      connection.query(tableQuery, (error, results, fields) => {
+        if (results) {
+          const affectRows = parseInt(results.length);
+          if (affectRows > 0) {
+            resolve(results);
+          } else {
+            resolve([]);
+            reject(error);
+          }
+        } else {
+          resolve([]);
+        }
+      });
+    });
+    return result;
+  } catch (error) {
+    return "Error:" + error;
+  }
+};
+
 const createTable = async (connection, tableName, sql) => {
   try {
     const tableQuery = `CREATE TABLE IF NOT EXISTS ${tableName} (${sql})`;
@@ -49,7 +73,6 @@ const createTable = async (connection, tableName, sql) => {
 const insertTable = async (connection, sql, params) => {
   try {
     const result = await new Promise((resolve, reject) => {
-      console.log(sql);
       connection.query(sql, [params], (error, results, fields) => {
         const affectRows = parseInt(results.affectedRows);
         if (affectRows > 0) {
@@ -67,11 +90,7 @@ const insertTable = async (connection, sql, params) => {
 const updateTable = async (connection, sql, params) => {
   try {
     const result = await new Promise((resolve, reject) => {
-      console.log("my db");
-      console.log(params);
-      console.log(sql);
       connection.query(sql, [...params], (error, results, fields) => {
-        console.log(results);
         const affectRows = parseInt(results.affectedRows);
         if (affectRows > 0) {
           resolve(affectRows);
@@ -111,4 +130,11 @@ const selectTable = async (connection, sql) => {
   }
 };
 
-export { connectDatabase, createTable, insertTable, selectTable, updateTable };
+export {
+  connectDatabase,
+  createTable,
+  insertTable,
+  selectTable,
+  updateTable,
+  checkTableExistence,
+};

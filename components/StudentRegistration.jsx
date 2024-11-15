@@ -266,6 +266,7 @@ const StudentRegistration = () => {
                         Color={TheColor}
                         readonly={Saving}
                         Owner={Surname}
+                        Compulsory={true}
                       />
                     </Col>
                     <hr className={classes.formDivider} />
@@ -276,6 +277,7 @@ const StudentRegistration = () => {
                         Color={TheColor}
                         readonly={Saving}
                         Owner={Firstname}
+                        Compulsory={true}
                       />
                     </Col>
                   </Row>
@@ -308,6 +310,7 @@ const StudentRegistration = () => {
                         GetValue={setSessionAdmitted}
                         Color={TheColor}
                         Owner={SessionAdmitted}
+                        Compulsory={true}
                       />
                     </Col>
                     <hr className={classes.formDivider} />
@@ -318,6 +321,7 @@ const StudentRegistration = () => {
                         GetValue={setClassAdmitted}
                         Color={TheColor}
                         Owner={ClassAdmitted}
+                        Compulsory={true}
                       />
                     </Col>
                   </Row>
@@ -330,6 +334,7 @@ const StudentRegistration = () => {
                         GetValue={setTermAdmitted}
                         Color={TheColor}
                         Owner={TermAdmitted}
+                        Compulsory={true}
                       />
                     </Col>
                     <hr className={classes.formDivider} />

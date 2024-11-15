@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { Button, Row, Col, Nav, ListGroup } from "react-bootstrap";
-import schoollogo from "./Images/schoollogo.png";
+import schoollogo from "./Images/modellogo.jpg";
 import Image from "next/image";
 import classes from "./TheHeader.module.css";
 import MainLinks from "./MainLinks";
@@ -15,7 +15,7 @@ import OK_Modal from "./ModalsAndAlerts/OK_Modal";
 import LogoutFunction from "./API_Call/exit";
 import { shadows_Into_Light, rubik, pt_Sans } from "@/app/util/fonts";
 import PermissionContext from "@/Store/permission-context";
-
+import { DisplayNotification } from "./Notification";
 const TheHeader = () => {
   const [Modal_Message, setModal_Message] = useState("");
   const [Show_Modal, setShow_Modal] = useState(false);
@@ -221,9 +221,14 @@ const TheHeader = () => {
                           path: "/classteacherallocation",
                         },
                         {
-                          title: "Change Student's Class",
-                          desc: "Change a student class and move all his records from a his previous class to his/her new class",
-                          path: "/changestudentclass",
+                          title: "Promote Students",
+                          desc: "Promote successful students to the selected session with respect to their classes",
+                          path: "/promotion",
+                        },
+                        {
+                          title: "View Students PINs",
+                          desc: "View students PINs for result checking",
+                          path: "/pins",
                         },
                       ]}
                     />
@@ -429,6 +434,14 @@ const TheHeader = () => {
                           className={classes.submobilelinks}
                         >
                           Change Student Class
+                        </Link>
+                      </p>
+                      <p className={`${classes.submobileP} ml-3 my-0`}>
+                        <Link
+                          href="/promotion"
+                          className={classes.submobilelinks}
+                        >
+                          Promote Students
                         </Link>
                       </p>
                     </div>

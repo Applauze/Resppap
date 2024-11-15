@@ -6,6 +6,7 @@ import {
   updateTable,
   selectTable,
 } from "@/db/createtable";
+import Term from "@/components/SessionTermClass/Term";
 export async function POST(request, response) {
   const body = await request.json();
 
@@ -23,7 +24,7 @@ export async function POST(request, response) {
   let result = 0;
   const connect = await connectDatabase();
   let create_sql =
-    "ssn INT PRIMARY KEY AUTO_INCREMENT,student_id VARCHAR(30), subject_name VARCHAR(40), subject_type VARCHAR(30), class VARCHAR(10), teacher_id VARCHAR(20), date_registered VARCHAR(20), first_term_ca_score1 VARCHAR(10) DEFAULT 'AB', first_term_ca_score2 VARCHAR(10) DEFAULT 'AB', first_term_exam_score VARCHAR(10) DEFAULT 'AB', first_term_total_score INT(10), first_term_highest_score VARCHAR(10), first_term_lowest_score VARCHAR(10), first_term_average_score VARCHAR(10), first_term_position VARCHAR(10), first_term_grade VARCHAR(10), first_term_remark VARCHAR(10), second_term_ca_score1 VARCHAR(10) DEFAULT 'AB', second_term_ca_score2 VARCHAR(10) DEFAULT 'AB', second_term_exam_score VARCHAR(10) DEFAULT 'AB', second_term_total_score INT(10), second_term_highest_score VARCHAR(10), second_term_lowest_score VARCHAR(10), second_term_average_score VARCHAR(10), second_term_position VARCHAR(10), second_term_grade VARCHAR(10), second_term_remark VARCHAR(10), third_term_ca_score1 VARCHAR(10) DEFAULT 'AB', third_term_ca_score2 VARCHAR(10) DEFAULT 'AB', third_term_exam_score VARCHAR(10) DEFAULT 'AB', third_term_total_score INT(10), third_term_highest_score VARCHAR(10), third_term_lowest_score VARCHAR(10), third_term_average_score VARCHAR(10), third_term_position VARCHAR(10), third_term_grade VARCHAR(10), third_term_remark VARCHAR(10),  divisor INT(10) DEFAULT '3', overall_total_score INT(10), overall_highest_score VARCHAR(10), overall_lowest_score VARCHAR(10), overall_average_score VARCHAR(10), overall_position VARCHAR(10), overall_grade VARCHAR(10), overall_remark VARCHAR(10), general_average_score INT (10), status VARCHAR(10) DEFAULT 'Active', UNIQUE (student_id, subject_name, class)";
+    "ssn INT PRIMARY KEY AUTO_INCREMENT,student_id VARCHAR(30), subject_name VARCHAR(40), subject_type VARCHAR(30), class VARCHAR(10), teacher_id VARCHAR(20), date_registered VARCHAR(20), first_term_ca_score1 VARCHAR(10) DEFAULT 'AB', first_term_ca_score2 VARCHAR(10) DEFAULT 'AB', first_term_exam_score VARCHAR(10) DEFAULT 'AB', first_term_total_score INT(10), first_term_highest_score VARCHAR(10), first_term_lowest_score VARCHAR(10), first_term_average_score VARCHAR(10), first_term_position VARCHAR(10), first_term_grade VARCHAR(10), first_term_remark VARCHAR(10), second_term_ca_score1 VARCHAR(10) DEFAULT 'AB', second_term_ca_score2 VARCHAR(10) DEFAULT 'AB', second_term_exam_score VARCHAR(10) DEFAULT 'AB', second_term_total_score INT(10), second_term_highest_score VARCHAR(10), second_term_lowest_score VARCHAR(10), second_term_average_score VARCHAR(10), second_term_position VARCHAR(10), second_term_grade VARCHAR(10), second_term_remark VARCHAR(10), third_term_ca_score1 VARCHAR(10) DEFAULT 'AB', third_term_ca_score2 VARCHAR(10) DEFAULT 'AB', third_term_exam_score VARCHAR(10) DEFAULT 'AB', third_term_total_score INT(10), third_term_highest_score VARCHAR(10), third_term_lowest_score VARCHAR(10), third_term_average_score VARCHAR(10), third_term_position VARCHAR(10), third_term_grade VARCHAR(10), third_term_remark VARCHAR(10),  divisor INT(10) DEFAULT '3', overall_total_score INT(10), overall_highest_score VARCHAR(10), overall_lowest_score VARCHAR(10), overall_average_score VARCHAR(10), overall_position VARCHAR(10), overall_grade VARCHAR(10), overall_remark VARCHAR(10), general_average_score INT (10), promotion_status VARCHAR(30) DEFAULT 'Not decided', status VARCHAR(10) DEFAULT 'Active', UNIQUE (student_id, subject_name, class)";
 
   await createTable(connect, Session + "_subjects_registered", create_sql);
 
@@ -51,6 +52,11 @@ export async function POST(request, response) {
   create_sql =
     "ssn INT PRIMARY KEY AUTO_INCREMENT, student_id VARCHAR(30),  session VARCHAR(20), class VARCHAR(20),  UNIQUE (student_id, session, class)";
   await createTable(connect, "students_class_track", create_sql);
+
+  create_sql =
+    "ssn INT PRIMARY KEY AUTO_INCREMENT, student_id VARCHAR(30),  session VARCHAR(20), term VARCHAR(10), class VARCHAR(20), gate VARCHAR(200), status VARCHAR(20)";
+  await createTable(connect, `${Session}_resultchecker`, create_sql);
+
   let select_sql = `SELECT class FROM students_class_track WHERE student_id = '${SID}' AND session =  '${Session}'`;
   result = await selectTable(connect, select_sql);
 
@@ -58,8 +64,27 @@ export async function POST(request, response) {
   let Cl = result.length < 1 ? "" : result[0].class;
 
   if (result.length < 1 || Cl === Claz) {
-    if (result < 1) {
+    if (result.length < 1) {
       TrackClass = true;
+      var CryptoJS = require("crypto-js");
+      let TheTerms = ["First", "Second", "Third"];
+      for (var i = 0; i < TheTerms.length; i++) {
+        let aPIN =
+          Date.now().toString().slice(-4) +
+          Math.floor(1000 + Math.random() * 9000).toString() +
+          Math.floor(1000 + Math.random() * 9000).toString() +
+          Math.floor(1000 + Math.random() * 9000).toString();
+
+        let PIN = process.env.mypin;
+        aPIN = aPIN.toString();
+        aPIN = CryptoJS.AES.encrypt(aPIN, PIN).toString();
+        let theval = [[SID, Session, TheTerms[i], Claz, aPIN]];
+
+        let sql = `INSERT into ${Session}_resultchecker (student_id, session, term, class, gate) VALUES ?`;
+        const params = theval;
+
+        result = await insertTable(connect, sql, params);
+      }
     }
     let TheValues = [];
     let TheDeletedValues = [];

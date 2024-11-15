@@ -81,49 +81,39 @@ const Subject_Allocation = (props) => {
 
   const AuthorizeTeacher = async (e) => {
     e.preventDefault();
-    if (AllTheTeachers.includes(Teachername)) {
-      setshowProcessing(true);
-      setMessage(`The system is authorizing ${Teachername}`);
-      let m = AllTheTeachers.indexOf(Teachername);
-      console.log(m);
-      let AllIDs = [...AllTheTeachersID];
-      let Allocation = {
-        TeacherID: AllIDs[m],
-        Subject: pickedSubject,
-        Session: session,
-        Term: term,
-        Claz: claz,
-      };
+    setshowProcessing(true);
+    setMessage(`The system is authorizing ${Teachername}`);
+    let m = AllTheTeachers.indexOf(Teachername);
+    console.log(m);
+    let AllIDs = [...AllTheTeachersID];
+    let Allocation = {
+      TeacherID: AllIDs[m],
+      Subject: pickedSubject,
+      Session: session,
+      Term: term,
+      Claz: claz,
+    };
 
-      let SaveTheAllocation = await axioscall(
-        "save_subject_teacher_allocation",
-        Allocation
-      );
+    let SaveTheAllocation = await axioscall(
+      "save_subject_teacher_allocation",
+      Allocation
+    );
 
-      if (SaveTheAllocation === "Saved Successfully") {
-        setshowProcessing(false);
-        DisplayNotification(
-          "Success",
-          `${Teachername} successfully authorized for ${pickedSubject} in ${claz} for ${term} Term, ${session} Session`,
-          "success",
-          "top-center",
-          5000
-        );
-
-        setTeachername("");
-        setterm("Select");
-        setsession("Select");
-        setclaz("Select");
-        setpickedSubject("Select");
-      }
-    } else {
+    if (SaveTheAllocation === "Saved Successfully") {
+      setshowProcessing(false);
       DisplayNotification(
-        "Error",
-        `${Teachername} is not a registered Teacher of this School`,
-        "danger",
+        "Success",
+        `${Teachername} successfully authorized for ${pickedSubject} in ${claz} for ${term} Term, ${session} Session`,
+        "success",
         "top-center",
         5000
       );
+
+      setTeachername("");
+      setterm("Select");
+      setsession("Select");
+      setclaz("Select");
+      setpickedSubject("Select");
     }
   };
 
@@ -204,8 +194,14 @@ const Subject_Allocation = (props) => {
                     />
                   </Col>
                 </Row>
-                <Row className="justify-content-end">
-                  <Col lg={3} md={3} sm={11} xs={11} className="mt-2  text-end">
+                <Row>
+                  <Col
+                    lg={3}
+                    md={3}
+                    sm={11}
+                    xs={11}
+                    className="mt-2 col-offset-9"
+                  >
                     <Button
                       variance="info"
                       type="submit"
