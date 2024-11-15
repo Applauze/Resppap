@@ -12,15 +12,7 @@ import generatePDF from "react-to-pdf";
 import Image from "next/image";
 import "./bootstrap.css";
 
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-  Table,
-  ListGroup,
-} from "react-bootstrap";
+import { Container, Row, Col, Form, Table, ListGroup } from "react-bootstrap";
 import axioscall from "./API_Call/axioscall";
 import { DisplayNotification } from "./Notification";
 import { ReactNotifications } from "react-notifications-component";
