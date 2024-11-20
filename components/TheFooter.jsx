@@ -6,15 +6,15 @@ const TheFooter = () => {
   const [FooterDetails, setFooterDetails] = useState([
     {
       header: "ABOUT US",
-      body: "Our mission is to provide quality services to people in achieving optimum health as we deliver the best products and values to every stakeholder.",
+      body: "Our mission is to provide a supportive and inclusive learning environment that empowers students to achieve academic excellence, develop social responsibility, and become innovative leaders who positively impact their communities.",
     },
     {
       header: "OUR ADDRESS",
-      body: "Idi Ose Junction, Opp. Musalat Petrol Station, Agunpopo, Oyo, Oyo State.",
+      body: "Opp. Old Oyo National Park, Isokun, Oyo",
     },
     {
       header: "CONTACT US",
-      body: "PHONE NUMBERS: 08054247571, 07067088368",
+      body: "PHONE NUMBERS: 08033824233",
     },
     {
       header: " OUR SOFTWARE DEVELOPER",
