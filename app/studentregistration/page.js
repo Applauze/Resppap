@@ -2,6 +2,7 @@ import StudentRegistration from "@/components/StudentRegistration";
 import GetAllNames from "../api/getallnames";
 import CheckLoggedStatus from "../api/checkloggedstatus";
 import Login_Page from "@/components/Login_Page";
+import { cookies } from "next/headers";
 
 const StudentsRegistration = async () => {
   const getStudentsNames = async () => {
@@ -10,6 +11,7 @@ const StudentsRegistration = async () => {
   };
   const Stat = await CheckLoggedStatus();
   let StudentsNames = "{}";
+  const Cookies = await cookies();
   if (Stat) {
     StudentsNames = await getStudentsNames();
   }

@@ -5,7 +5,8 @@ import Login_Page from "@/components/Login_Page";
 
 const DisplayResults = async () => {
   const Stat = await CheckLoggedStatus();
-  return Stat ? <View_Pins /> : <Login_Page Redirection={true} />;
+  return <View_Pins />;
+  // return Stat ? <View_Pins /> : <Login_Page Redirection={true} />;
 };
 
 export default DisplayResults;

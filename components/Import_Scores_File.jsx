@@ -11,7 +11,6 @@ import { DisplayNotification } from "./Notification";
 import "react-notifications-component/dist/theme.css";
 import { ExcelRenderer } from "react-excel-renderer";
 import Cookies from "universal-cookie";
-import ReactHtmlTableToExcel from "react-html-table-to-excel";
 import { ReactNotifications } from "react-notifications-component";
 
 const Import_Scores_File = (props) => {

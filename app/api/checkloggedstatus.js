@@ -2,8 +2,10 @@
 import { connectDatabase, selectTable } from "@/db/createtable";
 import { cookies } from "next/headers";
 const CheckLoggedStatus = async () => {
-  const Cookies = new cookies();
+  const Cookies = await cookies();
+
   const stat = Cookies.get("accessStatus");
+
   if (stat) {
     return true;
   } else {

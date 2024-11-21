@@ -37,24 +37,33 @@ export async function POST(request, response) {
     bytes = CryptoJS.AES.decrypt(GTW, RPIN);
     GTW = bytes.toString(CryptoJS.enc.Utf8);
     if (Allowance === GTW) {
-      Cookies.set("username", username, {
-        httpOnly: true, // Prevent client-side JavaScript access
-        sameSite: "strict", // Mitigate cross-site request forgery (CSRF)
-        secure: process.env.NODE_ENV === "production", // Secure cookie for HTTPS in production
+      await Cookies.set("username", username, {
+        httpOnly: false, // Prevent client-side JavaScript access
+        sameSite: "lax", // Mitigate cross-site request forgery (CSRF)
+        secure: false, // Secure cookie for HTTPS in production
         maxAge: 60 * 60 * 1, // Expires in 24 hours (adjust as needed)
       });
-      Cookies.set("accessStatus", true, {
-        httpOnly: true, // Prevent client-side JavaScript access
-        sameSite: "strict", // Mitigate cross-site request forgery (CSRF)
-        secure: true, // Secure cookie for HTTPS in production
+      await Cookies.set("accessStatus", true, {
+        httpOnly: false, // Prevent client-side JavaScript access
+        sameSite: "lax", // Mitigate cross-site request forgery (CSRF)
+        secure: false, // Secure cookie for HTTPS in production
         maxAge: 60 * 60 * 1, // Expires in 24 hours (adjust as needed)
       });
-      Cookies.set("Category", Category, {
-        httpOnly: true, // Prevent client-side JavaScript access
-        sameSite: "strict", // Mitigate cross-site request forgery (CSRF)
-        secure: true, // Secure cookie for HTTPS in production
+      await Cookies.set("Category", Category, {
+        httpOnly: false, // Prevent client-side JavaScript access
+        sameSite: "lax", // Mitigate cross-site request forgery (CSRF)
+        secure: false, // Secure cookie for HTTPS in production
         maxAge: 60 * 60 * 1, // Expires in 24 hours (adjust as needed)
       });
+
+      //Check the properties and the comment there for future use
+      // await Cookies.set("Category", Category, {
+      //   httpOnly: true, // Prevent client-side JavaScript access
+      //   sameSite: "strict", // Mitigate cross-site request forgery (CSRF)
+      //   secure: true, // Secure cookie for HTTPS in production
+      // OR secure: process.env.NODE_ENV === "production", // Secure cookie for HTTPS in production
+      //   maxAge: 60 * 60 * 1, // Expires in 24 hours (adjust as needed)
+      // });
 
       LogStatus = true;
     }

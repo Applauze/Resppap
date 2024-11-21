@@ -20,8 +20,24 @@ const TheHeader = () => {
   const [Modal_Message, setModal_Message] = useState("");
   const [Show_Modal, setShow_Modal] = useState(false);
   const [Modal_Title, setModal_Title] = useState("");
+  const [TOD, setTOD] = useState("");
   const [Button_Title, setButton_Title] = useState("");
   const PCtx = useContext(PermissionContext);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  // useEffect(() => {
+  //   const timerId = setInterval(() => {
+  //     setCurrentTime(new Date());
+  //   }, 1000);
+
+  //   return () => clearInterval(timerId);
+  // }, []);
+
+  // const hours = currentTime.getHours();
+  // const minutes = currentTime.getMinutes().toString().padStart(2, "0");
+  // const seconds = currentTime.getSeconds().toString().padStart(2, "0");
+  // const period = hours < 12 ? "AM" : "PM";
+  // const displayHours = hours % 12 === 0 ? 12 : hours % 12;
 
   const changeMenuClick = () => {
     PCtx.setMenuClicked(!PCtx.MenuClicked);
@@ -243,12 +259,12 @@ const TheHeader = () => {
               </li>
             </ul>
           </Col>
-          <Col md={2} lg={2} sm={12}>
+          {/* <Col md={2} lg={2} sm={12}>
             <ButtonBackground
-              ButtonName="12:00:00"
+              ButtonName={`${displayHours}:${minutes}:${seconds} ${period}`}
               ButtonCss={{ display: "block" }}
             />
-          </Col>
+          </Col> */}
         </Row>
 
         <Row className={`h-100 p-0 m-0   ${classes.MenuBarRow}`}>

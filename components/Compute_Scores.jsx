@@ -32,14 +32,15 @@ const Compute_Scores = (props) => {
         <hr />
         <Row>
           <Col md={12} lg={12} sm={12} xs={12}>
-            <Tabs defaultActiveKey="Upload" id="uncontrolled-tab-example">
+            <Enter_Scores Subjects={props.Subjects} Notify={displayN} />
+            {/* <Tabs defaultActiveKey="Upload" id="uncontrolled-tab-example">
               <Tab
                 eventKey="Enter"
                 title="Enter Scores"
 
                 // className={classes.margin4printing}
               >
-                <Enter_Scores Subjects={props.Subjects} Notify={displayN} />
+               
               </Tab>
               <Tab
                 eventKey="Upload"
@@ -51,7 +52,7 @@ const Compute_Scores = (props) => {
                   Notify={displayN}
                 />
               </Tab>
-            </Tabs>
+            </Tabs> */}
           </Col>
         </Row>
       </Col>
