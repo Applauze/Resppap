@@ -16,11 +16,10 @@ import {
   Spinner,
   Card,
 } from "react-bootstrap";
-import BorderedCardNoHover from "./Cards/BorderedCardNoHover";
+import Cookies from "universal-cookie";
 import classes from "./Login_Page.module.css";
 import FormInputPassword from "./Inputs/FormInputPassword";
 import { DisplayNotification } from "./Notification";
-import Cookies from "universal-cookie";
 import MainImage from "./Images/MainImage.jpg";
 import MenuDisplayPage from "./MenuDisplayPage";
 import Processing_Modal from "./ModalsAndAlerts/Processing_Modal";

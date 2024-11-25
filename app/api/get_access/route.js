@@ -74,7 +74,7 @@ export async function POST(request, response) {
     AccessDetails2 = JSON.stringify(AD2);
   } else {
     LogStatus = false;
-    AD2 = { LogStatus: LogStatus };
+    AD2 = { LogStatus: LogStatus, Category: Category };
     AccessDetails2 = JSON.stringify(AD2);
   }
 

@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter, Rubik } from "next/font/google";
 import Header from "@/components/TheHeader";
 import Footer from "@/components/TheFooter";
+import { cookies } from "next/headers";
 import { PermissionContextProvider } from "@/Store/permission-context";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,11 +17,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const Cookies = new cookies();
+  const cat = Cookies.get("Category") ? Cookies.get("Category").value : "";
+  const Category = cat === "Admin" ? true : false;
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <PermissionContextProvider>
-          <Header />
+          <Header Category={Category} />
           {children}
           <Footer />
         </PermissionContextProvider>

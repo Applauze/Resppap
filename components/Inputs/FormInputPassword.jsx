@@ -17,7 +17,7 @@ const FormInputPassword = (props) => {
         value={props.Owner}
         onChange={(e) => props.GetValue(e.target.value)}
         name="Password"
-        required={true}
+        required={props.Required}
         readOnly={props.readonly}
       />
     </Form.Group>

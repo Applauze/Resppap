@@ -6,7 +6,7 @@ import schoollogo from "./Images/modellogo.jpg";
 import Image from "next/image";
 import classes from "./TheHeader.module.css";
 import MainLinks from "./MainLinks";
-import ButtonBackground from "./Inputs/ButtonBackground";
+import PermissionContext from "@/Store/permission-context";
 import AllPanel from "./AllPanel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -14,9 +14,9 @@ import BorderedCardNoHover from "./Cards/BorderedCardNoHover";
 import OK_Modal from "./ModalsAndAlerts/OK_Modal";
 import LogoutFunction from "./API_Call/exit";
 import { shadows_Into_Light, rubik, pt_Sans } from "@/app/util/fonts";
-import PermissionContext from "@/Store/permission-context";
 import { DisplayNotification } from "./Notification";
-const TheHeader = () => {
+
+const TheHeader = (props) => {
   const [Modal_Message, setModal_Message] = useState("");
   const [Show_Modal, setShow_Modal] = useState(false);
   const [Modal_Title, setModal_Title] = useState("");
@@ -168,7 +168,17 @@ const TheHeader = () => {
                         {
                           title: "Subjects' Registration",
                           desc: "This opens a new form to register all the subjects offered by a  subject here",
-                          path: "/subjectssregistration",
+                          path: "/subjectregistration",
+                        },
+                        {
+                          title: "Subjects' Registration",
+                          desc: "This opens a new form to register all the subjects offered by a  subject here",
+                          path: "/subjectregistration",
+                        },
+                        {
+                          title: "Subjects' Registration",
+                          desc: "This opens a new form to register all the subjects offered by a  subject here",
+                          path: "/subjectregistration",
                         },
                       ]}
                     />
@@ -220,37 +230,50 @@ const TheHeader = () => {
               <li className="d-inline-block mx-4 px-2 ">
                 <MainLinks LinkName="AWARDS" />
               </li>
-              <li className="d-inline-block mx-4 px-2 ">
-                <MainLinks
-                  LinkName="ADMIN"
-                  ThePanel={
-                    <AllPanel
-                      TheLink={[
-                        {
-                          title: "Subject Teacher Allocation",
-                          desc: "Authorize a teacher to the subject he/she teaches for easy access to scores computation",
-                          path: "/subjectteacherallocation",
-                        },
-                        {
-                          title: "Class Teacher Allocation",
-                          desc: "Authorize teacher to perform class teacher's work for a particular class",
-                          path: "/classteacherallocation",
-                        },
-                        {
-                          title: "Promote Students",
-                          desc: "Promote successful students to the selected session with respect to their classes",
-                          path: "/promotion",
-                        },
-                        {
-                          title: "View Students PINs",
-                          desc: "View students PINs for result checking",
-                          path: "/pins",
-                        },
-                      ]}
-                    />
-                  }
-                />
-              </li>
+
+              {props.Category && (
+                <li className="d-inline-block mx-4 px-2 ">
+                  <MainLinks
+                    LinkName="ADMIN"
+                    ThePanel={
+                      <AllPanel
+                        TheLink={[
+                          {
+                            title: "Subject Teacher Allocation",
+                            desc: "Authorize a teacher to the subject he/she teaches for easy access to scores computation",
+                            path: "/subjectteacherallocation",
+                          },
+                          {
+                            title: "Class Teacher Allocation",
+                            desc: "Authorize teacher to perform class teacher's work for a particular class",
+                            path: "/classteacherallocation",
+                          },
+                          {
+                            title: "Edit Student's Profile",
+                            desc: "Edit student's details stored in the database like Name, Date of birth etc",
+                            path: "/editstudentregistration",
+                          },
+                          {
+                            title: "Edit Teacher's Profile",
+                            desc: "Edit student's details stored in the database like Name, Title etc",
+                            path: "/editteachersregistration",
+                          },
+                          {
+                            title: "Promote Students",
+                            desc: "Promote successful students to the selected session with respect to their classes",
+                            path: "/promotion",
+                          },
+                          {
+                            title: "View Students PINs",
+                            desc: "View students PINs for result checking",
+                            path: "/pins",
+                          },
+                        ]}
+                      />
+                    }
+                  />
+                </li>
+              )}
               <li className="d-inline-block mx-4 px-2 ">
                 <MainLinks LinkName="ABOUT" />
               </li>

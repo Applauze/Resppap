@@ -178,7 +178,7 @@ const Teachers_Registration = (props) => {
                   <Row className="justify-content-around my-1">
                     <Col lg={12} md={12} xs={12} sm={12}>
                       <h4 className="h4 text-center mb-3">
-                        New Student Registration Form
+                        New Teacher's Registration Form
                       </h4>
                     </Col>
                   </Row>
@@ -214,6 +214,7 @@ const Teachers_Registration = (props) => {
                         Color={TheColor}
                         readonly={Saving}
                         Owner={Gateway}
+                        Required={true}
                       />
                     </Col>
                     <hr className={classes.formDivider} />
@@ -224,6 +225,7 @@ const Teachers_Registration = (props) => {
                         Color={TheColor}
                         readonly={Saving}
                         Owner={Gateway2}
+                        Required={true}
                       />
                     </Col>
                   </Row>
@@ -264,7 +266,7 @@ const Teachers_Registration = (props) => {
                     <hr className={classes.formDivider} />
                     <Col md={5} lg={5} sm={10} xs={10}>
                       <FormInputSelect
-                        Data={["Admin", "Non Admin"]}
+                        Data={["Non Admin"]}
                         Label="Category"
                         GetValue={setCategory}
                         Color={TheColor}

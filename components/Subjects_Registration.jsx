@@ -65,7 +65,7 @@ const Subjects_Registration = (props) => {
   useEffect(() => {
     const AllNms = JSON.parse(props.Stds);
     setAllStds(AllNms.AllStudentsNames);
-    setAllStdsIds(AllNms.AllSttudentsID);
+    setAllStdsIds(AllNms.AllStudentsID);
     setAllStdsPixUrls(AllNms.AllPictureUrl);
 
     const AllSubs = JSON.parse(props.Subjects);
