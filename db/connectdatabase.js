@@ -8,6 +8,14 @@ const connection = mysql.createConnection({
   port: process.env.DBPORT,
 });
 
+// const connection = mysql.createConnection({
+//   host: "eauedmhs.com.ng",
+//   user: "eauedmhs_respapp",
+//   password: "tonybridget143",
+//   database: "eauedmhs_respapp",
+//   port: "3306",
+// });
+
 console.log(`CREATE DATABASE IF NOT EXISTS ${databaseName}`);
 
 connection.query(`CREATE DATABASE IF NOT EXISTS ${databaseName}`, (error) => {

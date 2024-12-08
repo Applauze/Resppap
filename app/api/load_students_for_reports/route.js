@@ -8,7 +8,7 @@ export async function POST(request, response) {
   const { Session, Term, Claz, TeacherID, Category } = body.dataFromCaller;
   let select_sql = "";
   select_sql = `SELECT teacher_id from ${Session}_class_allocation  WHERE Term = '${Term}' AND Class = '${Claz}' AND teacher_id = '${TeacherID}'`;
-  console.log(select_sql);
+
   let result = await selectTable(connect, select_sql);
   let theData = "";
 
