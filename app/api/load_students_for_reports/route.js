@@ -7,12 +7,18 @@ export async function POST(request, response) {
   const connect = await connectDatabase();
   const { Session, Term, Claz, TeacherID, Category } = body.dataFromCaller;
   let select_sql = "";
-  select_sql = `SELECT teacher_id from ${Session}_class_allocation  WHERE Term = '${Term}' AND Class = '${Claz}' AND teacher_id = '${TeacherID}'`;
+  select_sql = `SELECT A.teacher_id, B.Title, B.Surname, B.Firstname, B.Middlename, B.Phone from ${Session}_class_allocation A, teachers_details B  WHERE A.Term = '${Term}' AND A.Class = '${Claz}' AND A.teacher_id = '${TeacherID}' AND A.teacher_id = B.teacher_id`;
 
   let result = await selectTable(connect, select_sql);
   let theData = "";
 
   if ((result && result.length > 0) || Category === "Admin") {
+    let TITLE = result[0].Title;
+    let SURNAME = result[0].Surname;
+    let FIRSTNAME = result[0].Firstname;
+    let MIDDLENAME = result[0].Middlename;
+    let PHONENUMBER = result[0].Phone;
+
     select_sql = `SELECT DISTINCT A.student_id , A.surname, A.firstname, A.middlename, A.dob, A.sex, A.picture_directory FROM students_details A, ${Session}_subjects_registered B  WHERE A.student_id = B.student_id AND B.class = '${Claz}' ORDER BY A.surname`;
 
     result = await selectTable(connect, select_sql);
@@ -22,7 +28,15 @@ export async function POST(request, response) {
 
     select_sql = `SELECT comment, term from samplecomments`;
     result = await selectTable(connect, select_sql);
-    TheStudents = { ...TheStudents, AllComments: result };
+    TheStudents = {
+      ...TheStudents,
+      AllComments: result,
+      Surname: SURNAME,
+      Firstname: FIRSTNAME,
+      Middlename: MIDDLENAME,
+      Phone: PHONENUMBER,
+      Title: TITLE,
+    };
 
     theData = JSON.stringify(TheStudents);
   } else {

@@ -43,6 +43,8 @@ const Display_Results = () => {
   const [activateSelector, setactivateSelector] = useState(true);
   const [activateButton, setactivateButton] = useState(false);
   const [displayStudents, setdisplayStudents] = useState(false);
+  const [ClassTeacherName, setClassTeacherName] = useState("");
+  const [ClassTeacherPhone, setClassTeacherPhone] = useState("");
   const [nexttermbegins, setnexttermbegins] = useState(0);
   const [schoolopens, setschoolopens] = useState(0);
   const [AllStudents, setAllStudents] = useState([]);
@@ -207,8 +209,18 @@ const Display_Results = () => {
     if (!StudentsInJson.includes("Not Authorized")) {
       if (!StudentsInJson.includes("Error")) {
         StudentsInJson = JSON.parse(StudentsInJson);
+
         let AllStds = [];
         let NIC = StudentsInJson.AllStudents.length;
+
+        let ClassTeacherName = `${StudentsInJson.Title.toUpperCase()} ${
+          StudentsInJson.Surname
+        } ${StudentsInJson.Firstname.charAt(
+          0
+        )}.${StudentsInJson.Middlename.charAt(0)}`;
+        let ClassPhone = StudentsInJson.Phone;
+        setClassTeacherName(ClassTeacherName);
+        setClassTeacherPhone(ClassPhone);
         StudentsInJson.AllStudents.forEach((element) => {
           AllStds = [
             ...AllStds,
@@ -888,14 +900,14 @@ const Display_Results = () => {
                           >{`"${ct_remark}"`}</span>
                           <hr className={classes.CommenterDivider} />
                           <span className={classes.Commenter}>
-                            MR OLADIPO A.A
+                            {ClassTeacherName}
                           </span>
 
                           <span className={classes.CommenterStatus}>
                             CLASS TEACHER
                           </span>
                           <span className={classes.CommenterStatus}>
-                            08033824233
+                            {ClassTeacherPhone}
                           </span>
                         </p>
                       </Col>

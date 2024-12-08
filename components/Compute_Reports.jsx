@@ -36,6 +36,8 @@ const Compute_Reports = () => {
   const [activateSelector, setactivateSelector] = useState(true);
   const [activateButton, setactivateButton] = useState(false);
   const [displayStudents, setdisplayStudents] = useState(false);
+  const [ClassTeacherName, setClassTeacherName] = useState("");
+  const [ClassTeacherPhone, setClassTeacherPhone] = useState("");
   const [AllStudents, setAllStudents] = useState([]);
   const [RetrievedStudentDetails, setRetrievedStudentDetails] = useState([]);
   const [RetrievedSubjects, setRetrievedSubjects] = useState([]);
@@ -173,6 +175,16 @@ const Compute_Reports = () => {
     if (!StudentsAndCommentsInJson.includes("Not Authorized")) {
       if (!StudentsAndCommentsInJson.includes("Error")) {
         StudentsAndCommentsInJson = JSON.parse(StudentsAndCommentsInJson);
+
+        let ClassTeacherName = `${StudentsAndCommentsInJson.Title.toUpperCase()} ${
+          StudentsAndCommentsInJson.Surname
+        } ${StudentsAndCommentsInJson.Firstname.charAt(
+          0
+        )}.${StudentsAndCommentsInJson.Middlename.charAt(0)}`;
+        let ClassPhone = StudentsAndCommentsInJson.Phone;
+        setClassTeacherName(ClassTeacherName);
+        setClassTeacherPhone(ClassPhone);
+
         let AllStds = [];
         let AllComments = StudentsAndCommentsInJson.AllComments;
         let TCom = [];
@@ -936,8 +948,8 @@ const Compute_Reports = () => {
                           </Form.Select>
                         )}
                         <p className={classes.ClassTeacherName}>
-                          CLASS TEACHER'S NAME & PHONE NUMBER: MR OLADIPO A.A |
-                          08033824233{" "}
+                          CLASS TEACHER'S NAME & PHONE NUMBER:{" "}
+                          {ClassTeacherName} | {ClassTeacherPhone}
                         </p>
                       </Col>
                       <Col>
