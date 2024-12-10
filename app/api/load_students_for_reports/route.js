@@ -7,17 +7,29 @@ export async function POST(request, response) {
   const connect = await connectDatabase();
   const { Session, Term, Claz, TeacherID, Category } = body.dataFromCaller;
   let select_sql = "";
-  select_sql = `SELECT A.teacher_id, B.Title, B.Surname, B.Firstname, B.Middlename, B.Phone from ${Session}_class_allocation A, teachers_details B  WHERE A.Term = '${Term}' AND A.Class = '${Claz}' AND A.teacher_id = '${TeacherID}' AND A.teacher_id = B.teacher_id`;
+  if (Category === "Admin") {
+    select_sql = `SELECT A.teacher_id, B.title, B.surname, B.firstname, B.middlename, B.phone from ${Session}_class_allocation A, teachers_details B  WHERE A.Term = '${Term}' AND A.Class = '${Claz}' AND A.teacher_id = B.teacher_id`;
+  } else {
+    select_sql = `SELECT A.teacher_id, B.title, B.surname, B.firstname, B.middlename, B.phone from ${Session}_class_allocation A, teachers_details B  WHERE A.Term = '${Term}' AND A.Class = '${Claz}' AND A.teacher_id = '${TeacherID}' AND A.teacher_id = B.teacher_id`;
+  }
 
   let result = await selectTable(connect, select_sql);
   let theData = "";
 
   if ((result && result.length > 0) || Category === "Admin") {
-    let TITLE = result[0].Title;
-    let SURNAME = result[0].Surname;
-    let FIRSTNAME = result[0].Firstname;
-    let MIDDLENAME = result[0].Middlename;
-    let PHONENUMBER = result[0].Phone;
+    let TITLE = "";
+    let SURNAME = "";
+    let FIRSTNAME = "";
+    let MIDDLENAME = "";
+    let PHONENUMBER = "";
+
+    if (result && result.length > 0) {
+      TITLE = result[0].title;
+      SURNAME = result[0].surname;
+      FIRSTNAME = result[0].firstname;
+      MIDDLENAME = result[0].middlename;
+      PHONENUMBER = result[0].phone;
+    }
 
     select_sql = `SELECT DISTINCT A.student_id , A.surname, A.firstname, A.middlename, A.dob, A.sex, A.picture_directory FROM students_details A, ${Session}_subjects_registered B  WHERE A.student_id = B.student_id AND B.class = '${Claz}' ORDER BY A.surname`;
 

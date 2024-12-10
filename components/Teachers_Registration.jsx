@@ -21,6 +21,8 @@ const Teachers_Registration = (props) => {
   const [Surname, setSurname] = useState("");
   const [Firstname, setFirstname] = useState("");
   const [Middlename, setMiddlename] = useState("");
+  const [Phone, setPhone] = useState("");
+  const [Email, setEmail] = useState("");
   const [Gateway, setGateway] = useState("");
   const [Gateway2, setGateway2] = useState("");
   const [AllTheTeachersID, setAllTheTeachersID] = useState([]);
@@ -48,6 +50,8 @@ const Teachers_Registration = (props) => {
     setFirstname("");
     setMiddlename("");
     setTeachersID("");
+    setPhone("");
+    setEmail("");
     setGateway("");
     setGateway2("");
     setCategory("Select");
@@ -72,6 +76,12 @@ const Teachers_Registration = (props) => {
     setTeachersID(CapitalizeFirstLetter(str));
   };
 
+  const GetPhone = (str) => {
+    if (!isNaN(str)) {
+      setPhone(str);
+    }
+  };
+
   const SaveStudentInformation = async (e) => {
     e.preventDefault();
 
@@ -89,6 +99,8 @@ const Teachers_Registration = (props) => {
           Firstname: Firstname,
           Middlename: Middlename,
           Category: Category,
+          Phone: Phone,
+          Email: Email,
         };
 
         setSaving(true);
@@ -265,6 +277,28 @@ const Teachers_Registration = (props) => {
                     </Col>
                     <hr className={classes.formDivider} />
                     <Col md={5} lg={5} sm={10} xs={10}>
+                      <FormInputText
+                        Label="Phone Number"
+                        GetValue={GetPhone}
+                        Color={TheColor}
+                        readonly={Saving}
+                        Owner={Phone}
+                      />
+                    </Col>
+                  </Row>
+                  <hr />
+                  <Row className="justify-content-around my-1">
+                    <Col md={5} lg={5} sm={10} xs={10}>
+                      <FormInputText
+                        Label="Email"
+                        GetValue={setEmail}
+                        Color={TheColor}
+                        readonly={Saving}
+                        Owner={Email}
+                      />
+                    </Col>
+                    <hr className={classes.formDivider} />
+                    <Col md={5} lg={5} sm={10} xs={10}>
                       <FormInputSelect
                         Data={["Non Admin"]}
                         Label="Category"
@@ -273,13 +307,6 @@ const Teachers_Registration = (props) => {
                         Owner={Category}
                       />
                     </Col>
-                    {/* <Col md={5} lg={5} sm={10} xs={10}>
-                      <FormInputDate
-                        Label="Date of Birth"
-                        GetValue={setDob}
-                        Color={TheColor}
-                      />
-                    </Col> */}
                   </Row>
                   <hr />
 

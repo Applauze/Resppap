@@ -3,7 +3,7 @@ import { connectDatabase, selectTable } from "@/db/createtable";
 const GetAllNames = async (request, response) => {
   const connect = await connectDatabase();
   const select_sql =
-    " SELECT teacher_id, surname, firstname, middlename, title, category FROM teachers_details";
+    " SELECT teacher_id, surname, firstname, middlename, title, category, phone, email  FROM teachers_details";
 
   const result = await selectTable(connect, select_sql);
 
@@ -14,6 +14,8 @@ const GetAllNames = async (request, response) => {
   let AllMiddlename = [];
   let AllTitle = [];
   let AllCategory = [];
+  let AllPhone = [];
+  let AllEmail = [];
   let AllTeachersDetails = {};
   result.forEach((Teacher) => {
     AllNames = [
@@ -26,6 +28,8 @@ const GetAllNames = async (request, response) => {
     AllMiddlename = [...AllMiddlename, Teacher.middlename];
     AllTitle = [...AllTitle, Teacher.title];
     AllCategory = [...AllCategory, Teacher.category];
+    AllPhone = [...AllPhone, Teacher.phone];
+    AllEmail = [...AllEmail, Teacher.email];
   });
 
   AllTeachersDetails = {
@@ -36,6 +40,8 @@ const GetAllNames = async (request, response) => {
     AllMiddlename: AllMiddlename,
     AllTitle: AllTitle,
     AllCategory: AllCategory,
+    AllPhone: AllPhone,
+    AllEmail: AllEmail,
   };
 
   const theData = JSON.stringify(AllTeachersDetails);

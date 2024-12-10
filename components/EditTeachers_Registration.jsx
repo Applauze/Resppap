@@ -23,6 +23,8 @@ const EditTeachers_Registration = (props) => {
   const [Surname, setSurname] = useState("");
   const [Firstname, setFirstname] = useState("");
   const [Middlename, setMiddlename] = useState("");
+  const [Phone, setPhone] = useState("");
+  const [Email, setEmail] = useState("");
   const [Gateway, setGateway] = useState("");
   const [Gateway2, setGateway2] = useState("");
   const [AllTheTeachersID, setAllTheTeachersID] = useState([]);
@@ -38,6 +40,8 @@ const EditTeachers_Registration = (props) => {
   const [AllFirstnames, setAllFirstnames] = useState([]);
   const [AllMiddlenames, setAllMiddlenames] = useState([]);
   const [AllTitles, setAllTitles] = useState([]);
+  const [AllPhones, setAllPhones] = useState([]);
+  const [AllEmails, setAllEmails] = useState([]);
   const [AllCategories, setAllCategories] = useState([]);
   const [activateButton, setactivateButton] = useState(false);
 
@@ -57,6 +61,8 @@ const EditTeachers_Registration = (props) => {
     setAllMiddlenames(AllTeachers.AllMiddlename);
     setAllTitles(AllTeachers.AllTitle);
     setAllCategories(AllTeachers.AllCategory);
+    setAllPhones(AllTeachers.AllPhone);
+    setAllEmails(AllTeachers.AllEmail);
   }, []);
 
   const AfterEvent = () => {
@@ -82,6 +88,12 @@ const EditTeachers_Registration = (props) => {
     setTeachersID(CapitalizeFirstLetter(str));
   };
 
+  const GetPhone = (str) => {
+    if (!isNaN(str)) {
+      setPhone(str);
+    }
+  };
+
   const getTeacherPicked = (snm) => {
     setPickedTeacherName(snm);
     if (AllTeachersName.includes(snm)) {
@@ -92,6 +104,8 @@ const EditTeachers_Registration = (props) => {
       setMiddlename(AllMiddlenames[TIndx]);
       setTitle(AllTitles[TIndx]);
       setCategory(AllCategories[TIndx]);
+      setPhone(AllPhones[TIndx]);
+      setEmail(AllEmails[TIndx]);
       setactivateButton(true);
     } else {
       setactivateButton(false);
@@ -114,6 +128,8 @@ const EditTeachers_Registration = (props) => {
         Firstname: Firstname,
         Middlename: Middlename,
         Category: Category,
+        Phone: Phone,
+        Email: Email,
       };
 
       setSaving(true);
@@ -315,6 +331,28 @@ const EditTeachers_Registration = (props) => {
                       </Col>
                       <hr className={classes.formDivider} />
                       <Col md={5} lg={5} sm={10} xs={10}>
+                        <FormInputText
+                          Label="Phone Number"
+                          GetValue={GetPhone}
+                          Color={TheColor}
+                          readonly={Saving}
+                          Owner={Phone}
+                        />
+                      </Col>
+                    </Row>
+                    <hr />
+                    <Row className="justify-content-around my-1">
+                      <Col md={5} lg={5} sm={10} xs={10}>
+                        <FormInputText
+                          Label="Email"
+                          GetValue={setEmail}
+                          Color={TheColor}
+                          readonly={Saving}
+                          Owner={Email}
+                        />
+                      </Col>
+                      <hr className={classes.formDivider} />
+                      <Col md={5} lg={5} sm={10} xs={10}>
                         <FormInputSelect
                           Data={["Admin", "Non Admin"]}
                           Label="Category"
@@ -323,13 +361,6 @@ const EditTeachers_Registration = (props) => {
                           Owner={Category}
                         />
                       </Col>
-                      {/* <Col md={5} lg={5} sm={10} xs={10}>
-                      <FormInputDate
-                        Label="Date of Birth"
-                        GetValue={setDob}
-                        Color={TheColor}
-                      />
-                    </Col> */}
                     </Row>
                     <hr />
 

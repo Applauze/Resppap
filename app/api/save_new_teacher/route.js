@@ -11,6 +11,8 @@ export async function POST(request, response) {
     Firstname,
     Middlename,
     Category,
+    Phone,
+    Email,
   } = body.dataFromCaller;
   var CryptoJS = require("crypto-js");
   let eGateway = CryptoJS.AES.encrypt(Gateway, "Applause143").toString();
@@ -19,12 +21,22 @@ export async function POST(request, response) {
   //   SID = SID.substring(2);
   //   let Student_Id = "STD_" + SID;
   const create_sql =
-    "ssn INT PRIMARY KEY AUTO_INCREMENT,teacher_id VARCHAR(30), title VARCHAR(30),  gateway VARCHAR(30), surname VARCHAR(30), firstname VARCHAR(30), middlename VARCHAR(30),  category VARCHAR(20),  UNIQUE (teacher_id)";
+    "ssn INT PRIMARY KEY AUTO_INCREMENT,teacher_id VARCHAR(30), title VARCHAR(30),  gateway VARCHAR(30), surname VARCHAR(30), firstname VARCHAR(30), middlename VARCHAR(30), phone VARCHAR(20), email VARCHAR(50),  category VARCHAR(20),  UNIQUE (teacher_id)";
 
-  const sql = `INSERT into teachers_details (teacher_id, title, gateway,  surname, firstname, middlename, Category) VALUES ?`;
+  const sql = `INSERT into teachers_details (teacher_id, title, gateway,  surname, firstname, middlename, phone, email, Category) VALUES ?`;
 
   const params = [
-    [TeachersID, Title, eGateway, Surname, Firstname, Middlename, Category],
+    [
+      TeachersID,
+      Title,
+      eGateway,
+      Surname,
+      Firstname,
+      Middlename,
+      Phone,
+      Email,
+      Category,
+    ],
   ];
   await createTable(connect, "teachers_details", create_sql);
   const result = await insertTable(connect, sql, params);

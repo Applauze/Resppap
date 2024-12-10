@@ -253,14 +253,16 @@ const Display_Broadsheet = (props) => {
               </tbody>
             </Table>
           </Col>
-          <ButtonBackground
-            ButtonName="PRINT"
-            className={classes.SubmitButton}
-            ButtonAction={PrintTheReport}
-            ButtonCss={buttonCss}
-          />
+          <Col md={12} lg={12} sm={12} className={classes.Hide4Print}>
+            <ButtonBackground
+              ButtonName="PRINT"
+              ButtonAction={PrintTheReport}
+              ButtonCss={buttonCss}
+            />
+          </Col>
         </Row>
       )}
+
       <Processing_Modal
         Show={showProcessing}
         message={Message}

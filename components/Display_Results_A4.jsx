@@ -438,7 +438,6 @@ const Display_Results = () => {
                         width={95}
                         height={95}
                         alt="School Logo"
-                        className="border border-danger border-radius-2"
                       />
                     </Col>
                     <Col md={7} lg={7} xs={7} sm={7}>
@@ -448,7 +447,7 @@ const Display_Results = () => {
                       <p className={classes.Model}>MODEL HIGH SCHOOL, OYO</p>
                       <p className={classes.Pmb}>P.M.B. 1010, ISOKUN, OYO</p>
                       <p className={classes.Tel}>
-                        Tel: 08068720710 Email: modelhighschool@gmail.com
+                        Tel: 08033824233 Email: upmosttony@gmail.com
                       </p>
                       <p className={classes.Report}>REPORT SHEET</p>
                     </Col>
@@ -470,7 +469,7 @@ const Display_Results = () => {
                           RetrievedStudentDetails.Fullname,
                           12
                         )}
-                        {/* {StudentDescription("ADMISSION NO.", "123456789", 4)} */}
+                        {StudentDescription("ADMISSION NO.", "123456789", 4)}
                         {StudentDescription(
                           "DATE OF BIRTH",
                           RetrievedStudentDetails.dob,
@@ -641,12 +640,12 @@ const Display_Results = () => {
                                     ? {
                                         fontWeight: "bold",
                                         color: "Blue",
-                                        fontSize: "17px",
+                                        fontSize: "13px",
                                       }
                                     : {
                                         fontWeight: "bold",
                                         color: "Red",
-                                        fontSize: "17px",
+                                        fontSize: "13px",
                                       }
                                 }
                               >
@@ -700,8 +699,8 @@ const Display_Results = () => {
                   </Row>
                   <fieldset>
                     <legend
-                      className="p-1 m-2"
-                      style={{ fontSize: "15px", fontWeight: "bold" }}
+                      className="p-0 m-0"
+                      style={{ fontSize: "11px", fontWeight: "bold" }}
                     >
                       Affective & Psychomotor
                     </legend>
@@ -887,8 +886,8 @@ const Display_Results = () => {
                   </fieldset>
                   <fieldset>
                     <legend
-                      className="m-2 p-1"
-                      style={{ fontSize: "14px", fontWeight: "bold" }}
+                      className="m-0 p-0"
+                      style={{ fontSize: "12px", fontWeight: "bold" }}
                     >
                       Remarks
                     </legend>

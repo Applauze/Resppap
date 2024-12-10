@@ -11,6 +11,8 @@ export async function POST(request, response) {
     Middlename,
     Category,
     TeachersID,
+    Phone,
+    Email,
   } = body.dataFromCaller;
   let params = [];
   let update_sql = "";
@@ -25,16 +27,28 @@ export async function POST(request, response) {
       eGateway,
       Title,
       Category,
+      Phone,
+      Email,
       TeachersID,
     ];
 
-    update_sql = `Update teachers_details SET surname = ?, firstname = ?, middlename = ?, gateway = ?,  title = ?,  category = ? WHERE teacher_id = ?`;
+    update_sql = `Update teachers_details SET surname = ?, firstname = ?, middlename = ?, gateway = ?,  title = ?,  category = ?, phone = ?, email = ? WHERE teacher_id = ?`;
   } else {
-    update_sql = `Update teachers_details SET surname = ?, firstname = ?, middlename = ?, title = ?,  category = ? WHERE teacher_id = ?`;
-    params = [Surname, Firstname, Middlename, Title, Category, TeachersID];
+    update_sql = `Update teachers_details SET surname = ?, firstname = ?, middlename = ?, title = ?,  category = ?, phone = ?, email = ? WHERE teacher_id = ?`;
+    params = [
+      Surname,
+      Firstname,
+      Middlename,
+      Title,
+      Category,
+      Phone,
+      Email,
+      TeachersID,
+    ];
   }
 
   const update_result = await updateTable(connect, update_sql, params);
+  console.log(update_result);
   let result = update_result === 1 ? 1 : 0;
 
   return result === 1
